@@ -1,0 +1,171 @@
+/* Basic Reset */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul {
+  list-style-type: none;
+}
+
+body {
+  font-family: var(--display-text);
+  line-height: 1.5;
+}
+
+/* navbar */
+
+.navbar {
+  background-color: var(--color--primary);
+  height: 75px;
+}
+
+.navbar ul {
+  display: flex;
+}
+
+.navbar a {
+  padding: 10px;
+  margin: 0 5px;
+}
+
+.navbar .flex {
+  justify-content: space-between;
+}
+
+#left,
+#right {
+  height: 100vh;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.landing-img {
+  width: 100%;
+}
+
+#right {
+  background-image: url(../img/showcase-bg-4-01-01-01-01.svg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+.showcase-content {
+  z-index: 200;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.showcase-text {
+  color: #333;
+}
+
+.btn-fill-primary,
+.btn-fill-secondary {
+  border-radius: 50px;
+  width: 55%;
+  margin-top: 15px;
+  padding: 10px;
+  font-weight: 900;
+  border: 0;
+  cursor: pointer;
+}
+
+.btn-fill-primary {
+  background-color: var(--color--primary);
+  color: #fff;
+  outline: none;
+}
+
+.btn-fill-secondary {
+  background-color: var(--color--secondary);
+  color: #fff;
+  outline: none;
+}
+
+.btn-fill-primary:hover,
+.btn-fill-secondary:hover {
+  opacity: 0.8;
+}
+
+/* Forms */
+/* Sign Up Form */
+.sign-up-form,
+.log-in-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.sign-up-form input,
+.log-in-form input,
+textarea {
+  padding: 0.75em;
+  margin: 0.75rem 0;
+  background-color: transparent;
+  outline: none;
+  border: none;
+  border-bottom: 2px solid var(--color--grey);
+}
+
+.sign-up-form input:focus,
+.sign-up-form textarea:focus,
+.log-in-form input:focus {
+  border-bottom: 2px solid var(--color--primary);
+  outline: none;
+}
+
+.sign-up-form label,
+.log-in-form label {
+  color: var(--color--grey-dark);
+  margin-top: 5px;
+  font-size: 0.75em;
+}
+
+.btn-register,
+.btn-log-in {
+  padding: 10px 15px;
+  cursor: pointer;
+  width: 30%;
+  border-radius: 50px;
+  outline: none;
+  border: 0;
+  background-color: var(--color--primary);
+  color: #fff;
+  font-size: 1.1em;
+}
+
+/* Updates and Offers Area */
+
+.landing {
+  background-color: blue;
+  height: 500px;
+}
+
+.landing .flex {
+  flex-direction: column;
+}
+.updates {
+  background-color: red;
+}
+
+.offers {
+  background-color: tomato;
+}
+
+/* Service Images */
+.service-img {
+  width: 100%;
+}
