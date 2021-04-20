@@ -19,7 +19,7 @@
    <body>
       <div class="center">
       <?php 
-        require ('connect.php');
+       
         ?>
       </div>
    </body>
