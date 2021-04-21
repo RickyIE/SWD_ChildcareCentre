@@ -21,7 +21,7 @@ else
 if (empty($errors))
 { // attempt logon         
     require ('connect.php');
-    $query = "SELECT * FROM user WHERE parentEmail='$user' AND password='$pass'";
+    $query = "SELECT * FROM user WHERE parentEmail='$user' AND password='$pass' and isActive=true";
     $result = @mysqli_query($db_connection, $query);
     if (mysqli_num_rows($result) == 1)
     {
