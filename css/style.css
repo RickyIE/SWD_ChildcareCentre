@@ -1,29 +1,42 @@
-/* Basic Reset */
+/* Base Styles */
 
 * {
-  margin: 0;
   padding: 0;
+  margin: 0;
   box-sizing: border-box;
 }
 
-a {
-  text-decoration: none;
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--body-font);
+  line-height: 1.5;
+  color: var(--color-grey-darkest);
 }
 
 ul {
   list-style-type: none;
 }
 
-body {
-  font-family: var(--display-text);
-  line-height: 1.5;
+a {
+  text-decoration: none;
 }
 
-/* navbar */
+img {
+  width: 100%;
+}
+
+/********** Navbar **********/
 
 .navbar {
-  background-color: var(--color--primary);
-  height: 75px;
+  /* background-color: var(--color-grey-light); */
+  height: 6.25rem;
+}
+
+.navbar .logo {
+  width: 70%;
 }
 
 .navbar ul {
@@ -31,141 +44,143 @@ body {
 }
 
 .navbar a {
-  padding: 10px;
-  margin: 0 5px;
+  padding: 0.625em;
+  margin: 0 0.3125em;
+  font-weight: 700;
+  font-size: 1.1em;
+  color: var(--color-secondary);
+}
+
+.navbar a:hover {
+  border-bottom: 2px solid var(--color-primary);
+}
+
+.navbar .btn {
+  margin-left: 1.25em;
 }
 
 .navbar .flex {
   justify-content: space-between;
 }
 
-#left,
-#right {
-  height: 100vh;
-  display: flex;
-  flex: 1;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+/********** Showcase **********/
+
+.showcase {
+  height: 80vh;
+  background-color: red;
+  /* clip-path: polygon(0 0, 70% 0, 43% 100%, 0% 100%); */
+  background-color: #ffffff;
+  /* opacity: 0.2;
+  background-image: radial-gradient(#3d427d 0.75px, transparent 0.75px),
+    radial-gradient(#3d427d 0.75px, #ffffff 0.75px);
+  background-size: 30px 30px;
+  background-position: 0 0, 15px 15px; */
 }
 
-.landing-img {
+.showcase .grid {
+  grid-template-columns: 52% 48%;
+}
+
+.showcase img {
   width: 100%;
 }
 
-#right {
-  background-image: url(../img/showcase-bg-4-01-01-01-01.svg);
+/********** Services **********/
+.services {
+  background-color: var(--color-grey-light);
+}
+.services .flex {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.services img {
+  width: 100%;
+}
+
+/********** Update **********/
+
+.updates .grid {
+  grid-gap: 0;
+}
+
+.updates .img {
+  height: 400px;
+  background-image: url(../img/updates-img.jpg);
+  background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-  background-position: center center;
 }
 
-.showcase-content {
-  z-index: 200;
-  color: #fff;
-  display: flex;
-  flex-direction: column;
-  height: 100%;
+.update-info ul {
+  list-style: disc;
 }
 
-.showcase-text {
-  color: #333;
+.update-info ul,
+.update-info .heading-3,
+.update-info .btn {
+  margin-left: 3.125em;
 }
 
-.btn-fill-primary,
-.btn-fill-secondary {
-  border-radius: 50px;
-  width: 55%;
-  margin-top: 15px;
-  padding: 10px;
-  font-weight: 900;
-  border: 0;
-  cursor: pointer;
+.update-info .btn {
+  margin-top: 1.25em;
+}
+/********** Offers **********/
+
+.offer-info ul {
+  list-style: disc;
 }
 
-.btn-fill-primary {
-  background-color: var(--color--primary);
-  color: #fff;
-  outline: none;
+.offers .grid {
+  grid-gap: 0;
 }
 
-.btn-fill-secondary {
-  background-color: var(--color--secondary);
-  color: #fff;
-  outline: none;
+.offers .img {
+  height: 400px;
+  background-image: url(../img/updates-img.jpg);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
-.btn-fill-primary:hover,
-.btn-fill-secondary:hover {
-  opacity: 0.8;
+.offer-info ul,
+.offer-info .heading-3,
+.offer-info .btn {
+  margin-left: 3.125em;
 }
 
-/* Forms */
-/* Sign Up Form */
-.sign-up-form,
-.log-in-form {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+.offer-info .btn {
+  margin-top: 1.25em;
 }
 
-.sign-up-form input,
-.log-in-form input,
-textarea {
-  padding: 0.75em;
-  margin: 0.75rem 0;
-  background-color: transparent;
-  outline: none;
-  border: none;
-  border-bottom: 2px solid var(--color--grey);
+/********** Footer **********/
+.footer {
+  background-color: var(--color-tertiary);
+  padding: 1.25em 0;
+  color: var(--color-grey-light);
 }
 
-.sign-up-form input:focus,
-.sign-up-form textarea:focus,
-.log-in-form input:focus {
-  border-bottom: 2px solid var(--color--primary);
-  outline: none;
+.footer .flex {
+  flex-direction: row;
+  justify-content: space-between;
 }
 
-.sign-up-form label,
-.log-in-form label {
-  color: var(--color--grey-dark);
-  margin-top: 5px;
-  font-size: 0.75em;
+.footer .logo {
+  width: 65%;
 }
 
-.btn-register,
-.btn-log-in {
-  padding: 10px 15px;
-  cursor: pointer;
-  width: 30%;
-  border-radius: 50px;
-  outline: none;
-  border: 0;
-  background-color: var(--color--primary);
-  color: #fff;
-  font-size: 1.1em;
+.footer .fab {
+  color: var(--color-grey-light);
+  font-size: 1.75em;
+  margin: 0 0.625em;
 }
 
-/* Updates and Offers Area */
-
-.landing {
-  background-color: blue;
-  height: 500px;
+.footer a,
+.footer .fas {
+  color: var(--color-grey-light);
 }
 
-.landing .flex {
-  flex-direction: column;
-}
-.updates {
-  background-color: red;
-}
-
-.offers {
-  background-color: tomato;
-}
-
-/* Service Images */
-.service-img {
-  width: 100%;
+.footer .fab:hover {
+  color: orange;
 }

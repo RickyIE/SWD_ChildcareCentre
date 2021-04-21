@@ -21,6 +21,7 @@ btnCloseSignUpModal.addEventListener('click', closeSignUpModal);
 
 function closeSignUpModal() {
   signUpModal.style.display = 'none';
+  overlay.classList.add('hidden');
 }
 
 // Open and Close Log in Modal
@@ -29,7 +30,7 @@ btnOpenLogInModal.addEventListener('click', openLogInModal);
 
 function openLogInModal() {
   logInModal.style.display = "block";
-  // overlay.classList.remove('hidden');
+  overlay.classList.remove('hidden');
 
 }
 
@@ -37,4 +38,5 @@ btnCloseLogInModal.addEventListener('click', closeLogInModal);
 
 function closeLogInModal() {
   logInModal.style.display = 'none';
+  overlay.classList.add('hidden');
 }
