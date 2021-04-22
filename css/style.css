@@ -184,3 +184,75 @@ img {
 .footer .fab:hover {
   color: orange;
 }
+
+/********** Testimonials **********/
+
+.testimonial-top-text {
+  background-color: var(--color-grey-light);
+}
+
+.testimonials .testimonial-top-text p {
+  font-size: 1.25em;
+}
+
+.testimonials {
+  background-color: #fff;
+}
+
+.testimonials .testimonial-location {
+  font-weight: lighter;
+}
+
+.slide-content .heading-3 {
+  font-weight: lighter;
+}
+
+.slide-content img {
+  margin-top: 1.5em;
+  text-align: center;
+  width: 10%;
+  border-radius: 50%;
+  border: 5px solid var(--color-primary);
+}
+
+.controls .arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+.controls .arrow i {
+  font-size: 1.5em;
+  color: var(--color-grey-dark);
+}
+
+.arrow.left {
+  left: 10px;
+}
+
+.arrow.right {
+  right: 10px;
+}
+
+.controls ul {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translate(-50%);
+  display: flex;
+}
+
+.controls ul li {
+  width: 14px;
+  height: 14px;
+  border: 2px solid var(--color-grey);
+  border-radius: 50px;
+  margin: 10px;
+  background-color: var(--color-grey-dark);
+  cursor: pointer;
+}
+
+.controls ul li.selected {
+  background-color: transparent;
+}
