@@ -42,6 +42,10 @@
   padding: 3.5em 0;
 }
 
+.italic {
+  font-style: italic;
+}
+
 /* Containers, Grids, Flexbox */
 
 .container {
@@ -187,4 +191,39 @@
 
 .hidden {
   display: none;
+}
+
+/* Carousel / Slider */
+
+.carousel {
+  background-color: #fff;
+  height: 500px;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  margin: 0 auto;
+  border-radius: 20px;
+}
+
+.slider {
+  height: 100%;
+  display: flex;
+  width: 400%;
+  transition: all 0.4s ease-in-out;
+  background-color: var(--color-grey-light);
+}
+
+.slider section {
+  flex-basis: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.slide-content {
+  width: 80%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
