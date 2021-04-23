@@ -8,6 +8,45 @@ const btnCloseLogInModal = document.querySelector('.close-log-in-modal');
 const btnOpenSignUpModal = document.querySelector('.show-sign-up-modal');
 const btnOpenLogInModal = document.querySelector('.show-log-in-modal');
 
+
+// Open and close sign up modal
+btnOpenSignUpModal.addEventListener('click', openSignUpModal);
+
+// Open SignUp Modal Function
+function openSignUpModal() {
+  signUpModal.style.display = "block";
+  overlay.classList.remove('hidden');
+}
+
+// Add event listener to button and on click - Run closeSignUp Function
+btnCloseSignUpModal.addEventListener('click', closeSignUpModal);
+
+// Close SignUp Function
+function closeSignUpModal() {
+  signUpModal.style.display = 'none';
+  overlay.classList.add('hidden');
+}
+
+// Open and close Log In Modal
+
+// Add event listener to button and on click - Run openLogIn Function
+btnOpenLogInModal.addEventListener('click', openLogInModal);
+
+// Open LogInModal Function
+function openLogInModal() {
+  logInModal.style.display = "block";
+  overlay.classList.remove('hidden');
+}
+
+// Add event listener to button and on click - Run closeModal Function
+btnCloseLogInModal.addEventListener('click', closeLogInModal);
+
+// Close LogIn Modal Function
+function closeLogInModal() {
+  logInModal.style.display = 'none';
+  overlay.classList.add('hidden');
+}
+
 // Carousel Selectors
 const slider = document.querySelector('.slider');
 const leftArrow = document.querySelector('.left');
