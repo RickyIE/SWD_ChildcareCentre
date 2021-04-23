@@ -256,3 +256,63 @@ img {
 .controls ul li.selected {
   background-color: transparent;
 }
+
+/* Contact Page */
+.contact-us {
+  background-color: var(--color-grey-light);
+  height: 80vh;
+}
+
+.contact-us .contact-img {
+  width: 70%;
+}
+
+.social-media-list ul {
+  display: flex;
+}
+
+.social-media-list ul li {
+  margin-top: 20px;
+  margin-right: 20px;
+}
+
+.social-media-list i {
+  font-size: 1.25em;
+  color: var(--color-primary);
+}
+
+.contact-us .form-card {
+  background-color: #fff;
+  border-radius: 15px;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  padding: 1em 1.5em;
+  background-color: transparent;
+  outline: none;
+  border: none;
+  border-bottom: 2px solid var(--color-primary);
+}
+
+.contact-form label {
+  margin-top: 0.5em;
+  font-size: 0.75em;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-bottom: 2px solid var(--color-primary);
+  outline: none;
+}
+
+.contact-form .btn-primary {
+  margin-top: 1em;
+  width: 40%;
+}
