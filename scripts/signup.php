@@ -1,11 +1,12 @@
 <?php
 session_start();
+error_reporting(0);
 // validate username / email
 if (empty($_POST['username']))
 {
     $errors[] = 'You forgot to enter user name.';
 }
-elseif(!filter_var($email, FILTER_VALIDATE_EMAIL))
+elseif(!filter_var($_POST['username'], FILTER_VALIDATE_EMAIL))
 {
     $errors[] = "Invalid username, please provide an email address.";
 } else {
@@ -29,7 +30,7 @@ elseif (!preg_match("#[A-Z]+#",$_POST['password'])) {
 elseif (!preg_match("#[a-z]+#",$_POST['password'])) {
     $errors[] = "Your password must contain at least 1 lowercase letter!";
 } 
-elseif ($_POST['password'] != $_POST['password_confirm'])) {
+elseif ($_POST['password'] != $_POST['password_confirm']) {
     $errors[] = "Please check you've entered or confirmed your password!";
 } else {
     $password = trim($_POST['password']);
@@ -65,7 +66,7 @@ if (empty($errors))
     if ($result)
     { 
         $row = mysqli_fetch_array($result);
-        $_SESSION['user_id'] = $row['parentEmail'];
+        $_SESSION['user_id'] = $row['username'];
         $_SESSION['name'] = $row['firstName'].' '. $row['lastName'];    
         
         echo '<h3>Yes! your signup was successful. You ar now logged in.</h3>';
@@ -75,7 +76,7 @@ if (empty($errors))
     }
     else
     {
-        echo "<h2>Error!</h2>";
+        echo "<h2>Error!</h2>" ;
     }
     mysqli_close($db_connection);
 }

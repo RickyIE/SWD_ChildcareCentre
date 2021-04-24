@@ -21,12 +21,12 @@ else
 if (empty($errors))
 { // attempt logon         
     require ('connect.php');
-    $query = "SELECT * FROM user WHERE parentEmail='$user' AND password='$pass' and isActive=true";
+    $query = "SELECT * FROM user WHERE username='$user' AND password='$pass' and isActive=true";
     $result = @mysqli_query($db_connection, $query);
     if (mysqli_num_rows($result) == 1)
     {
         $row = mysqli_fetch_array($result);
-        $_SESSION['user_id'] = $row['parentEmail'];
+        $_SESSION['user_id'] = $row['username'];
         $_SESSION['name'] = $row['firstName'].' '. $row['lastName'];    
         
         echo '<h3>Yes! your login was successful.</h3>';
