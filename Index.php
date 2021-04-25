@@ -39,7 +39,6 @@
     <!-- End Navigation -->
 
     <!-- Modals -->
-
     <div class="sign-up-modal">
       <button class="close-sign-up-modal">&times;</button>
       <h1>Sign Up</h1>
@@ -111,6 +110,24 @@
       <!-- End Container -->
     </section>
 
+    <!-- get services from database -->
+    <?php 
+      require ('scripts/connect.php');
+      $query = "SELECT serviceTitle, serviceDetail, imagePath, link FROM service limit 3";
+      $result = @mysqli_query($db_connection, $query);
+
+      $services = array();
+
+      while ($row = mysqli_fetch_array($result)) {
+        $services[] = array(  
+          'serviceTitle' => $row['serviceTitle'],  
+          'serviceDetail' => $row['serviceDetail'], 
+          'imagePath' => $row['imagePath'],  
+          'link' => $row['link']
+        ); 
+      }
+    ?>
+
     <section class="services p-top" id="services">
       <div class="container">
         <h2 class="heading-2 center">We strive to create a comforting
@@ -120,31 +137,42 @@
         </h2>
         <div class="flex">
           <div>
-            <figure><img src="img/early-learning-01.svg" alt=""></figure>
-            <h3 class="heading-3">Early Learning</h3>
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Deleniti minus quod nulla maiores porro
-              mollitia.
-            </p>
+            <figure><img src="<?php echo $services[0]['imagePath']; ?>" alt=""></figure>
+            <h3 class="heading-3"><?php echo $services[0]['serviceTitle']?></h3>
+            <p><?php echo $services[0]['serviceDetail']?></p>
           </div>
 
           <div>
-            <figure><img src="img/showcase-bg-2-01.svg" alt=""></figure>
-            <h3 class="heading-3">Lorem, ipsum dolor.</h3>
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Deleniti minus quod nulla maiores porro
-              mollitia.
-            </p>
+            <figure><img src="<?php echo $services[1]['imagePath']; ?>" alt=""></figure>
+            <h3 class="heading-3"><?php echo $services[1]['serviceTitle']?></h3>
+            <p><?php echo $services[1]['serviceDetail']?></p>
           </div>
 
           <div>
-            <figure><img src="img/showcase-bg-2-01.svg" alt="" data-aos="slide-left"></figure>
-            <h3 class="heading-3">Lorem, ipsum dolor.</h3>
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Deleniti minus quod nulla maiores porro
-              mollitia.
-            </p>
+            <figure><img src="<?php echo $services[2]['imagePath']; ?>" alt=""></figure>
+            <h3 class="heading-3"><?php echo $services[2]['serviceTitle']?></h3>
+            <p><?php echo $services[2]['serviceDetail']?></p>
           </div>
         </div>
       </div>
     </section>
+
+    <!-- get events from database -->
+    <?php 
+      $query = "SELECT eventTitle, startTime, endTime, link FROM event limit 5";
+      $result = @mysqli_query($db_connection, $query);
+
+      $events = array();
+
+      while ($row = mysqli_fetch_array($result)) {
+        $events[] = array(  
+          'eventTitle' => $row['eventTitle'],  
+          'startTime' => $row['startTime'], 
+          'endTime' => $row['endTime'],  
+          'link' => $row['link']
+        ); 
+      }
+    ?>
 
     <section class="updates p-top" id="updates">
       <div class="container grid">
@@ -152,17 +180,13 @@
         <div class="img"></div>
 
         <div class="update-info">
-          <h3 class="heading-3">Latest Updates</h3>
+          <h3 class="heading-3">Events</h3>
           <ul>
-            <li>Accepting enrollments for class of 2022.</li>
-            <li>Junior Sports day is organised for May 19th 2021.</li>
-            <li>Class trip out to playground orgainsed for June 2021.</li>
-            <li>Bring your favourite toy to class scheduled for every Friday beginning from the first Friday of May.
-            </li>
-            <li>We would like to welcome out newest member of staff Betty Cooper. Betty will be working from one of
-              our
-              Dublin locations.
-            </li>
+            <li><?php $start_time = DateTime::createFromFormat ( "Y-m-d H:i:s", $events[4]['startTime'] ); $end_time = DateTime::createFromFormat ( "Y-m-d H:i:s", $events[4]['endTime'] ); echo $events[4]['eventTitle'] . ' - ' . $start_time->format('F j, Y, g:i a') . ' to ' . $end_time->format('g:i a');?></li>
+            <li><?php $start_time = DateTime::createFromFormat ( "Y-m-d H:i:s", $events[3]['startTime'] ); $end_time = DateTime::createFromFormat ( "Y-m-d H:i:s", $events[3]['endTime'] ); echo $events[3]['eventTitle'] . ' - ' . $start_time->format('F j, Y, g:i a') . ' to ' . $end_time->format('g:i a');?></li>
+            <li><?php $start_time = DateTime::createFromFormat ( "Y-m-d H:i:s", $events[2]['startTime'] ); $end_time = DateTime::createFromFormat ( "Y-m-d H:i:s", $events[2]['endTime'] ); echo $events[2]['eventTitle'] . ' - ' . $start_time->format('F j, Y, g:i a') . ' to ' . $end_time->format('g:i a');?></li>
+            <li><?php $start_time = DateTime::createFromFormat ( "Y-m-d H:i:s", $events[1]['startTime'] ); $end_time = DateTime::createFromFormat ( "Y-m-d H:i:s", $events[1]['endTime'] ); echo $events[1]['eventTitle'] . ' - ' . $start_time->format('F j, Y, g:i a') . ' to ' . $end_time->format('g:i a');?></li>
+            <li><?php $start_time = DateTime::createFromFormat ( "Y-m-d H:i:s", $events[0]['startTime'] ); $end_time = DateTime::createFromFormat ( "Y-m-d H:i:s", $events[0]['endTime'] ); echo $events[0]['eventTitle'] . ' - ' . $start_time->format('F j, Y, g:i a') . ' to ' . $end_time->format('g:i a');?></li>
           </ul>
 
           <button class="btn btn-primary">More Update Information</button>
@@ -171,16 +195,31 @@
       </div>
     </section>
 
+    <!-- get offers from database -->
+    <?php 
+      $query = "SELECT offerTitle, link FROM special_offer limit 5";
+      $result = @mysqli_query($db_connection, $query);
+
+      $offers = array();
+
+      while ($row = mysqli_fetch_array($result)) {
+        $offers[] = array(  
+          'offerTitle' => $row['offerTitle'],  
+          'link' => $row['link']
+        ); 
+      }
+    ?>
+
     <section class="offers p-top" id="offers">
       <div class="container grid">
         <div class="offer-info">
           <h3 class="heading-3">Latest Offers</h3>
           <ul>
-            <li>Register two children for the price of one, while spaces last.</li>
-            <li>Half price for new wobblers for classes starting in 2021.</li>
-            <li>Family bundle now available - Contact us for more information.</li>
-            <li>Hlaf price on all 5 days a week new toddlers while spaces last.</li>
-            <li>25% off for child collection service.</li>
+            <li><?php echo $offers[4]['offerTitle'];?></li>
+            <li><?php echo $offers[3]['offerTitle'];?></li>
+            <li><?php echo $offers[2]['offerTitle'];?></li>
+            <li><?php echo $offers[1]['offerTitle'];?></li>
+            <li><?php echo $offers[0]['offerTitle'];?></li>
           </ul>
           <button class="btn btn-secondary">More Offers Information</button>
         </div>
