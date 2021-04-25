@@ -39,7 +39,6 @@
     <!-- End Navigation -->
 
     <!-- Modals -->
-
     <div class="sign-up-modal">
       <button class="close-sign-up-modal">&times;</button>
       <h1>Sign Up</h1>
@@ -111,6 +110,24 @@
       <!-- End Container -->
     </section>
 
+    <!-- get services from database -->
+    <?php 
+      require ('scripts/connect.php');
+      $query = "SELECT serviceTitle, serviceDetail, imagePath, link FROM service limit 3";
+      $result = @mysqli_query($db_connection, $query);
+
+      $services = array();
+
+      while ($row = mysqli_fetch_array($result)) {
+        $services[] = array(  
+          'serviceTitle' => $row['serviceTitle'],  
+          'serviceDetail' => $row['serviceDetail'], 
+          'imagePath' => $row['imagePath'],  
+          'link' => $row['link']
+        ); 
+      }
+    ?>
+
     <section class="services p-top" id="services">
       <div class="container">
         <h2 class="heading-2 center">We strive to create a comforting
@@ -120,27 +137,21 @@
         </h2>
         <div class="flex">
           <div>
-            <figure><img src="img/early-learning-01.svg" alt=""></figure>
-            <h3 class="heading-3">Early Learning</h3>
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Deleniti minus quod nulla maiores porro
-              mollitia.
-            </p>
+            <figure><img src="<?php echo $services[0]['imagePath']; ?>" alt=""></figure>
+            <h3 class="heading-3"><?php echo $services[0]['serviceTitle']?></h3>
+            <p><?php echo $services[0]['serviceDetail']?></p>
           </div>
 
           <div>
-            <figure><img src="img/showcase-bg-2-01.svg" alt=""></figure>
-            <h3 class="heading-3">Lorem, ipsum dolor.</h3>
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Deleniti minus quod nulla maiores porro
-              mollitia.
-            </p>
+            <figure><img src="<?php echo $services[1]['imagePath']; ?>" alt=""></figure>
+            <h3 class="heading-3"><?php echo $services[1]['serviceTitle']?></h3>
+            <p><?php echo $services[1]['serviceDetail']?></p>
           </div>
 
           <div>
-            <figure><img src="img/showcase-bg-2-01.svg" alt="" data-aos="slide-left"></figure>
-            <h3 class="heading-3">Lorem, ipsum dolor.</h3>
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Deleniti minus quod nulla maiores porro
-              mollitia.
-            </p>
+            <figure><img src="<?php echo $services[2]['imagePath']; ?>" alt=""></figure>
+            <h3 class="heading-3"><?php echo $services[2]['serviceTitle']?></h3>
+            <p><?php echo $services[2]['serviceDetail']?></p>
           </div>
         </div>
       </div>
