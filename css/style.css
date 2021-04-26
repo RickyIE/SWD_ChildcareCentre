@@ -316,3 +316,78 @@ img {
   margin-top: 1em;
   width: 40%;
 }
+
+/* Day Details Page */
+.day-details {
+}
+
+.day-details-info {
+  background-color: var(--color-grey-light);
+}
+
+.day-details-info form input {
+  width: 100%;
+  padding: 1em 0;
+  outline: none;
+  border: none;
+}
+
+.day-details-info form label {
+  margin-bottom: 0.5em;
+  font-size: 0.75em;
+}
+
+table {
+  margin: 25px auto;
+  border-collapse: collapse;
+  border: 1px solid var(--color-grey);
+  border-bottom: 2px solid var(--color-primary);
+}
+
+table tr:hover {
+  background: #f4f4f4;
+}
+table tr:hover td {
+  color: var(--color-grey);
+}
+
+table th,
+table td {
+  border: 1px solid var(--color-grey);
+  padding: 12px 35px;
+  border-collapse: collapse;
+}
+
+table th {
+  background: var(--color-primary);
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 12px;
+}
+
+table th.last {
+  border-right: none;
+}
+
+/* Table Buttons */
+.btn-add,
+.btn-del,
+.btn-up {
+  padding: 10px 20px;
+  color: var(--color-grey);
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.btn-add {
+  background-color: var(--color-primary);
+}
+
+.btn-del {
+  background-color: var(--color-secondary);
+}
+
+.btn-up {
+  background-color: var(--color-tertiary);
+}
