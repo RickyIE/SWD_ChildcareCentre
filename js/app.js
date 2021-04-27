@@ -55,10 +55,15 @@ function closeLogInModal() {
 // Add Day Details Modals
 const addDetailsModal = document.querySelector('.add-details-modal');
 const btnCloseAddModal = document.querySelector('.close-add-modal');
-const btnOpenAddModal = document.querySelector('.show-add-modal');
+const btnOpenAddModal = document.querySelectorAll('.show-add-modal');
+
+// Loop to get all show add modal buttons
+for (let i = 0; i < btnOpenAddModal.length; i++) {
+  btnOpenAddModal[i].addEventListener('click', openAddDetails);
+}
 
 // Open and close add details modal
-btnOpenAddModal.addEventListener('click', openAddDetails);
+// btnOpenAddModal.addEventListener('click', openAddDetails);
 
 // Open add details modal function
 function openAddDetails() {
@@ -79,13 +84,18 @@ function closeAddDetailsModal() {
 // Delete Day Details Modals
 const delDetailsModal = document.querySelector('.del-details-modal');
 const btnCloseDelModal = document.querySelector('.close-del-modal');
-const btnOpenDelModal = document.querySelector('.show-del-modal');
+const btnOpenDelModal = document.querySelectorAll('.show-del-modal');
 
+
+// Loop to get all show delete modal buttons
+for (let i = 0; i < btnOpenDelModal.length; i++) {
+  btnOpenDelModal[i].addEventListener('click', openDelDetails);
+}
 
 // Open and close add details modal
-btnOpenDelModal.addEventListener('click', openDelDetails);
+// btnOpenDelModal.addEventListener('click', openDelDetails);
 
-// Open add details modal function
+// Open Delete details modal function
 function openDelDetails() {
   delDetailsModal.style.display = "block";
   overlay.classList.remove('hidden');
@@ -105,11 +115,16 @@ function closeDelDetailsModal() {
 // Update Day Details Modals
 const updateDetailsModal = document.querySelector('.update-details-modal');
 const btnCloseUpdateModal = document.querySelector('.close-update-modal');
-const btnOpenUpdateModal = document.querySelector('.show-update-modal');
+const btnOpenUpdateModal = document.querySelectorAll('.show-update-modal');
 
 
-// Open and close Update details modal
-btnOpenUpdateModal.addEventListener('click', openUpdateDetails);
+// Loop to get all show add modal buttons
+for (let i = 0; i < btnOpenUpdateModal.length; i++) {
+  btnOpenUpdateModal[i].addEventListener('click', openUpdateDetails);
+}
+
+// // Open and close Update details modal
+// btnOpenUpdateModal.addEventListener('click', openUpdateDetails);
 
 // Open Update details modal function
 function openUpdateDetails() {
