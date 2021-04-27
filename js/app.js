@@ -1,13 +1,8 @@
-// Modal Selectors
+// Sign Up Modal Selectors
 
 const signUpModal = document.querySelector('.sign-up-modal');
-const logInModal = document.querySelector('.log-in-modal');
-const overlay = document.querySelector('.overlay');
-const btnCloseSignUpModal = document.querySelector('.close-sign-up-modal');
-const btnCloseLogInModal = document.querySelector('.close-log-in-modal');
 const btnOpenSignUpModal = document.querySelector('.show-sign-up-modal');
-const btnOpenLogInModal = document.querySelector('.show-log-in-modal');
-
+const btnCloseSignUpModal = document.querySelector('.close-sign-up-modal');
 
 // Open and close sign up modal
 btnOpenSignUpModal.addEventListener('click', openSignUpModal);
@@ -26,6 +21,14 @@ function closeSignUpModal() {
   signUpModal.style.display = 'none';
   overlay.classList.add('hidden');
 }
+
+
+// Login Modal Selectors
+
+const logInModal = document.querySelector('.log-in-modal');
+const btnCloseLogInModal = document.querySelector('.close-log-in-modal');
+const btnOpenLogInModal = document.querySelector('.show-log-in-modal');
+const overlay = document.querySelector('.overlay');
 
 // Open and close Log In Modal
 
@@ -46,6 +49,84 @@ function closeLogInModal() {
   logInModal.style.display = 'none';
   overlay.classList.add('hidden');
 }
+
+
+
+// Add Day Details Modals
+const addDetailsModal = document.querySelector('.add-details-modal');
+const btnCloseAddModal = document.querySelector('.close-add-modal');
+const btnOpenAddModal = document.querySelector('.show-add-modal');
+
+// Open and close add details modal
+btnOpenAddModal.addEventListener('click', openAddDetails);
+
+// Open add details modal function
+function openAddDetails() {
+  addDetailsModal.style.display = "block";
+  overlay.classList.remove('hidden');
+}
+
+// Add event listener to button and on click - Run closeAddDetails Function
+btnCloseAddModal.addEventListener('click', closeAddDetailsModal);
+
+// Close addDetailsModal Function
+function closeAddDetailsModal() {
+  addDetailsModal.style.display = 'none';
+  overlay.classList.add('hidden');
+}
+
+
+// Delete Day Details Modals
+const delDetailsModal = document.querySelector('.del-details-modal');
+const btnCloseDelModal = document.querySelector('.close-del-modal');
+const btnOpenDelModal = document.querySelector('.show-del-modal');
+
+
+// Open and close add details modal
+btnOpenDelModal.addEventListener('click', openDelDetails);
+
+// Open add details modal function
+function openDelDetails() {
+  delDetailsModal.style.display = "block";
+  overlay.classList.remove('hidden');
+}
+
+// Add event listener to button and on click - Run closeAddDetails Function
+btnCloseDelModal.addEventListener('click', closeDelDetailsModal);
+
+// Close addDetailsModal Function
+function closeDelDetailsModal() {
+  delDetailsModal.style.display = 'none';
+  overlay.classList.add('hidden');
+}
+
+
+
+// Update Day Details Modals
+const updateDetailsModal = document.querySelector('.update-details-modal');
+const btnCloseUpdateModal = document.querySelector('.close-update-modal');
+const btnOpenUpdateModal = document.querySelector('.show-update-modal');
+
+
+// Open and close Update details modal
+btnOpenUpdateModal.addEventListener('click', openUpdateDetails);
+
+// Open Update details modal function
+function openUpdateDetails() {
+  updateDetailsModal.style.display = "block";
+  overlay.classList.remove('hidden');
+}
+
+// Add event listener to button and on click - Run closeUpdateDetails Function
+btnCloseUpdateModal.addEventListener('click', closeUpdateDetailsModal);
+
+// Close updateDetailsModal Function
+function closeUpdateDetailsModal() {
+  updateDetailsModal.style.display = 'none';
+  overlay.classList.add('hidden');
+}
+
+
 
 // Carousel Selectors
 const slider = document.querySelector('.slider');

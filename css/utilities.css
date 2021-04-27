@@ -132,7 +132,10 @@
 }
 
 .sign-up-modal,
-.log-in-modal {
+.log-in-modal,
+.add-details-modal,
+.del-details-modal,
+.update-details-modal {
   display: none;
   position: absolute;
   top: 50%;
@@ -147,7 +150,10 @@
 }
 
 .close-sign-up-modal,
-.close-log-in-modal {
+.close-log-in-modal,
+.close-add-modal,
+.close-del-modal,
+.close-update-modal {
   position: absolute;
   top: 0.25em;
   right: 0.5em;
@@ -162,7 +168,10 @@
 }
 
 .sign-up-form,
-.log-in-form {
+.log-in-form,
+.add-details-form,
+.del-details-form,
+.update-details-form {
   padding: 1em;
   display: flex;
   flex-direction: column;
@@ -171,7 +180,13 @@
 
 .sign-up-form input,
 .sign-up-form textarea,
-.log-in-form input {
+.log-in-form input,
+.add-details-form input,
+.add-details-form textarea,
+.del-details-form input,
+.del-details-form textarea,
+.update-details-form input,
+.update-details-form textarea {
   padding: 1em 1.5em;
   background-color: transparent;
   outline: none;
@@ -181,19 +196,31 @@
 
 .sign-up-form input:focus,
 .sign-up-form textarea:focus,
-.log-in-form input:focus {
+.log-in-form input:focus,
+.add-details-form input:focus,
+.add-details-form textarea:focus,
+.del-details-form input:focus,
+.del-details-form textarea:focus,
+.update-details-form input:focus,
+.update-details-form textarea:focus {
   border-bottom: 2px solid var(--color-primary);
   outline: none;
 }
 
 .sign-up-form label,
-.log-in-form label {
+.log-in-form label,
+.add-details-form label,
+.del-details-form label,
+.update-details-form label {
   margin-top: 0.5em;
   font-size: 0.75em;
 }
 
 .sign-up-form .btn-primary,
-.log-in-form .btn-primary {
+.log-in-form .btn-primary,
+.add-details-form .btn-primary,
+.del-details-form .btn-primary,
+.update-details-form .btn-primary {
   margin-top: 1em;
   width: 40%;
 }
