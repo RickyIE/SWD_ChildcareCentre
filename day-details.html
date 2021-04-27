@@ -37,6 +37,145 @@
     </div>
   </div>
   <!-- End Navigation -->
+
+  <!-- Modals -->
+  <div class="sign-up-modal">
+    <button class="close-sign-up-modal">&times;</button>
+    <h1>Sign Up</h1>
+    <div class="form-card">
+      <form class="sign-up-form" action='scripts\signup.php' method='POST'>
+        <label for="first_name">First Name</label>
+        <input type="text" name="first_name" id="first_name">
+
+        <label for="last_name">Last Name</label>
+        <input type="text" name="last_name" id="last_name">
+
+        <label for="username">Username</label>
+        <input type="text" name="username" id="username">
+
+        <label for="password">Password</label>
+        <input type="password" name="password" id="password">
+
+        <label for="password_confirm">Confirm Password</label>
+        <input type="password" name="password_confirm" id="password_confirm">
+
+        <!-- might use these fields later, but commenting out for now.
+
+          <label for="home-phone">Home Phone</label>
+          <input type="tel" name="password" id="home-phone">
+
+          <label for="address">Address</label>
+          <textarea name="address" id="address" cols="30" rows="10"></textarea>
+
+          -->
+
+        <button class="btn btn-primary">Sign Up</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="log-in-modal">
+    <button class="close-log-in-modal">&times;</button>
+    <h1>Log In</h1>
+    <div class="form-card">
+      <form class="log-in-form" action='scripts\login.php' method='POST'>
+        <label for="username">Username</label>
+        <input type="text" name="username" id="username">
+
+        <label for="password">Password</label>
+        <input type="password" name="password" id="password">
+
+        <button class="btn btn-primary">Log In</button>
+      </form>
+    </div>
+  </div>
+
+
+  <div class="add-details-modal">
+    <button class="close-add-modal">&times;</button>
+    <h1>Add Details</h1>
+    <div class="form-card">
+      <form action="#" class="add-details-form">
+        <label for="">Name</label>
+        <input type="text" id="name" name="temperature" placeholder="">
+
+        <label for="">Temperature</label>
+        <input type="text" id="temperature" name="temperature" placeholder="">
+
+        <label for="breakfast">Breakfast</label>
+        <textarea name="breakfast" id="breakfast" cols="30" rows="10"></textarea>
+
+        <label for="lunch">Lunch</label>
+        <textarea name="lunch" id="lunch" cols="30" rows="10"></textarea>
+
+        <label for="">Activities</label>
+        <input type="activities" id="activities" name="activities" placeholder="">
+        <button class="btn btn-primary">Add Details</button>
+      </form>
+    </div>
+    <!-- End form Card -->
+  </div>
+  <!-- End Modal -->
+
+  <div class="del-details-modal">
+    <button class="close-del-modal">&times;</button>
+    <h1>Delete Details</h1>
+    <div class="form-card">
+      <form action="#" class="del-details-form">
+        <label for="">Name</label>
+        <input type="text" id="name" name="temperature" placeholder="">
+
+        <label for="">Temperature</label>
+        <input type="text" id="temperature" name="temperature" placeholder="">
+
+        <label for="breakfast">Breakfast</label>
+        <textarea name="breakfast" id="breakfast" cols="30" rows="10"></textarea>
+
+        <label for="lunch">Lunch</label>
+        <textarea name="lunch" id="lunch" cols="30" rows="10"></textarea>
+
+        <label for="">Activities</label>
+        <input type="activities" id="activities" name="activities" placeholder="">
+        <button class="btn btn-primary">Delete Details</button>
+      </form>
+    </div>
+    <!-- End form Card -->
+  </div>
+  <!-- End Modal -->
+
+
+
+  <div class="update-details-modal">
+    <button class="close-update-modal">&times;</button>
+    <h1>Update Details</h1>
+    <div class="form-card">
+      <form action="#" class="update-details-form">
+        <label for="">Name</label>
+        <input type="text" id="name" name="temperature" placeholder="">
+
+        <label for="">Temperature</label>
+        <input type="text" id="temperature" name="temperature" placeholder="">
+
+        <label for="breakfast">Breakfast</label>
+        <textarea name="breakfast" id="breakfast" cols="30" rows="10"></textarea>
+
+        <label for="lunch">Lunch</label>
+        <textarea name="lunch" id="lunch" cols="30" rows="10"></textarea>
+
+        <label for="">Activities</label>
+        <input type="activities" id="activities" name="activities" placeholder="">
+        <button class="btn btn-primary">Update Details</button>
+      </form>
+    </div>
+    <!-- End form Card -->
+  </div>
+  <!-- End Modal -->
+
+
+
+
+
+
   <section class="day-details-info p-top">
     <div class="container grid">
       <div>
@@ -71,9 +210,9 @@
             <td>Item</td>
             <td>Item</td>
             <td>Item</td>
-            <td><button class="btn-add">Add</button></td>
-            <td><button class="btn-del">Delete</button></td>
-            <td><button class="btn-up">Update</button></td>
+            <td><button class="btn-add show-add-modal">Add</button></td>
+            <td><button class="btn-del show-del-modal">Delete</button></td>
+            <td><button class="btn-up show-update-modal">Update</button></td>
           </tr>
           <tr>
             <td>Item</td>
