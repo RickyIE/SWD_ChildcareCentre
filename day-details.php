@@ -16,6 +16,8 @@
 
 <body>
 
+<?php require ('scripts/connect.php'); ?>
+
   <!-- Navbar -->
   <div class="navbar" id="home">
     <div class="container flex">
@@ -90,14 +92,51 @@
     </div>
   </div>
 
+  <!-- get children from database -->
+  <?php       
+    $query = "SELECT childid, firstname, lastname FROM children";
+    $result = @mysqli_query($db_connection, $query);
+    $children = array();
+    while ($row = mysqli_fetch_array($result)) {
+      $children[] = array(  
+        'childid' => $row['childid'],  
+        'firstname' => $row['firstname'], 
+        'lastname' => $row['lastname']
+      ); 
+    }
+  ?>
+
+  <!-- get activities from database -->
+  <?php       
+    $query = "SELECT activityid, activitytitle FROM activity";
+    $result = @mysqli_query($db_connection, $query);
+    $activity = array();
+    while ($row = mysqli_fetch_array($result)) {
+      $activity[] = array(  
+        'activityid' => $row['activityid'],  
+        'activitytitle' => $row['activitytitle']
+      ); 
+    }
+  ?>
+
 
   <div class="add-details-modal">
     <button class="close-add-modal">&times;</button>
     <h1>Add Details</h1>
     <div class="form-card">
-      <form action="#" class="add-details-form">
-        <label for="">Name</label>
-        <input type="text" id="name" name="temperature" placeholder="">
+      <form class="add-details-form" action='scripts\add_daily_details.php' method='POST'>
+      <label for="">Child</label>
+
+      <select name="childname">
+      <option value="">-----------------</option>
+      <?php
+        for ($row = 0; $row < sizeof($children); $row++) { 
+        ?>   
+        <option value="<?php echo $children[$row]['childid']; ?>"><?php echo $children[$row]['firstname'] . ' ' . $children[$row]['lastname']; ?></option>; 
+        <?php  
+      }      
+      ?>   
+      </select>
 
         <label for="">Temperature</label>
         <input type="text" id="temperature" name="temperature" placeholder="">
@@ -109,7 +148,16 @@
         <textarea name="lunch" id="lunch" cols="30" rows="10"></textarea>
 
         <label for="">Activities</label>
-        <input type="activities" id="activities" name="activities" placeholder="">
+        <select name="activities">
+        <option value="">-----------------</option>
+          <?php
+            for ($row = 0; $row < sizeof($activity); $row++) { 
+            ?>   
+            <option value="<?php echo $activity[$row]['activityid']; ?>"><?php echo $activity[$row]['activitytitle']; ?></option>; 
+            <?php  
+          }      
+        ?>   
+      </select>
         <button class="btn btn-primary">Add Details</button>
       </form>
     </div>
@@ -193,9 +241,27 @@
       </div>
 
       <div>
-        <button class="btn btn-primary">Add</button>
+        <button class="btn-primary btn-add show-add-modal">Add</button>
       </div>
     </div>
+
+   <!-- get records from database -->
+   <?php       
+      $query = "SELECT dr.recordid, c.firstname, c.lastname, dr.temperature, dr.breakfast, dr.lunch, a.activitytitle FROM daily_record dr inner join children c on dr.childid = c.childid inner join activity a on dr.activityid = a.activityid";
+      $result = @mysqli_query($db_connection, $query);
+      $records = array();
+      while ($row = mysqli_fetch_array($result)) {
+        $records[] = array(  
+          'recordid' => $row['recordid'],  
+          'firstname' => $row['firstname'], 
+          'lastname' => $row['lastname'],  
+          'breakfast' => $row['breakfast'],  
+          'temperature' => $row['temperature'],  
+          'lunch' => $row['lunch'],  
+          'activitytitle' => $row['activitytitle']
+        ); 
+      }
+    ?>
 
 
   </section>
@@ -209,62 +275,26 @@
             <th>Breakfast</th>
             <th>Lunch</th>
             <th>Activities</th>
-            <th>Add</th>
-            <th>Delete</th>
             <th>Update</th>
+            <th>Delete</th>            
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>Item</td>
-            <td>Item</td>
-            <td>Item</td>
-            <td>Item</td>
-            <td>Item</td>
-            <td><button class="btn-add show-add-modal">Add</button></td>
-            <td><button class="btn-del show-del-modal">Delete</button></td>
-            <td><button class="btn-up show-update-modal">Update</button></td>
-          </tr>
-          <tr>
-            <td>Name</td>
-            <td>Temp</td>
-            <td>Item</td>
-            <td>Item</td>
-            <td>Item</td>
-            <td><button class="btn-add show-add-modal">Add</button></td>
-            <td><button class="btn-del show-del-modal">Delete</button></td>
-            <td><button class="btn-up show-update-modal">Update</button></td>
-          </tr>
-          <tr>
-            <td>Name</td>
-            <td>Temp</td>
-            <td>Item</td>
-            <td>Item</td>
-            <td>Item</td>
-            <td><button class="btn-add show-add-modal">Add</button></td>
-            <td><button class="btn-del show-del-modal">Delete</button></td>
-            <td><button class="btn-up show-update-modal">Update</button></td>
-          </tr>
-          <tr>
-            <td>Name</td>
-            <td>Temp</td>
-            <td>Item</td>
-            <td>Item</td>
-            <td>Item</td>
-            <td><button class="btn-add show-add-modal">Add</button></td>
-            <td><button class="btn-del show-del-modal">Delete</button></td>
-            <td><button class="btn-up show-update-modal">Update</button></td>
-          </tr>
-          <tr>
-            <td>Name</td>
-            <td>Temp</td>
-            <td>Item</td>
-            <td>Item</td>
-            <td>Item</td>
-            <td><button class="btn-add show-add-modal">Add</button></td>
-            <td><button class="btn-del show-del-modal">Delete</button></td>
-            <td><button class="btn-up show-update-modal">Update</button></td>
-          </tr>
+          <?php             
+            for ($row = 0; $row < sizeof($records); $row++) { 
+              ?>              
+              <tr>
+                <td> <?php echo $records[$row]['firstname'] . ' ' . $records[$row]['lastname']; ?> </td>
+                <td> <?php echo $records[$row]['temperature']; ?> </td>
+                <td> <?php echo $records[$row]['breakfast']; ?> </td>
+                <td> <?php echo $records[$row]['lunch']; ?> </td>
+                <td> <?php echo $records[$row]['activitytitle']; ?> </td>
+                <td><button class="btn-up show-update-modal">Update</button></td>
+                <td><button class="btn-del show-del-modal">Delete</button></td>   
+              </tr>  
+              <?php  
+              }      
+          ?>        
         </tbody>
       </table>
     </div>
