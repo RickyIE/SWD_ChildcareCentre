@@ -318,11 +318,17 @@ img {
 }
 
 /* Day Details Page */
-.day-details {
+.day-details-info .grid {
+  grid-template-columns: 45% 45% 10%;
 }
 
 .day-details-info {
   background-color: var(--color-grey-light);
+  height: auto;
+}
+
+.day-details-info .btn-primary {
+  margin-top: 20px;
 }
 
 .day-details-info form input {
