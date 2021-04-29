@@ -219,6 +219,17 @@
   </div>
   <!-- End Modal -->
 
+  <!-- Script -->
+    <script src='jquery-3.3.1.js' type='text/javascript'></script>
+    <script src='jquery-ui.min.js' type='text/javascript'></script>
+    <script type='text/javascript'>
+      $(document).ready(function(){
+        $('.dateFilter').datepicker({
+            dateFormat: "yyyy-mm-dd"
+        });
+      });
+    </script>
+
 
 
 
@@ -226,28 +237,35 @@
 
   <section class="day-details-info p-top">
     <div class="container grid">
-      <div>
-        <form action="#">
-          <label for="id">Student ID</label>
-          <input type="text" name="id" placeholder="Search Child">
-        </form>
-      </div>
+      <!-- Search filter -->
+    <form method='post' action=''>
 
-      <div>
-        <form action="#">
-          <label for="id">Tel</label>
-          <input type="tel" name="tel" placeholder="telephone">
-        </form>
+      <label for="id">Date</label>
+      <input type='date' class='dateFilter' name='date' value='<?php if(isset($_POST['dateFilter'])) echo $_POST['dateFilter']; ?>'>
+
+      <input type='submit' name='btn_search' value='Search'>
+    </form>
       </div>
 
       <div>
         <button class="btn-primary btn-add show-add-modal">Add</button>
       </div>
-    </div>
+    </div>  
 
-   <!-- get records from database -->
-   <?php       
+     <!-- get records from database -->
+     <?php 
+
       $query = "SELECT dr.recordid, c.firstname, c.lastname, dr.temperature, dr.breakfast, dr.lunch, a.activitytitle FROM daily_record dr inner join children c on dr.childid = c.childid inner join activity a on dr.activityid = a.activityid";
+
+      // Date filter
+       if(isset($_POST['btn_search'])){
+        $date = $_POST['date'];        
+
+        if(!empty($date)) {
+           $query .= " WHERE dr.created = '$date'";
+        }
+      } 
+
       $result = @mysqli_query($db_connection, $query);
       $records = array();
       while ($row = mysqli_fetch_array($result)) {
@@ -262,6 +280,7 @@
         ); 
       }
     ?>
+
 
 
   </section>

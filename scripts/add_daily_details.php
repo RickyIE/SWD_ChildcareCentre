@@ -1,6 +1,8 @@
 <?php
 session_start();
 error_reporting(0);
+// create an array to store errors
+$errors = array();
 // validate child name
 if (empty($_POST['childname']))
 {
