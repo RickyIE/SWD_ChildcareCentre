@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="ChildcareDatabase" uuid="3b0e7b82-797d-4324-8e77-c02b31159fa8">
+    <data-source source="LOCAL" name="ChildcareDB" uuid="37552277-058c-472a-b5ff-8331f0044644">
       <driver-ref>mysql.8</driver-ref>
       <synchronize>true</synchronize>
+      <remarks>Connect to the Bluehost Database for the Childcare SWD project</remarks>
       <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://50.87.177.72:3306</jdbc-url>
+      <jdbc-url>jdbc:mysql://50.87.177.72:3306/meetalex_ChildcareDatabse</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
       <driver-properties>
         <property name="serverTimezone" value="UTC" />
