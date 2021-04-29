@@ -8,7 +8,7 @@
 body{
 
     background-size: cover ;
-    background: whitesmoke url("https://pixabay.com/get/g4bf10458e6760ff93a51506782c6bea81a2bc0855c4e684839bdb2763e627df425649fe1e514c5acf214141758b37e59_1920.jpg") no-repeat fixed center center;
+    background: white url("../Images/craftsmen-3094035_1920.jpg") no-repeat fixed center center;
     color: black;
     min-height: 100vh;
     margin: 0;
@@ -22,19 +22,29 @@ a{
     text-decoration: none;
 }
 
-.container {
+/*.container * {*/
+/*    border: 1px red solid;*/
+
+/*}*/
+
+#testimonial-manager-Container{
+
     display: grid;
     height: 100vh;
-    grid-template-columns: 0.5fr 1fr 1fr 1fr 0.5fr;
+    width: 100vw;
+    grid-template-columns: 0.5fr 1fr 1fr 1fr 1fr 0.5fr;
     grid-template-rows: 0.2fr 2fr 1.2fr 0.8fr;
     grid-template-areas:
-    "side_space top_space top_space top_space right_space"
-    "side_space mainView mainView mainView right_space"
-    "side_space content1 content2 content3 right_space"
-    "side_space footer footer footer right_space";
+    ". . . . . ."
+    ". area-1 area-1 area-1 area-1 ."
+    ". area-2 area-3 area-4 area-5 ."
+    ". footer footer footer footer .";
     grid-gap: 1rem;
     text-align: center;
+
 }
+
+
 
 
 
@@ -50,6 +60,7 @@ a{
     animation-duration: 2.000ms;
     transition-duration: 2.000ms;
     box-shadow: 0 0 10px rgba(0,0,0 ,1);
+    z-index: 1000000;
 }
 
 .side-menu:hover {
@@ -88,45 +99,196 @@ a{
     transition-duration: 1.000ms;
 }
 
-
-
-#top_space {
-    grid-area: top_space;
-    color: red;
-}
-
-#mainView {
-    background: whitesmoke;
-    grid-area: mainView;
+.adminPanel{
+    background-color: rgba(245,245,245,0.500);
     box-shadow: 10px 10px 10px rgba(0,0,0 ,0.300);
+    backdrop-filter: blur(9px);
 }
 
-#side_space {
-    grid-area: side_space;
+#area-1 {
+    grid-area: area-1;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
 }
 
-#right_space {
-    grid-area: right_space;
-}
-
-
-#content1 {
+.admin-button {
+    color: black;
+    text-transform: uppercase;
+    text-decoration: none;
     background: whitesmoke;
-    grid-area: content1;
-    box-shadow: 10px 10px 10px rgba(0,0,0 ,0.300);
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 10px;
+    display: inline-block;
+    margin: 10px;
+    width: 160px;
+    height: 40px;
 }
 
-#content2 {
-    background: whitesmoke;
-    grid-area: content2;
-    box-shadow: 10px 10px 10px rgba(0,0,0 ,0.300);
+.admin-button:hover {
+
+    background: limegreen;
+    cursor: pointer;
 }
 
-#content3 {
-    background: whitesmoke;
-    grid-area: content3;
-    box-shadow: 10px 10px 10px rgba(0,0,0 ,0.300);
+.admin-button:active {
+    background: lightgreen;
+    font-size: 1rem;
+    transform: scale(0.950);
+    transition-duration: 0.100ms;
+    box-shadow: 0 3px 15px -2px;
 }
+
+
+#area-1-data {
+    border: 2px solid gray;
+    width: 90%;
+    height: 80%;
+    overflow: scroll;
+    -ms-overflow-style: none; /* Hide scrollbar for IE and Edge */
+    scrollbar-width:none;/* Hide scrollbar for Firefox */
+}
+
+#area-1-data::-webkit-scrollbar {
+    display: none; /* Hide scrollbar for chrome, Opera Safary */
+}
+
+
+#area-1-buttons{
+    display: flex;
+    border: 2px solid gray;
+    width: 90%;
+    height: 10%;
+    justify-content: center;
+    align-items: center;
+}
+#area-2 {
+    grid-area: area-2;
+}
+
+#area-3 {
+    grid-area: area-3;
+}
+
+#area-4 {
+    grid-area: area-4;
+}
+
+#area-5 {
+    grid-area: area-5;
+}
+
+.testimonial-entry-wrapper{
+    display: flex;
+    background-color: #cd85e4;
+    width: 100%;
+    min-height: 100px;
+    border-radius: 10px;
+    overflow: scroll;
+    margin: 5px 0 5px 0;
+}
+
+.testimonial-entry-wrapper *{
+    -ms-overflow-style: none; /* Hide scrollbar for IE and Edge */
+    scrollbar-width:none;/* Hide scrollbar for Firefox */
+}
+
+
+
+.testimonial-entry-wrapper > div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: scroll;
+    max-height: 200px;
+    -ms-overflow-style: none; /* Hide scrollbar for IE and Edge */
+    scrollbar-width:none;/* Hide scrollbar for Firefox */
+}
+
+.testimonial-entry-wrapper {
+    -ms-overflow-style: none; /* Hide scrollbar for IE and Edge */
+    scrollbar-width:none;/* Hide scrollbar for Firefox */
+}
+
+.testimonial-entry-wrapper::-webkit-scrollbar {
+    display: none; /* Hide scrollbar for chrome, Opera Safary */
+
+}
+
+
+.testimonial-entry-testimonialId {
+    width: 5%;
+    min-height: inherit;
+    background-color: green;
+    -ms-overflow-style: none; /* Hide scrollbar for IE and Edge */
+    scrollbar-width:none;/* Hide scrollbar for Firefox */
+}
+
+.testimonial-entry-testimonialId::-webkit-scrollbar {
+    display: none; /* Hide scrollbar for chrome, Opera Safary */
+
+}
+
+.testimonial-entry-first-name {
+    width: 10%;
+    min-height: inherit;
+    background-color: #cd85e4;
+}
+
+.testimonial-entry-first-name::-webkit-scrollbar {
+    display: none; /* Hide scrollbar for chrome, Opera Safary */
+
+}
+
+.testimonial-entry-last-name {
+    width: 15%;
+    min-height: inherit;
+    background-color: #3d427d;
+}
+
+.testimonial-entry-last-name::-webkit-scrollbar {
+    display: none; /* Hide scrollbar for chrome, Opera Safary */
+
+}
+
+.testimonial-entry-comment {
+    width: 50%;
+    min-height: inherit;
+    background-color: #ff8f87;
+}
+
+.testimonial-entry-comment::-webkit-scrollbar {
+    display: none; /* Hide scrollbar for chrome, Opera Safary */
+
+}
+
+.testimonial-entry-service-name {
+    width: 10%;
+    min-height: inherit;
+    background-color: yellow;
+}
+
+.testimonial-entry-service-name::-webkit-scrollbar {
+    display: none; /* Hide scrollbar for chrome, Opera Safary */
+
+}
+
+.testimonial-entry-created {
+    width: 10%;
+    min-height: inherit;
+    background-color: #333333;
+}
+
+.testimonial-entry-created::-webkit-scrollbar {
+    display: none; /* Hide scrollbar for chrome, Opera Safary */
+
+}
+
 
 footer {
     background: whitesmoke;
@@ -136,21 +298,27 @@ footer {
 
 
 @media only screen and (max-width: 550px) {
-    .container {
-        grid-template-columns: 1fr;
-        grid-template-rows: 0.4fr 0.4fr 2.2fr 1.2fr 1.2fr 1.2fr 1fr;
+
+    #testimonial-manager-Container {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 5fr 2fr 2fr 1fr;
         grid-template-areas:
-      "nav"
-      "side_space"
-      "mainView"
-      "content1"
-      "content2"
-      "content3"
-      "footer";
+          "area-1 area-1"
+          "area-2 area-3"
+          "area-4 area-5"
+          "footer footer";
+
+        grid-gap: 0.5rem;
     }
 
     .side-menu{
         width: 40px;
 
+
+    }
+
+    .admin-button {
+        font-size: 0.7rem;
+        height: 20px;
     }
 }
