@@ -191,6 +191,50 @@
   </div>
   <!-- End Modal -->
 
+  <?php $record = ""?>  
+  <!-- script to get selected id for updating record -->
+  <script>
+    var child;
+    function selectedRow(choice){
+        child = choice;
+        // save to php variable
+        return child;
+    }  
+
+    function test(click){
+      alert("You chose " + child);
+       <?php $record = "<script>document.write(child)</script>"; ?>
+    }       
+
+  </script>
+
+
+  <!--- <button onClick="test()">DEBUG</button> -->
+
+
+  <?php
+  // echo "Record: " . $record;
+  if (isset($record))
+  {  
+      // get record from database
+      $query = "SELECT dr.recordid, dr.childid, c.firstname, c.lastname, dr.temperature, dr.breakfast, dr.lunch, a.activitytitle FROM daily_record dr INNER JOIN children c on dr.childid = c.childid INNER JOIN activity a on dr.activityid = a.activityid WHERE dr.recordid = '$record'";
+      $result = @mysqli_query($db_connection, $query);
+      $dailty_record = array();
+      while ($row = mysqli_fetch_array($result)) {
+        $dailty_record[] = array(  
+          'recordid' => $row['recordid'],  
+          'childid' => $row['childid'], 
+          'firstname' => $row['firstname'], 
+          'lastname' => $row['lastname'], 
+          'temperature' => $row['temperature'], 
+          'breakfast' => $row['breakfast'], 
+          'lunch' => $row['lunch'], 
+          'activitytitle' => $row['activitytitle']
+        ); 
+      }   
+    }  
+  ?> 
+
 
 
   <div class="update-details-modal">
@@ -199,19 +243,37 @@
     <div class="form-card">
       <form action="#" class="update-details-form">
         <label for="">Name</label>
-        <input type="text" id="name" name="temperature" placeholder="">
+        <select name="childname-update">
+          <option value="">-----------------</option>
+          <?php
+            for ($row = 0; $row < sizeof($children); $row++) { 
+          ?>   
+          <option value="<?php echo $children[$row]['childid']; ?>"><?php echo $children[$row]['firstname'] . ' ' . $children[$row]['lastname']; ?></option>; 
+          <?php  
+          }      
+          ?>   
+        </select>
 
         <label for="">Temperature</label>
-        <input type="text" id="temperature" name="temperature" placeholder="">
+        <input type="text" id="temperature" name="temperature" placeholder="" value="<?php if (isset($dailty_record[0]['temperature'])) { echo $dailty_record[0]['temperature']; } ?>">
 
         <label for="breakfast">Breakfast</label>
-        <textarea name="breakfast" id="breakfast" cols="30" rows="10"></textarea>
+        <textarea name="breakfast" id="breakfast" cols="30" rows="10"><?php if (isset($dailty_record[0]['breakfast'])) { echo $dailty_record[0]['breakfast']; } ?></textarea>
 
         <label for="lunch">Lunch</label>
-        <textarea name="lunch" id="lunch" cols="30" rows="10"></textarea>
+        <textarea name="lunch" id="lunch" cols="30" rows="10"><?php if (isset($dailty_record[0]['lunch'])) { echo $dailty_record[0]['lunch']; } ?></textarea>
 
         <label for="">Activities</label>
-        <input type="activities" id="activities" name="activities" placeholder="">
+        <select name="activities-update">
+        <option value="">-----------------</option>
+          <?php
+            for ($row = 0; $row < sizeof($activity); $row++) { 
+            ?>   
+            <option value="<?php echo $activity[$row]['activityid']; ?>"><?php echo $activity[$row]['activitytitle']; ?></option>; 
+            <?php  
+          }      
+        ?>   
+        </select>
         <button class="btn btn-primary">Update Details</button>
       </form>
     </div>
@@ -230,32 +292,30 @@
       });
     </script>
 
-
-
-
-
-
   <section class="day-details-info p-top">
     <div class="container grid">
       <!-- Search filter -->
     <form method='post' action=''>
 
       <label for="id">Date</label>
-      <input type='date' class='dateFilter' name='date' value='<?php if(isset($_POST['dateFilter'])) echo $_POST['dateFilter']; ?>'>
+      <input type='date' class='dateFilter' name='date' value='<?php if(isset($_POST['dateFilter'])) { echo $_POST['dateFilter']; } ?>'>
 
       <input type='submit' name='btn_search' value='Search'>
     </form>
       </div>
 
-      <div>
+      <section>
         <button class="btn-primary btn-add show-add-modal">Add</button>
-      </div>
+      </section>
+
+
+      
     </div>  
 
      <!-- get records from database -->
      <?php 
 
-      $query = "SELECT dr.recordid, c.firstname, c.lastname, dr.temperature, dr.breakfast, dr.lunch, a.activitytitle FROM daily_record dr inner join children c on dr.childid = c.childid inner join activity a on dr.activityid = a.activityid";
+      $query = "SELECT dr.recordid, c.firstname, c.lastname, dr.temperature, dr.breakfast, dr.lunch, a.activitytitle, dr.created FROM daily_record dr inner join children c on dr.childid = c.childid inner join activity a on dr.activityid = a.activityid";
 
       // Date filter
        if(isset($_POST['btn_search'])){
@@ -276,12 +336,15 @@
           'breakfast' => $row['breakfast'],  
           'temperature' => $row['temperature'],  
           'lunch' => $row['lunch'],  
-          'activitytitle' => $row['activitytitle']
+          'activitytitle' => $row['activitytitle'],
+          'created' => $row['created']
         ); 
       }
     ?>
 
 
+
+   
 
   </section>
   <section class="day-details">
@@ -289,11 +352,13 @@
       <table class="day-details-table">
         <thead>
           <tr>
+            <th>ID</th>
             <th>Name</th>
             <th>Temperature</th>
             <th>Breakfast</th>
             <th>Lunch</th>
             <th>Activities</th>
+            <th>Date</th>
             <th>Update</th>
             <th>Delete</th>            
           </tr>
@@ -303,12 +368,14 @@
             for ($row = 0; $row < sizeof($records); $row++) { 
               ?>              
               <tr>
+                <td> <?php echo $records[$row]['recordid']; ?> </td>
                 <td> <?php echo $records[$row]['firstname'] . ' ' . $records[$row]['lastname']; ?> </td>
                 <td> <?php echo $records[$row]['temperature']; ?> </td>
                 <td> <?php echo $records[$row]['breakfast']; ?> </td>
                 <td> <?php echo $records[$row]['lunch']; ?> </td>
                 <td> <?php echo $records[$row]['activitytitle']; ?> </td>
-                <td><button class="btn-up show-update-modal">Update</button></td>
+                <td> <?php echo $records[$row]['created']; ?> </td>
+                <td><button onClick="selectedRow('<?php echo $records[$row]['recordid']; ?>')" class="btn-up show-update-modal">Update</button></td>
                 <td><button class="btn-del show-del-modal">Delete</button></td>   
               </tr>  
               <?php  
@@ -317,7 +384,7 @@
         </tbody>
       </table>
     </div>
-  </section>
+  </section>  
 
   <footer class="footer">
     <div class="container flex">
