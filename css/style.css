@@ -319,7 +319,7 @@ img {
 
 /* Day Details Page */
 .day-details-info .grid {
-  grid-template-columns: 45% 45% 10%;
+  grid-template-columns: 60% 20% 20%;
 }
 
 .day-details-info {
@@ -336,6 +336,62 @@ img {
   padding: 1em 0;
   outline: none;
   border: none;
+}
+
+.dateFilter {
+  border-bottom: 2px solid var(--color-primary) !important;
+  background-color: transparent;
+}
+
+::-webkit-datetime-edit {
+  /* padding: 3em; */
+}
+::-webkit-datetime-edit-fields-wrapper {
+  /* background: silver; */
+}
+::-webkit-datetime-edit-text {
+  color: red;
+  padding: 0 0.3em;
+}
+::-webkit-datetime-edit-month-field {
+  color: blue;
+  font-family: var(--body-font);
+}
+::-webkit-datetime-edit-day-field {
+  color: green;
+}
+::-webkit-datetime-edit-year-field {
+  color: purple;
+}
+::-webkit-inner-spin-button {
+  /* display: none; */
+}
+::-webkit-calendar-picker-indicator {
+  /* background: orange; */
+}
+
+.custom-select {
+  position: relative;
+  font-family: var(--body-font);
+}
+
+.custom-select select {
+  padding: 15px 20px;
+  width: 100%;
+  border: 0;
+  border-bottom: 2px solid var(--color-primary);
+  background-color: transparent;
+}
+
+.custom-option {
+  padding: 30px;
+}
+.custom-option:nth-child(even) {
+  background-color: var(--color-grey-light);
+}
+
+.custom-option:nth-child(odd) {
+  background-color: var(--color-grey);
 }
 
 .day-details-info form label {
