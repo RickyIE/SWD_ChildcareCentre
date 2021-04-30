@@ -12,6 +12,16 @@
     <title>Admin : testimonial_manager </title>
 </head>
 <body>
+
+<!-- --------------------- TESTING --------------------- -->
+
+<!--<div id="TestBox">-->
+<!---->
+<!---->
+<!--</div>-->
+
+<!-- --------------------- TESTING --------------------- -->
+
 <div class="container" id="testimonial-manager-Container">
 <div class="side-menu">
     <ul>
@@ -56,16 +66,17 @@
 
     <div id="area-1" class="adminPanel">
         <div id="area-1-data">
-            <div class="testimonial-entry-wrapper">
-                <div class="testimonial-entry-testimonialId" id="testimonial-id-1"><p>testimonialId</p></div>
-                <div class="testimonial-entry-first-name" id="testimonial-first-name-1">first name</div>
-                <div class="testimonial-entry-last-name" id="testimonial-last-name-1">last name</div>
-                <div class="testimonial-entry-comment" id="testimonial-comment-1">comment</div>
-                <div class="testimonial-entry-service-name" id="testimonial-service-name-1">service name</div>
-                <div class="testimonial-entry-created" id="testimonial-created-1">create</div>
-            </div>
+<!--            <div class="testimonial-entry-wrapper" id="testimonial-wrapper-1">-->
+<!--                <div class="testimonial-entry-testimonialId" id="testimonial-id-1"><p>testimonialId</p></div>-->
+<!--                <div class="testimonial-entry-first-name" id="testimonial-first-name-1">first name</div>-->
+<!--                <div class="testimonial-entry-last-name" id="testimonial-last-name-1">last name</div>-->
+<!--                <div class="testimonial-entry-comment" id="testimonial-comment-1">comment</div>-->
+<!--                <div class="testimonial-entry-service-name" id="testimonial-service-name-1">service name</div>-->
+<!--                <div class="testimonial-entry-created" id="testimonial-created-1">create</div>-->
+<!--            </div>-->
         </div>
         <div id="area-1-buttons">
+            <div class="admin-button" align="center">Reset</div>
             <div class="admin-button" align="center">Add Call to Action</div>
             <div class="admin-button" align="center">Add Call to Action</div>
         </div>
@@ -79,13 +90,8 @@
 </div>
 </body>
 
-<!--<script src="../js/testimonial_manager.js"></script>-->
+<script src="../js/testimonial_manager.js"></script>
 
-<script>
-    function helloWord(){
-        alert("Hello World");
-    }
-</script>
 </html>
 
 
@@ -119,23 +125,14 @@
                 ";
 
         $result = mysqli_query($db_connection ,$query);
+        $dataArray = array();
 
 
-        if ($result->num_rows > 0) {
+        if (mysqli_num_rows($result) > 0) {
             // output data of each row
-            while($row = $result->fetch_assoc()) {
-                $result = $row["testimonialId"];
-                echo "<script>document.getElementById('testimonial-id-1').innerHTML = ('$result') ;</script>";
-                $result = $row["firstName"];
-                echo "<script>document.getElementById('testimonial-first-name-1').innerHTML = ('$result') ;</script>";
-                $result = $row["lastName"];
-                echo "<script>document.getElementById('testimonial-last-name-1').innerHTML = ('$result') ;</script>";
-                $result = $row["comment"];
-                echo "<script>document.getElementById('testimonial-comment-1').innerHTML = ('$result') ;</script>";
-                $result = $row["serviceName"];
-                echo "<script>document.getElementById('testimonial-service-name-1').innerHTML = ('$result') ;</script>";
-                $result = $row["created"];
-                echo "<script>document.getElementById('testimonial-created-1').innerHTML = ('$result') ;</script>";
+            while($row = mysqli_fetch_assoc($result)) {
+                $dataArray[] = $row;
+
             }
 
         } else {
@@ -143,6 +140,85 @@
         }
         $db_connection->close();
 
+        $string = "";
+        $rowsCounter = count($dataArray);
+
+        for ($i = 0; $i < $rowsCounter; $i++){
+
+            $string .= $dataArray[$i]['comment']."<br>";
+            echo "<script>document.getElementById('TestBox').innerHTML = ('$string') ;</script>";
+
+        }
+
+        $stringTestimonialID = $dataArray[0]['comment'];
 
 
 ?>
+
+
+<script>
+
+
+    window.onload = function loadEntries(){
+
+
+
+
+        let variableCounter =  <?php echo $rowsCounter; ?>;
+        let i;
+        for (i = 1 ; i <= variableCounter; i++ ){
+
+            let arrayRowCounter = i - 1;
+
+            var test = <?php echo json_encode($dataArray); ?>; // parse the PHP array in to a JavaScript array
+
+
+            const addTestimonialEntryWrapper = document.createElement('div');
+            addTestimonialEntryWrapper.id = 'testimonial-wrapper-'+i;
+            addTestimonialEntryWrapper.classList.add('testimonial-entry-wrapper');
+            document.getElementById('area-1-data').appendChild(addTestimonialEntryWrapper);
+
+            const addTestimonialEntryTestimonialID = document.createElement('div');
+            addTestimonialEntryTestimonialID.id = 'testimonial-id-'+i;
+            addTestimonialEntryTestimonialID.classList.add('testimonial-entry-testimonialId');
+            document.getElementById('testimonial-wrapper-'+i).appendChild(addTestimonialEntryTestimonialID);
+            document.getElementById('testimonial-id-'+i).innerHTML = (test[arrayRowCounter]['testimonialId']);
+
+
+            const testimonialEntryFirstName = document.createElement('div');
+            testimonialEntryFirstName.id = 'testimonial-first-name-'+i;
+            testimonialEntryFirstName.classList.add('testimonial-entry-first-name');
+            document.getElementById('testimonial-wrapper-'+i).appendChild(testimonialEntryFirstName);
+            document.getElementById('testimonial-first-name-'+i).innerHTML = (test[arrayRowCounter]['firstName']);
+
+            const testimonialEntryLastName = document.createElement('div');
+            testimonialEntryLastName.id = 'testimonial-last-name-'+i;
+            testimonialEntryLastName.classList.add('testimonial-entry-last-name');
+            document.getElementById('testimonial-wrapper-'+i).appendChild(testimonialEntryLastName);
+            document.getElementById('testimonial-last-name-'+i).innerHTML = (test[arrayRowCounter]['lastName']);
+
+            const testimonialEntryComment = document.createElement('div');
+            testimonialEntryComment.id = 'testimonial-comment-'+i;
+            testimonialEntryComment.classList.add('testimonial-entry-comment');
+            document.getElementById('testimonial-wrapper-'+i).appendChild(testimonialEntryComment);
+            document.getElementById('testimonial-comment-'+i).innerHTML = (test[arrayRowCounter]['comment']);
+
+
+            const testimonialEntryServiceName = document.createElement('div');
+            testimonialEntryServiceName.id = 'testimonial-service-name-'+i;
+            testimonialEntryServiceName.classList.add('testimonial-entry-service-name');
+            document.getElementById('testimonial-wrapper-'+i).appendChild(testimonialEntryServiceName);
+            document.getElementById('testimonial-service-name-'+i).innerHTML = (test[arrayRowCounter]['serviceName']);
+
+            const testimonialEntryCreated = document.createElement('div');
+            testimonialEntryCreated.id = 'testimonial-created-'+i;
+            testimonialEntryCreated.classList.add('testimonial-entry-created');
+            document.getElementById('testimonial-wrapper-'+i).appendChild(testimonialEntryCreated);
+            document.getElementById('testimonial-created-'+i).innerHTML = (test[arrayRowCounter]['created']);
+
+
+        }
+
+    }
+
+</script>;

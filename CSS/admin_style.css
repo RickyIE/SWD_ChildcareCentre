@@ -10,10 +10,20 @@ body{
     background-size: cover ;
     background: white url("../Images/craftsmen-3094035_1920.jpg") no-repeat fixed center center;
     color: black;
-    min-height: 100vh;
     margin: 0;
     padding: 0;
 
+}
+
+#TestBox{
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    overflow: scroll;
+    background-color: lightgoldenrodyellow;
+    border: 2px black solid;
+    z-index: 60000000;
+    left: 100%;
 }
 
 
@@ -30,7 +40,7 @@ a{
 #testimonial-manager-Container{
 
     display: grid;
-    height: 100vh;
+    max-height: 200vh;
     width: 100vw;
     grid-template-columns: 0.5fr 1fr 1fr 1fr 1fr 0.5fr;
     grid-template-rows: 0.2fr 2fr 1.2fr 0.8fr;
@@ -146,12 +156,15 @@ a{
 
 
 #area-1-data {
-    border: 2px solid gray;
     width: 90%;
-    height: 80%;
+    height: 70%;
+    padding: 1rem;
     overflow: scroll;
     -ms-overflow-style: none; /* Hide scrollbar for IE and Edge */
     scrollbar-width:none;/* Hide scrollbar for Firefox */
+    -moz-box-shadow:    inset 0 0 10px #000000;
+    -webkit-box-shadow: inset 0 0 10px #000000;
+    box-shadow:         inset 0 0 10px #000000;
 }
 
 #area-1-data::-webkit-scrollbar {
@@ -160,8 +173,8 @@ a{
 
 
 #area-1-buttons{
+    margin: 1rem;
     display: flex;
-    border: 2px solid gray;
     width: 90%;
     height: 10%;
     justify-content: center;
@@ -185,7 +198,6 @@ a{
 
 .testimonial-entry-wrapper{
     display: flex;
-    background-color: #cd85e4;
     width: 100%;
     min-height: 100px;
     border-radius: 10px;
@@ -213,7 +225,20 @@ a{
 .testimonial-entry-wrapper {
     -ms-overflow-style: none; /* Hide scrollbar for IE and Edge */
     scrollbar-width:none;/* Hide scrollbar for Firefox */
+    color: goldenrod;
+    font-family: Consolas;
+    font-size: 1.2rem;
 }
+
+.testimonial-entry-wrapper {
+    border: goldenrod 2px solid;
+    border-radius: 2rem;
+}
+
+/*.testimonial-entry-wrapper > div {*/
+/*    border: white 2px solid;*/
+/*}*/
+
 
 .testimonial-entry-wrapper::-webkit-scrollbar {
     display: none; /* Hide scrollbar for chrome, Opera Safary */
@@ -224,7 +249,7 @@ a{
 .testimonial-entry-testimonialId {
     width: 5%;
     min-height: inherit;
-    background-color: green;
+    background-color: black;
     -ms-overflow-style: none; /* Hide scrollbar for IE and Edge */
     scrollbar-width:none;/* Hide scrollbar for Firefox */
 }
@@ -237,7 +262,7 @@ a{
 .testimonial-entry-first-name {
     width: 10%;
     min-height: inherit;
-    background-color: #cd85e4;
+    background-color: #333333;
 }
 
 .testimonial-entry-first-name::-webkit-scrollbar {
@@ -248,7 +273,7 @@ a{
 .testimonial-entry-last-name {
     width: 15%;
     min-height: inherit;
-    background-color: #3d427d;
+    background-color: #333333;
 }
 
 .testimonial-entry-last-name::-webkit-scrollbar {
@@ -259,7 +284,7 @@ a{
 .testimonial-entry-comment {
     width: 50%;
     min-height: inherit;
-    background-color: #ff8f87;
+    background-color: black;
 }
 
 .testimonial-entry-comment::-webkit-scrollbar {
@@ -270,7 +295,7 @@ a{
 .testimonial-entry-service-name {
     width: 10%;
     min-height: inherit;
-    background-color: yellow;
+    background-color: #333333;
 }
 
 .testimonial-entry-service-name::-webkit-scrollbar {
@@ -281,7 +306,7 @@ a{
 .testimonial-entry-created {
     width: 10%;
     min-height: inherit;
-    background-color: #333333;
+    background-color: black;
 }
 
 .testimonial-entry-created::-webkit-scrollbar {
@@ -298,6 +323,7 @@ footer {
 
 
 @media only screen and (max-width: 550px) {
+
 
     #testimonial-manager-Container {
         grid-template-columns: 1fr 1fr;
@@ -320,5 +346,11 @@ footer {
     .admin-button {
         font-size: 0.7rem;
         height: 20px;
+    }
+    .testimonial-entry-wrapper{
+        flex-direction: column;
+    }
+    .testimonial-entry-wrapper > div{
+        width: 100%;
     }
 }
