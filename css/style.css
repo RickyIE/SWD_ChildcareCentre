@@ -453,3 +453,8 @@ table th.last {
 .btn-up {
   background-color: var(--color-tertiary);
 }
+
+/* Day Details Parent Page */
+.day-details-info.parent .grid {
+  grid-template-columns: 80% 20%;
+}
