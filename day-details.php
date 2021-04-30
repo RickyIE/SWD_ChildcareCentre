@@ -127,16 +127,18 @@
       <form class="add-details-form" action='scripts\add_daily_details.php' method='POST'>
       <label for="">Child</label>
 
-      <select name="childname">
-      <option value="">-----------------</option>
+      <div class="custom-select">
+        <select name="childname">
+      <option class="custom-option" value="">-----------------</option>
       <?php
         for ($row = 0; $row < sizeof($children); $row++) { 
         ?>   
-        <option value="<?php echo $children[$row]['childid']; ?>"><?php echo $children[$row]['firstname'] . ' ' . $children[$row]['lastname']; ?></option>; 
+        <option class="custom-option" value="<?php echo $children[$row]['childid']; ?>"><?php echo $children[$row]['firstname'] . ' ' . $children[$row]['lastname']; ?></option>; 
         <?php  
       }      
       ?>   
       </select>
+      </div>
 
         <label for="">Temperature</label>
         <input type="text" id="temperature" name="temperature" placeholder="">
@@ -148,16 +150,18 @@
         <textarea name="lunch" id="lunch" cols="30" rows="10"></textarea>
 
         <label for="">Activities</label>
-        <select name="activities">
-        <option value="">-----------------</option>
+        <div class="custom-select">
+          <select name="activities">
+        <option class="custom-option" value="">-----------------</option>
           <?php
             for ($row = 0; $row < sizeof($activity); $row++) { 
             ?>   
-            <option value="<?php echo $activity[$row]['activityid']; ?>"><?php echo $activity[$row]['activitytitle']; ?></option>; 
+            <option class="custom-option" value="<?php echo $activity[$row]['activityid']; ?>"><?php echo $activity[$row]['activitytitle']; ?></option>; 
             <?php  
           }      
         ?>   
       </select>
+        </div>
         <button class="btn btn-primary">Add Details</button>
       </form>
     </div>
@@ -243,17 +247,6 @@
     <div class="form-card">
       <form action="#" class="update-details-form">
         <label for="">Name</label>
-        <select name="childname-update">
-          <option value="">-----------------</option>
-          <?php
-            for ($row = 0; $row < sizeof($children); $row++) { 
-          ?>   
-          <option value="<?php echo $children[$row]['childid']; ?>"><?php echo $children[$row]['firstname'] . ' ' . $children[$row]['lastname']; ?></option>; 
-          <?php  
-          }      
-          ?>   
-        </select>
-
         <label for="">Temperature</label>
         <input type="text" id="temperature" name="temperature" placeholder="" value="<?php if (isset($dailty_record[0]['temperature'])) { echo $dailty_record[0]['temperature']; } ?>">
 
@@ -264,16 +257,18 @@
         <textarea name="lunch" id="lunch" cols="30" rows="10"><?php if (isset($dailty_record[0]['lunch'])) { echo $dailty_record[0]['lunch']; } ?></textarea>
 
         <label for="">Activities</label>
-        <select name="activities-update">
-        <option value="">-----------------</option>
+       <div class="custom-select">
+          <select name="activities-update">
+        <option class="custom-option" value="">-----------------</option>
           <?php
             for ($row = 0; $row < sizeof($activity); $row++) { 
             ?>   
-            <option value="<?php echo $activity[$row]['activityid']; ?>"><?php echo $activity[$row]['activitytitle']; ?></option>; 
+            <option class="custom-option" value="<?php echo $activity[$row]['activityid']; ?>"><?php echo $activity[$row]['activitytitle']; ?></option>; 
             <?php  
           }      
         ?>   
         </select>
+       </div>
         <button class="btn btn-primary">Update Details</button>
       </form>
     </div>
@@ -296,17 +291,14 @@
     <div class="container grid">
       <!-- Search filter -->
     <form method='post' action=''>
-
       <label for="id">Date</label>
       <input type='date' class='dateFilter' name='date' value='<?php if(isset($_POST['dateFilter'])) { echo $_POST['dateFilter']; } ?>'>
-
-      <input type='submit' name='btn_search' value='Search'>
     </form>
-      </div>
 
-      <section>
-        <button class="btn-primary btn-add show-add-modal">Add</button>
-      </section>
+    <input type='submit' class="btn btn-primary" name='btn_search' value='Search'>
+    <button class="btn btn-primary btn-add show-add-modal">Add</button>
+      </div>        
+    </section>
 
 
       
