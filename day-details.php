@@ -340,7 +340,6 @@
 
   </section>
   <section class="day-details">
-    <div class="container">
       <table class="day-details-table">
         <thead>
           <tr>
@@ -375,7 +374,6 @@
           ?>        
         </tbody>
       </table>
-    </div>
   </section>  
 
   <footer class="footer">

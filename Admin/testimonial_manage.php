@@ -143,14 +143,16 @@
         $string = "";
         $rowsCounter = count($dataArray);
 
-        for ($i = 0; $i < $rowsCounter; $i++){
+        for ($i = 0; $i < $rowsCounter; $i++) {
 
-            $string .= $dataArray[$i]['comment']."<br>";
+            $string .= $dataArray[$i]['comment'] . "<br>";
             echo "<script>document.getElementById('TestBox').innerHTML = ('$string') ;</script>";
 
         }
 
         $stringTestimonialID = $dataArray[0]['comment'];
+
+
 
 
 ?>

@@ -1,8 +1,8 @@
 
-const button = document.querySelector('#test123').addEventListener('click' , message);
-
-function message() {
-    alert("test");
-}
+// const button = document.querySelector('body').addEventListener('click' , message);
+//
+// function message() {
+//     alert("test");
+// }
 
 

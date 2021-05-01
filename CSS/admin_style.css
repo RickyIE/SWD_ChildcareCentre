@@ -354,3 +354,15 @@ footer {
         width: 100%;
     }
 }
+
+#testimonials-wrapper{
+    border: 1px red solid;
+    height: 30rem;
+    width: 100%;
+    overflow: scroll;
+}
+
+#testimonials-wrapper > div{
+    margin: 0;
+    padding: 0;
+}
