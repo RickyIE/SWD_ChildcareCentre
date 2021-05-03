@@ -167,37 +167,7 @@
     </div>
     <!-- End form Card -->
   </div>
-  <!-- End Modal -->
-
-  <div class="del-details-modal">
-    <button class="close-del-modal">&times;</button>
-    <h1>Delete Details</h1>
-    <div class="form-card">
-      <form action="#" class="del-details-form">
-        <label for="">Name</label>
-        <input type="text" id="name" name="temperature" placeholder="">
-
-        <label for="">Temperature</label>
-        <input type="text" id="temperature" name="temperature" placeholder="">
-
-        <label for="breakfast">Breakfast</label>
-        <textarea name="breakfast" id="breakfast" cols="30" rows="10"></textarea>
-
-        <label for="lunch">Lunch</label>
-        <textarea name="lunch" id="lunch" cols="30" rows="10"></textarea>
-
-        <label for="">Activities</label>
-        <input type="activities" id="activities" name="activities" placeholder="">
-        <button class="btn btn-primary">Delete Details</button>
-      </form>
-    </div>
-    <!-- End form Card -->
-  </div>
-  <!-- End Modal -->
-
-  <!-- End form Card -->
-
-  <!-- End Modal -->
+  
 
   <!-- Script -->
     <script src='jquery-3.3.1.js' type='text/javascript'></script>
@@ -218,7 +188,7 @@
           <input type='date' class='dateFilter' name='date' value='<?php if(isset($_POST['dateFilter'])) { echo $_POST['dateFilter']; } ?>'>
           <input type='submit' class="btn btn-primary" name='btn_search' value='Search'>
         </form>        
-        <button class="btn btn-primary btn-add show-add-modal">Add</button>
+        <button class="btn btn-primary btn-add" ><a href="new-day-details-form.php">Add</a></button> 
       </div>        
     </section>    
 
@@ -286,8 +256,8 @@
                   <td> <?php echo $records[$row]['lunch']; ?> </td>
                   <td> <?php echo $records[$row]['activitytitle']; ?> </td>
                   <td> <?php echo $records[$row]['created']; ?> </td>
-                  <td><button type='submit' name='btn_update' class="btn-up show-update-modal">Update</button></td>
-                  <td><button class="btn-del show-del-modal">Delete</button></td>   
+                  <td><button type='submit' name='btn_update' class="btn-up">Update</button></td>
+                  <td><button type="submit" formaction="scripts/delete_daily_details.php" class="btn-del">Delete</button></td>   
                 </form>
               </tr>  
               <?php  
