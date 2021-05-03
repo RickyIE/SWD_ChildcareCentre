@@ -221,6 +221,7 @@
     ?>  
 
   <section class="day-details">
+
     <div class="container">
     
       <table class="day-details-table">
@@ -259,6 +260,7 @@
           ?>        
         </tbody>
       </table>
+
       <button class="btn btn-primary btn-add" ><a href="new-day-details-form.php">+ Add Record</a></button> 
     </div>
   </section>  
