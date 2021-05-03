@@ -119,7 +119,6 @@
     }
   ?>
 
-
   <div class="add-details-modal">
     <button class="close-add-modal">&times;</button>
     <h1>Add Details</h1>
@@ -166,8 +165,7 @@
       </form>
     </div>
     <!-- End form Card -->
-  </div>
-  
+  </div>  
 
   <!-- Script -->
     <script src='jquery-3.3.1.js' type='text/javascript'></script>
@@ -188,9 +186,9 @@
           <input type='date' class='dateFilter' name='date' value='<?php if(isset($_POST['dateFilter'])) { echo $_POST['dateFilter']; } ?>'>
           <input type='submit' class="btn btn-primary" name='btn_search' value='Search'>
         </form>        
-        <button class="btn btn-primary btn-add" ><a href="new-day-details-form.php">Add</a></button> 
+        
       </div>        
-    </section>    
+  </section>    
 
      <!-- get records from database -->
      <?php 
@@ -220,15 +218,11 @@
           'created' => $row['created']
         ); 
       }
-    ?>
+    ?>  
 
-
-
-   
-
-  </section>
   <section class="day-details">
     <div class="container">
+    
       <table class="day-details-table">
         <thead>
           <tr>
@@ -265,25 +259,12 @@
           ?>        
         </tbody>
       </table>
+      <button class="btn btn-primary btn-add" ><a href="new-day-details-form.php">+ Add Record</a></button> 
     </div>
   </section>  
 
-  <footer class="footer">
-    <div class="container flex">
-      <div>
-        <figure><img class="logo" src="img/logo-white-01.svg" alt=""></figure>
-      </div>
+  <?php include 'footer.html' ?>
 
-      <nav>
-        <ul>
-          <li>Contact Us</li>
-          <li>Find Us</li>
-          <li>Private Policy</li>
-        </ul>
-      </nav>
-      <a href="#home">Back To Top<i class="fas fa-long-arrow-alt-up"></i></a>
-    </div>
-  </footer>
   <div class="overlay hidden"></div>
   <script src="js/app.js"></script>
 </body>

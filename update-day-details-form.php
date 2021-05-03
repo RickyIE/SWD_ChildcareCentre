@@ -290,22 +290,8 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
   </div>
 </section>
 
-  <footer class="footer">
-    <div class="container flex">
-      <div>
-        <figure><img class="logo" src="img/logo-white-01.svg" alt=""></figure>
-      </div>
+<?php include 'footer.html' ?>
 
-      <nav>
-        <ul>
-          <li>Contact Us</li>
-          <li>Find Us</li>
-          <li>Private Policy</li>
-        </ul>
-      </nav>
-      <a href="#home">Back To Top<i class="fas fa-long-arrow-alt-up"></i></a>
-    </div>
-  </footer>
   <div class="overlay hidden"></div>
   <script src="js/app.js"></script>
 </body>
