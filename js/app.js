@@ -119,9 +119,9 @@ const btnOpenUpdateModal = document.querySelectorAll('.show-update-modal');
 
 
 // Loop to get all show add modal buttons
-for (let i = 0; i < btnOpenUpdateModal.length; i++) {
-  btnOpenUpdateModal[i].addEventListener('click', openUpdateDetails);
-}
+//for (let i = 0; i < btnOpenUpdateModal.length; i++) {
+  //btnOpenUpdateModal[i].addEventListener('click', openUpdateDetails);
+//}
 
 // // Open and close Update details modal
 // btnOpenUpdateModal.addEventListener('click', openUpdateDetails);
