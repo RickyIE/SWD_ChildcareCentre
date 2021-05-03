@@ -11,13 +11,8 @@
     crossorigin="anonymous" />
   <link rel="stylesheet" href="css/utilities.css">
   <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/admin_style.css">
     <link rel="stylesheet" href="css/alex_temp.css">
   <title>Testimonial Manager
-
-
-
-
   </title>
 </head>
 
@@ -61,57 +56,9 @@
       <div class="feedback-text">
           <div id="testimonials-wrapper">
               <div class="container" id="testimonials-table-container">
-<!--                  <table class="day-details-table" id="testimonials-table">-->
-<!--                      <tr id="testimonials-head">-->
-<!--                          <th id="testimonials-head-id-1">ID</th>-->
-<!--                          <th id="testimonials-head-first-name-1">First Name</th>-->
-<!--                          <th id="testimonials-head-last-name-1">Last Name</th>-->
-<!--                          <th id="testimonials-head-testimonial-1">Testimonial</th>-->
-<!--                          <th id="testimonials-head-activity-1">activity</th>-->
-<!--                          <th id="testimonials-head-date-1">Date</th>-->
-<!--                          <th id="testimonials-head-update-1">Update</th>-->
-<!--                          <th id="testimonials-head-panel-1">Panel</th>-->
-<!--                      </tr>-->
-<!--                          <tr>-->
-<!--                              <td id="testimonials-body-id-1" > 1 </td>-->
-<!--                              <td id="testimonials-body-first-name-1" >First Name </td>-->
-<!--                              <td id="testimonials-body-last-name-1" > Last Name </td>-->
-<!--                              <td id="testimonials-body-testimonial-1" > Testimonial </td>-->
-<!--                              <td id="testimonials-body-activity-1" > Activity </td>-->
-<!--                              <td id="testimonials-body-date-1" > date </td>-->
-<!--                              <td id="testimonials-body-update-1" ><button class="btn-del">Update</button></td>-->
-<!--                              <td>-->
-<!--                                  <div>-->
-<!--                                      <select name="testimonials-select-panel" id="testimonials-body-select-1" required>-->
-<!--                                          <option value="panel-1">Panel 1</option>-->
-<!--                                          <option value="panel-2">Panel 2</option>-->
-<!--                                          <option value="panel-3">Panel 3</option>-->
-<!--                                          <option value="panel-4">Panel 4</option>-->
-<!--                                      </select>-->
-<!--                                  </div>-->
-<!--                              </td>-->
-<!--                          </tr>-->
-<!--                      <tr>-->
-<!--                          <td> 2 </td>-->
-<!--                          <td> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet, ratione. </td>-->
-<!--                          <td> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet, ratione. </td>-->
-<!--                          <td> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet, ratione. </td>-->
-<!--                          <td> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet, ratione. </td>-->
-<!--                          <td> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet, ratione. </td>-->
-<!--                          <td><button class="btn-del show-del-modal">Update</button></td>-->
-<!--                          <td>-->
-<!--                              <div>-->
-<!--                                  <select name="testimonials-select-panel" id="testimonials-select-panel" required>-->
-<!--                                      <option value="panel-1">Panel 1</option>-->
-<!--                                      <option value="panel-2">Panel 2</option>-->
-<!--                                      <option value="panel-3">Panel 3</option>-->
-<!--                                      <option value="panel-4">Panel 4</option>-->
-<!--                                  </select>-->
-<!--                              </div>-->
-<!--                          </td>-->
-<!--                      </tr>-->
-<!--                      </tr>-->
-<!--                  </table>-->
+
+                  <!-- JS elements -->
+
           </div>
           </div>
 
@@ -125,21 +72,6 @@
                   </tbody>
               </table>
           </div>
-
-
-          <!-- ************************** START ************************** -->
-
-
-<!--          <div class="testimonial-entry-wrapper" id="testimonial-wrapper-1">-->
-<!--              <div class="testimonial-entry-testimonialId" id="testimonial-id-1"><p>testimonialId</p></div>-->
-<!--              <div class="testimonial-entry-first-name" id="testimonial-first-name-1">first name</div>-->
-<!--              <div class="testimonial-entry-last-name" id="testimonial-last-name-1">last name</div>-->
-<!--              <div class="testimonial-entry-comment" id="testimonial-comment-1">comment</div>-->
-<!--              <div class="testimonial-entry-service-name" id="testimonial-service-name-1">service name</div>-->
-<!--              <div class="testimonial-entry-created" id="testimonial-created-1">create</div>-->
-<!--          </div>-->
-
-          <!-- ************************** END ************************** -->
 
       </div>
       <figure><img src="img/parent-feedback-01.svg" alt=""></figure>
@@ -250,24 +182,30 @@
 
 <?php
 
-DEFINE('DB_USER', 'meetalex_websiteRoot');
-DEFINE('DB_PASSWORD', 'pXZOkNzt}hsIT2WAH+1X*(HGo');
-DEFINE('DB_HOST', '50.87.177.72');
-DEFINE('DB_NAME', 'meetalex_ChildcareDatabse');
-$db_connection = @mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME) OR
-die("Could not connect to MySQL! ". mysqli_connect_error());
-mysqli_set_charset($db_connection, 'utf8');
-
 $query = "
-               
+
                                 select t2.testimonialId, t1.firstName, t1.lastName, t2.comment, t2.serviceName, t2.created
                                 from user as t1
                                 inner join testimonial as t2 on t1.username = t2.parentEmail;
-                
+
                                 ";
 
 $result = mysqli_query($db_connection, $query);
+
+//$query1 = "INSERT INTO testimonial_panels (first_name, last_name, testimonial, activity)
+//VALUES ('Josh' , 'Walsh', 'This place is like haven', 'Mine Laying')";
+//
+//$result1 = mysqli_query($db_connection, $query1);
+
 $dataArray = array();
+
+//function myphpfunction(){
+//
+//    $query = "INSERT INTO testimonial_panels (panel_id) VALUES (6);";
+//    $result = mysqli_query($db_connection, $query);
+//    return $query;
+//
+//}
 
 if (mysqli_num_rows($result) > 0) {
     // output data of each row
@@ -281,7 +219,7 @@ if (mysqli_num_rows($result) > 0) {
 }
 
 
-$db_connection->close();
+//$db_connection->close();
 
 // ***************************** FOR TESTING *****************************
 
@@ -294,10 +232,13 @@ $db_connection->close();
 
 <script>
 
+
     const buttonPopulate = document.querySelector('#testimonials-button-populate').addEventListener('click' , loadEntries);
     const buttonClear = document.querySelector('#testimonials-button-clear').addEventListener('click' , removeTable);
-
     const tableContainer = document.querySelector('#testimonials-table-container'); // create the table inside teh container
+    document.querySelector('body').addEventListener("load", loadEntries);
+
+
 
 
 
@@ -305,6 +246,8 @@ $db_connection->close();
 
 
    function loadEntries(){
+
+       //let insertInToDatabase = "<?php //echo myphpfunction() ?>//";
 
        if(!!document.getElementById('testimonials-table') === true){
            removeTable();
@@ -411,7 +354,9 @@ $db_connection->close();
                cellPanelChoice.name = 'testimonials-select-panel';
                 cellPanelChoice.id = 'testimonials-body-select-'+id_count;
 
-                for (let i = 0 ; i < 4; i++) { // give options for panels
+                let testimonialPanels = document.querySelector('.slider').childElementCount;
+
+                for (let i = 0 ; i < testimonialPanels ; i++) { // give options for panels
 
                     let id_counter = i + 1;
 
