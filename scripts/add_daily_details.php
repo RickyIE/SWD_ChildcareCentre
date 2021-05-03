@@ -1,47 +1,45 @@
 <?php
-session_start();
-error_reporting(0);
-// create an array to store errors
-$errors = array();
-// validate child name
-if (empty($_POST['childname']))
-{
-    $errors[] = 'You forgot to pick a child.';
-} else {
-    $childname = trim($_POST['childname']);
-}
+    // create an array to store errors
+    $errors = array();
+    // validate child name
+    if (empty($_POST['childname']))
+    {
+        $errors[] = 'You forgot to pick a child.';
+    } else {
+        $childname = trim($_POST['childname']);
+    }
 
-// validate temperature
-if (empty($_POST['temperature']))
-{
-    $errors[] = 'You forgot to enter a temperature.';
-} else {
-    $temperature = trim($_POST['temperature']);
-}
+    // validate temperature
+    if (empty($_POST['temperature']))
+    {
+        $errors[] = 'You forgot to enter a temperature.';
+    } else {
+        $temperature = trim($_POST['temperature']);
+    }
 
-// validate breakfast
-if (empty($_POST['breakfast']))
-{
-    $errors[] = 'You forgot to enter a breakfast.';
-} else {
-    $breakfast = trim($_POST['breakfast']);
-}
+    // validate breakfast
+    if (empty($_POST['breakfast']))
+    {
+        $errors[] = 'You forgot to enter a breakfast.';
+    } else {
+        $breakfast = trim($_POST['breakfast']);
+    }
 
-// validate lunch
-if (empty($_POST['lunch']))
-{
-    $errors[] = 'You forgot to enter a lunch.';
-} else {
-    $lunch = trim($_POST['lunch']);
-}
+    // validate lunch
+    if (empty($_POST['lunch']))
+    {
+        $errors[] = 'You forgot to enter a lunch.';
+    } else {
+        $lunch = trim($_POST['lunch']);
+    }
 
-// validate lunch
-if (empty($_POST['activities']))
-{
-    $errors[] = 'You forgot to enter an activity.';
-} else {
-    $activities = trim($_POST['activities']);
-}
+    // validate activities
+    if (empty($_POST['activities']))
+    {
+        $errors[] = 'You forgot to enter an activity.';
+    } else {
+        $activities = trim($_POST['activities']);
+    }
 
 
 

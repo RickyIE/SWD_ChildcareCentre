@@ -195,85 +195,8 @@
   </div>
   <!-- End Modal -->
 
-  <?php $record = ""?>  
-  <!-- script to get selected id for updating record -->
-  <script>
-    var child;
-    function selectedRow(choice){
-        child = choice;
-        // save to php variable
-        return child;
-    }  
+  <!-- End form Card -->
 
-    function test(click){
-      alert("You chose " + child);
-       <?php $record = "<script>document.write(child)</script>"; ?>
-    }       
-
-  </script>
-
-
-  <!--- <button onClick="test()">DEBUG</button> -->
-
-
-  <?php
-  // echo "Record: " . $record;
-  if (isset($record))
-  {  
-      // get record from database
-      $query = "SELECT dr.recordid, dr.childid, c.firstname, c.lastname, dr.temperature, dr.breakfast, dr.lunch, a.activitytitle FROM daily_record dr INNER JOIN children c on dr.childid = c.childid INNER JOIN activity a on dr.activityid = a.activityid WHERE dr.recordid = '$record'";
-      $result = @mysqli_query($db_connection, $query);
-      $dailty_record = array();
-      while ($row = mysqli_fetch_array($result)) {
-        $dailty_record[] = array(  
-          'recordid' => $row['recordid'],  
-          'childid' => $row['childid'], 
-          'firstname' => $row['firstname'], 
-          'lastname' => $row['lastname'], 
-          'temperature' => $row['temperature'], 
-          'breakfast' => $row['breakfast'], 
-          'lunch' => $row['lunch'], 
-          'activitytitle' => $row['activitytitle']
-        ); 
-      }   
-    }  
-  ?> 
-
-
-
-  <div class="update-details-modal">
-    <button class="close-update-modal">&times;</button>
-    <h1>Update Details</h1>
-    <div class="form-card">
-      <form action="#" class="update-details-form">
-        <label for="">Name</label>
-        <label for="">Temperature</label>
-        <input type="text" id="temperature" name="temperature" placeholder="" value="<?php if (isset($dailty_record[0]['temperature'])) { echo $dailty_record[0]['temperature']; } ?>">
-
-        <label for="breakfast">Breakfast</label>
-        <textarea name="breakfast" id="breakfast" cols="30" rows="10"><?php if (isset($dailty_record[0]['breakfast'])) { echo $dailty_record[0]['breakfast']; } ?></textarea>
-
-        <label for="lunch">Lunch</label>
-        <textarea name="lunch" id="lunch" cols="30" rows="10"><?php if (isset($dailty_record[0]['lunch'])) { echo $dailty_record[0]['lunch']; } ?></textarea>
-
-        <label for="">Activities</label>
-       <div class="custom-select">
-          <select name="activities-update">
-        <option class="custom-option" value="">-----------------</option>
-          <?php
-            for ($row = 0; $row < sizeof($activity); $row++) { 
-            ?>   
-            <option class="custom-option" value="<?php echo $activity[$row]['activityid']; ?>"><?php echo $activity[$row]['activitytitle']; ?></option>; 
-            <?php  
-          }      
-        ?>   
-        </select>
-       </div>
-        <button class="btn btn-primary">Update Details</button>
-      </form>
-    </div>
-    <!-- End form Card -->
-  </div>
   <!-- End Modal -->
 
   <!-- Script -->
@@ -289,20 +212,15 @@
 
   <section class="day-details-info p-top">
     <div class="container grid">
-      <!-- Search filter -->
-    <form method='post' action=''>
-      <label for="id">Date</label>
-      <input type='date' class='dateFilter' name='date' value='<?php if(isset($_POST['dateFilter'])) { echo $_POST['dateFilter']; } ?>'>
-    </form>
-
-    <input type='submit' class="btn btn-primary" name='btn_search' value='Search'>
-    <button class="btn btn-primary btn-add show-add-modal">Add</button>
+        <!-- Search filter -->
+        <form method='post' action=''>
+          <label for="id">Date</label>
+          <input type='date' class='dateFilter' name='date' value='<?php if(isset($_POST['dateFilter'])) { echo $_POST['dateFilter']; } ?>'>
+          <input type='submit' class="btn btn-primary" name='btn_search' value='Search'>
+        </form>        
+        <button class="btn btn-primary btn-add show-add-modal">Add</button>
       </div>        
-    </section>
-
-
-      
-    </div>  
+    </section>    
 
      <!-- get records from database -->
      <?php 
@@ -360,15 +278,17 @@
             for ($row = 0; $row < sizeof($records); $row++) { 
               ?>              
               <tr>
-                <td> <?php echo $records[$row]['recordid']; ?> </td>
-                <td> <?php echo $records[$row]['firstname'] . ' ' . $records[$row]['lastname']; ?> </td>
-                <td> <?php echo $records[$row]['temperature']; ?> </td>
-                <td> <?php echo $records[$row]['breakfast']; ?> </td>
-                <td> <?php echo $records[$row]['lunch']; ?> </td>
-                <td> <?php echo $records[$row]['activitytitle']; ?> </td>
-                <td> <?php echo $records[$row]['created']; ?> </td>
-                <td><button onClick="selectedRow('<?php echo $records[$row]['recordid']; ?>')" class="btn-up show-update-modal">Update</button></td>
-                <td><button class="btn-del show-del-modal">Delete</button></td>   
+                <form method='get' action='update-day-details-form.php'>
+                  <td><input type='number' name='recordid' value='<?php  echo $records[$row]['recordid']; ?>' readonly></td>
+                  <td> <?php echo $records[$row]['firstname'] . ' ' . $records[$row]['lastname']; ?> </td>
+                  <td> <?php echo $records[$row]['temperature']; ?> </td>
+                  <td> <?php echo $records[$row]['breakfast']; ?> </td>
+                  <td> <?php echo $records[$row]['lunch']; ?> </td>
+                  <td> <?php echo $records[$row]['activitytitle']; ?> </td>
+                  <td> <?php echo $records[$row]['created']; ?> </td>
+                  <td><button type='submit' name='btn_update' class="btn-up show-update-modal">Update</button></td>
+                  <td><button class="btn-del show-del-modal">Delete</button></td>   
+                </form>
               </tr>  
               <?php  
               }      
