@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="css/utilities.css">
   <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/admin_style.css">
+    <link rel="stylesheet" href="css/alex_temp.css">
   <title>Testimonial Manager
 
 
@@ -44,47 +45,85 @@
   </div>
   <!-- End Navigation -->
 
-
+  <section class="day-details-info p-top">
+      <div class="container grid">
+          <!-- Search filter -->
+          <form method='post' action=''>
+              <label for="id">Search for Keyword</label>
+              <input type='text' class='dateFilter' name='date' value=''>
+          </form>
+          <input type='submit' class="btn btn-primary" name='btn_search' value='Search'>
+      </div>
+  </section>
 
   <section class="testimonial-top-text">
     <div class="container grid">
       <div class="feedback-text">
-
           <div id="testimonials-wrapper">
+              <div class="container" id="testimonials-table-container">
+<!--                  <table class="day-details-table" id="testimonials-table">-->
+<!--                      <tr id="testimonials-head">-->
+<!--                          <th id="testimonials-head-id-1">ID</th>-->
+<!--                          <th id="testimonials-head-first-name-1">First Name</th>-->
+<!--                          <th id="testimonials-head-last-name-1">Last Name</th>-->
+<!--                          <th id="testimonials-head-testimonial-1">Testimonial</th>-->
+<!--                          <th id="testimonials-head-activity-1">activity</th>-->
+<!--                          <th id="testimonials-head-date-1">Date</th>-->
+<!--                          <th id="testimonials-head-update-1">Update</th>-->
+<!--                          <th id="testimonials-head-panel-1">Panel</th>-->
+<!--                      </tr>-->
+<!--                          <tr>-->
+<!--                              <td id="testimonials-body-id-1" > 1 </td>-->
+<!--                              <td id="testimonials-body-first-name-1" >First Name </td>-->
+<!--                              <td id="testimonials-body-last-name-1" > Last Name </td>-->
+<!--                              <td id="testimonials-body-testimonial-1" > Testimonial </td>-->
+<!--                              <td id="testimonials-body-activity-1" > Activity </td>-->
+<!--                              <td id="testimonials-body-date-1" > date </td>-->
+<!--                              <td id="testimonials-body-update-1" ><button class="btn-del">Update</button></td>-->
+<!--                              <td>-->
+<!--                                  <div>-->
+<!--                                      <select name="testimonials-select-panel" id="testimonials-body-select-1" required>-->
+<!--                                          <option value="panel-1">Panel 1</option>-->
+<!--                                          <option value="panel-2">Panel 2</option>-->
+<!--                                          <option value="panel-3">Panel 3</option>-->
+<!--                                          <option value="panel-4">Panel 4</option>-->
+<!--                                      </select>-->
+<!--                                  </div>-->
+<!--                              </td>-->
+<!--                          </tr>-->
+<!--                      <tr>-->
+<!--                          <td> 2 </td>-->
+<!--                          <td> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet, ratione. </td>-->
+<!--                          <td> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet, ratione. </td>-->
+<!--                          <td> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet, ratione. </td>-->
+<!--                          <td> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet, ratione. </td>-->
+<!--                          <td> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet, ratione. </td>-->
+<!--                          <td><button class="btn-del show-del-modal">Update</button></td>-->
+<!--                          <td>-->
+<!--                              <div>-->
+<!--                                  <select name="testimonials-select-panel" id="testimonials-select-panel" required>-->
+<!--                                      <option value="panel-1">Panel 1</option>-->
+<!--                                      <option value="panel-2">Panel 2</option>-->
+<!--                                      <option value="panel-3">Panel 3</option>-->
+<!--                                      <option value="panel-4">Panel 4</option>-->
+<!--                                  </select>-->
+<!--                              </div>-->
+<!--                          </td>-->
+<!--                      </tr>-->
+<!--                      </tr>-->
+<!--                  </table>-->
+          </div>
+          </div>
 
-              <div class="container">
-                  <table class="day-details-table">
-                      <thead>
-                      <tr>
-                          <th>ID</th>
-                          <th>Name</th>
-                          <th>Temperature</th>
-                          <th>Breakfast</th>
-                          <th>Lunch</th>
-                          <th>Activities</th>
-                          <th>Date</th>
-                          <th>Update</th>
-                          <th>Delete</th>
-                      </tr>
-                      </thead>
-                      <tbody>
-                          <tr>
-                              <td> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet, ratione. </td>
-                              <td> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet, ratione. </td>
-                              <td> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet, ratione. </td>
-                              <td> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet, ratione. </td>
-                              <td> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet, ratione. </td>
-                              <td> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet, ratione. </td>
-                              <td> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet, ratione. </td>
-                              <td><button class="btn-del show-del-modal">Delete</button></td>
-                          </tr>
-                      </tbody>
-                  </table>
-              </div>
-
-
-
-
+          <div class="container">
+              <table class="day-details-table">
+                  <tbody>
+                  <tr>
+                      <td><button class="btn-del show-del-modal" id="testimonials-button-populate">Populate</button></td>
+                      <td><button class="btn-del show-del-modal" id="testimonials-button-clear">Clear</button></td>
+                  </tr>
+                  </tbody>
+              </table>
           </div>
 
 
@@ -113,14 +152,14 @@
       <div class="carousel">
         <div class="slider">
           <section>
-            <div class="slide-content flex">
-              <h3 class="heading-3 italic">"Words cannot express the thanks that my family has for each and every
+            <div class="slide-content flex" id="testimonials-panel-1">
+              <h3 class="heading-3 italic" id="testimonials-panel-1-heading">"Words cannot express the thanks that my family has for each and every
                 Kiddie Clubhouse early childhood teacher and staff person that has been a part of our family for
                 almost nine years."
               </h3>
               <figure><img src="img/user-pic-2.jpg" alt=""></figure>
-              <h4 class="testimonial-name">Archie Andrews</h4>
-              <h5 class="testimonial-location">Dublin, Ireland</h5>
+              <h4 class="testimonial-name" id="testimonials-panel-1-name">Archie Andrews</h4>
+              <h5 class="testimonial-location" id="testimonials-panel-1-location">Dublin, Ireland</h5>
             </div>
           </section>
 
@@ -253,10 +292,13 @@ $db_connection->close();
 
 ?>
 
-
 <script>
 
-    const button = document.querySelector('body').addEventListener('click', loadEntries);
+    const buttonPopulate = document.querySelector('#testimonials-button-populate').addEventListener('click' , loadEntries);
+    const buttonClear = document.querySelector('#testimonials-button-clear').addEventListener('click' , removeTable);
+
+    const tableContainer = document.querySelector('#testimonials-table-container'); // create the table inside teh container
+
 
 
 
@@ -264,65 +306,139 @@ $db_connection->close();
 
    function loadEntries(){
 
-        alert("im loading");
+       if(!!document.getElementById('testimonials-table') === true){
+           removeTable();
+       }
+
+
+            let variableCounter =  <?php echo $rowsCounter; ?>; // size of array
+
+
+           var dataArray = <?php echo json_encode($dataArray); ?>; // parse the PHP array in to a JavaScript array
+            var sortedArray = [];
+
+       let headers = ['ID', 'First Name', 'Last Name' , 'Testimonial' , 'Activity' , 'Date' , 'Update'];
+
+       let table = document.createElement('table');
+       table.id = 'testimonials-table';
+       let headerRow = document.createElement('tr');
+
+
+       for (let i = 0 ; i < headers.length; i++) { // fill the headers
+
+           let arrayRowCounter = i - 1;
+
+           let headerCell = document.createElement('th');
+           headerCell.innerHTML = headers[i];
+           headerRow.appendChild(headerCell);
+
+       };
+
+       table.appendChild(headerRow); // append the cells to the header
+
+       for (let i = 0 ; i < dataArray.length  ; i++){
+
+           let id_count = i + 1;
+
+           let row = document.createElement('tr');
+
+               let cellId = document.createElement('td');
+                cellId.innerHTML = (dataArray[i]['testimonialId']);
+                cellId.id = 'testimonials-body-id-'+id_count;
+
+               row.appendChild(cellId);
+
+               let cellFirstName = document.createElement('td');
+                cellFirstName.innerHTML = (dataArray[i]['firstName']);
+                cellFirstName.id = 'testimonials-body-first-name-'+id_count;
+
+               row.appendChild(cellFirstName);
+
+               let cellLastName = document.createElement('td');
+                cellLastName.innerHTML = (dataArray[i]['lastName']);
+                cellLastName.id = 'testimonials-body-last-name-'+id_count;
+
+               row.appendChild(cellLastName);
+
+               let cellComment = document.createElement('td');
+                cellComment.innerHTML = (dataArray[i]['comment']);
+                cellComment.id = 'testimonials-body-testimonial-'+id_count;
+
+               row.appendChild(cellComment);
+
+               let cellServiceName = document.createElement('td');
+                cellServiceName.innerHTML = (dataArray[i]['serviceName']);
+                cellServiceName.id = 'testimonials-body-activity-'+id_count;
+
+               row.appendChild(cellServiceName);
+
+               let cellCreated = document.createElement('td');
+                cellCreated.innerHTML = (dataArray[i]['created']);
+                cellCreated.id = 'testimonials-body-date-'+id_count;
+
+               row.appendChild(cellCreated);
+
+               let cellButton = document.createElement('button');
+               cellButton.classList.add('btn-del');
+               cellButton.innerHTML = ('Update');
+               cellButton.id = 'testimonials-body-update-'+id_count;
+               cellButton.onclick = function (){
+
+                   sortedArray[0] = cellId.innerHTML;
+                   sortedArray[1] = cellFirstName.innerHTML;
+                   sortedArray[2] = cellLastName.innerHTML;
+                   sortedArray[3] = cellComment.innerHTML;
+                   sortedArray[4] = cellServiceName.innerHTML;
+                   sortedArray[5] = cellCreated.innerHTML;
+
+                   switch(cellPanelChoice.value){
+
+                       case"1":
+
+                           let header = document.getElementById('testimonials-panel-1-heading').innerHTML = (sortedArray[3]);
+                           let name = document.getElementById('testimonials-panel-1-name').innerHTML = (sortedArray[1]+" "+sortedArray[2]);
+                           let date = document.getElementById('testimonials-panel-1-location').innerHTML = (sortedArray[5]);
+
+                           break;
+                   }
+
+
+               }
+               row.appendChild(cellButton);
+
+
+               let cellPanelChoice = document.createElement('select');
+               cellPanelChoice.name = 'testimonials-select-panel';
+                cellPanelChoice.id = 'testimonials-body-select-'+id_count;
+
+                for (let i = 0 ; i < 4; i++) { // give options for panels
+
+                    let id_counter = i + 1;
+
+                    let option = document.createElement("option");
+                    option.text = "Panel "+id_counter;
+                    option.value = id_counter.toString();
+                    cellPanelChoice.add(option, cellPanelChoice[i]);
+
+                }
+
+               row.appendChild(cellPanelChoice);
+
+           table.appendChild(row);
+       }
 
 
 
-        let variableCounter =  <?php echo $rowsCounter; ?>;
-        let i;
-        for (i = 1 ; i <= variableCounter; i++ ){
 
-            let arrayRowCounter = i - 1;
-
-            var test = <?php echo json_encode($dataArray); ?>; // parse the PHP array in to a JavaScript array
+       tableContainer.appendChild(table); // append everything to the table Div
 
 
-            const addTestimonialEntryWrapper = document.createElement('div');
-            addTestimonialEntryWrapper.id = 'testimonial-wrapper-'+i;
-            addTestimonialEntryWrapper.classList.add('testimonial-entry-wrapper');
-            document.getElementById('testimonials-wrapper').appendChild(addTestimonialEntryWrapper);
 
-            const addTestimonialEntryTestimonialID = document.createElement('div');
-            addTestimonialEntryTestimonialID.id = 'testimonial-id-'+i;
-            addTestimonialEntryTestimonialID.classList.add('testimonial-entry-testimonialId');
-            document.getElementById('testimonial-wrapper-'+i).appendChild(addTestimonialEntryTestimonialID);
-            document.getElementById('testimonial-id-'+i).innerHTML = (test[arrayRowCounter]['testimonialId']);
+    }
 
-
-            const testimonialEntryFirstName = document.createElement('div');
-            testimonialEntryFirstName.id = 'testimonial-first-name-'+i;
-            testimonialEntryFirstName.classList.add('testimonial-entry-first-name');
-            document.getElementById('testimonial-wrapper-'+i).appendChild(testimonialEntryFirstName);
-            document.getElementById('testimonial-first-name-'+i).innerHTML = (test[arrayRowCounter]['firstName']);
-
-            const testimonialEntryLastName = document.createElement('div');
-            testimonialEntryLastName.id = 'testimonial-last-name-'+i;
-            testimonialEntryLastName.classList.add('testimonial-entry-last-name');
-            document.getElementById('testimonial-wrapper-'+i).appendChild(testimonialEntryLastName);
-            document.getElementById('testimonial-last-name-'+i).innerHTML = (test[arrayRowCounter]['lastName']);
-
-            const testimonialEntryComment = document.createElement('div');
-            testimonialEntryComment.id = 'testimonial-comment-'+i;
-            testimonialEntryComment.classList.add('testimonial-entry-comment');
-            document.getElementById('testimonial-wrapper-'+i).appendChild(testimonialEntryComment);
-            document.getElementById('testimonial-comment-'+i).innerHTML = (test[arrayRowCounter]['comment']);
-
-
-            const testimonialEntryServiceName = document.createElement('div');
-            testimonialEntryServiceName.id = 'testimonial-service-name-'+i;
-            testimonialEntryServiceName.classList.add('testimonial-entry-service-name');
-            document.getElementById('testimonial-wrapper-'+i).appendChild(testimonialEntryServiceName);
-            document.getElementById('testimonial-service-name-'+i).innerHTML = (test[arrayRowCounter]['serviceName']);
-
-            const testimonialEntryCreated = document.createElement('div');
-            testimonialEntryCreated.id = 'testimonial-created-'+i;
-            testimonialEntryCreated.classList.add('testimonial-entry-created');
-            document.getElementById('testimonial-wrapper-'+i).appendChild(testimonialEntryCreated);
-            document.getElementById('testimonial-created-'+i).innerHTML = (test[arrayRowCounter]['created']);
-
-
-        }
-
+    function removeTable(){
+       const removeElement = document.querySelector('#testimonials-table');
+       removeElement.parentElement.removeChild(removeElement);
     }
 
 </script>;
