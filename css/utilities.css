@@ -263,3 +263,73 @@
   align-items: center;
   text-align: center;
 }
+
+/* New Header */
+.menu-area a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: red;
+  /* height: 100px;
+  width: 100%; */
+}
+
+.menu-area .logo {
+  width: 150%;
+}
+
+.menu-area a {
+  padding: 0.625em;
+  margin: 0 0.3125em;
+  font-weight: 700;
+  font-size: 1.1em;
+  color: var(--color-secondary);
+  text-align: center;
+}
+
+.menu-area a:hover {
+  color: var(--color-tertiary);
+  border-bottom: 2px solid red;
+  text-align: center;
+}
+
+.menu-area ul {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.menu-area ul li {
+  position: relative;
+  left: 40%;
+  width: 100%;
+  text-align: center;
+}
+
+.menu-area li:hover .dropdown > li {
+  top: 0;
+  display: block;
+  text-align: left;
+}
+
+.dropdown li {
+  display: none;
+  position: relative;
+}
+
+.dropdown {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.menu-area .nav-buttons {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.nav-buttons .btn {
+  margin: 0 20px;
+}
