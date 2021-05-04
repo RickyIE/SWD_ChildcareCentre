@@ -118,52 +118,6 @@
   );
 }
 
-/* Modal */
-
-.overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.3);
-  backdrop-filter: blur(3px);
-  z-index: 50;
-}
-
-.sign-up-modal,
-.log-in-modal,
-.add-details-modal,
-.del-details-modal,
-.update-details-modal {
-  display: none;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 60%;
-  background-color: var(--color-grey-light);
-  border-radius: 1em;
-  padding: 2em;
-  box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.3);
-  z-index: 500;
-}
-
-.close-sign-up-modal,
-.close-log-in-modal,
-.close-add-modal,
-.close-del-modal,
-.close-update-modal {
-  position: absolute;
-  top: 0.25em;
-  right: 0.5em;
-  font-size: 5em;
-  cursor: pointer;
-  border: none;
-  background: none;
-  z-index: 1000;
-}
-
 .form-card {
 }
 
@@ -332,4 +286,48 @@
 
 .nav-buttons .btn {
   margin: 0 20px;
+}
+
+/* Form Sign Up */
+
+.left-content {
+  /* position: relative; */
+  height: 100%;
+  width: 100%;
+  background-color: var(--color-grey-light);
+}
+
+.sign-up {
+  /* background-color: red; */
+}
+
+.sign-up .log-img,
+.login .login-img {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.sign-up .form,
+.login .form {
+  width: 100%;
+}
+
+.sign-up .grid,
+.login .grid {
+  grid-gap: 0;
+  height: 100%;
+  overflow: hidden;
+}
+
+.sign-up .sign-up-form-card,
+.login .login-form-card {
+  width: 100%;
+  padding: 20px;
+  /* background-color: var(--color-grey-light); */
+}
+
+.sign-up-form .flex,
+.login .flex {
+  flex-direction: row;
+  justify-content: flex-end;
 }
