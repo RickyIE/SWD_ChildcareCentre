@@ -58,7 +58,7 @@ else
   // add record to database
   if (count(array_filter($errors)) == 0)
   { 
-    $query = "SELECT username, password FROM user WHERE username='$username' AND isactive=true";
+    $query = "SELECT username, password, usertypeid FROM user WHERE username='$username' AND isactive=true";
     $result = @mysqli_query($db_connection, $query);
     if (mysqli_num_rows($result) == 1)
     {      
@@ -67,7 +67,8 @@ else
       {       
         /* The password is correct. */
         $_SESSION['user_id'] = $row['username'];
-        $_SESSION['name'] = $row['firstName'].' '. $row['lastName'];       
+        $_SESSION['name'] = $row['firstName'].' '. $row['lastName'];  
+        $_SESSION['accesslevel'] = $row['usertypeid'];     
         // go to home page
         header("Location: index.php");
         exit();        
