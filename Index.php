@@ -11,31 +11,13 @@
       crossorigin="anonymous" />
     <link rel="stylesheet" href="css/utilities.css">
     <link rel="stylesheet" href="css/style.css">
-    <title>Index Page</title>
+    <title>Home</title>
   </head>
 
   <body>
 
     <!-- Navbar -->
-    <div class="navbar" id="home">
-      <div class="container flex">
-        <figure><img class="logo" src="img/logo-01.svg" alt=""></figure>
-        <nav>
-          <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#services">Services</a></li>
-            <li><a href="#updates">Updates</a></li>
-            <li><a href="#offers">Offers</a></li>
-          </ul>
-        </nav>
-
-        <div class="nav-buttons">
-          <button class="btn btn-primary btn-primary show-sign-up-modal">Sign Up</button>
-          <button class="btn btn-primary btn-secondary show-log-in-modal">Log In</button>
-        </div>
-
-      </div>
-    </div>
+    <?php include 'header.php' ?>
     <!-- End Navigation -->
 
     <!-- Modals -->
@@ -112,7 +94,6 @@
 
     <!-- get services from database -->
     <?php 
-      require ('scripts/connect.php');
       $query = "SELECT serviceTitle, serviceDetail, imagePath, link FROM service limit 3";
       $result = @mysqli_query($db_connection, $query);
 
@@ -227,22 +208,8 @@
       </div>
     </section>
 
-    <footer class="footer">
-      <div class="container flex">
-        <div>
-          <figure><img class="logo" src="img/logo-white-01.svg" alt=""></figure>
-        </div>
+    <?php include 'footer.html' ?>
 
-        <nav>
-          <ul>
-            <li>Contact Us</li>
-            <li>Find Us</li>
-            <li>Private Policy</li>
-          </ul>
-        </nav>
-        <a href="#home">Back To Top<i class="fas fa-long-arrow-alt-up"></i></a>
-      </div>
-    </footer>
     <div class="overlay hidden"></div>
     <script src="js/app.js"></script>
   </body>

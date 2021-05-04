@@ -4,7 +4,9 @@ if (isset($_SESSION['user_id']))
 {
     session_unset();
     session_destroy();
-    echo '<h3>You Have Successfully Logged Out!.</h3>';
+    // go to home page
+    header("Location: ../index.php");
+    exit();   
 }
 else
 {

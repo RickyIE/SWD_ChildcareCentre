@@ -158,6 +158,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
       $row = mysqli_fetch_array($result1);
       $_SESSION['user_id'] = $row['username'];
       $_SESSION['name'] = $row['firstName'].' '. $row['lastName'];   
+      $_SESSION['accesslevel'] = $row['usertypeid'];     
 
       // save address
       $query2 = "INSERT INTO address (username, street, town, county, country, eircode) VALUES('$username', '$street', '$town', '$county', '$country', '$eircode')";
@@ -199,7 +200,6 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         <button class="btn btn-primary btn-primary show-sign-up-modal">Sign Up</button>
         <button class="btn btn-primary btn-secondary show-log-in-modal">Log In</button>
       </div>
-
     </div>
   </div>
   <!-- End Navigation -->
@@ -258,5 +258,4 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
   <div class="overlay hidden"></div>
   <script src="js/app.js"></script>
 </body>
-
 </html>

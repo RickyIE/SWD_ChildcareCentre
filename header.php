@@ -13,23 +13,26 @@
   <link rel="stylesheet" href="css/style.css">
   <title>New Header</title>
 </head>
-
 <body>
-
-  <!-- Navbar -->
   <div class="menu-area">
     <div class="container flex">
-
       <figure><img class="logo" src="img/logo-01.svg" alt=""></figure>
-
       <?php 
+        // start session
+        session_start();
         // require connect file in header so it is required on all pages.
         require ('scripts/connect.php'); 
-
-        $query = "SELECT id, parentid, title, link, accesslevel FROM menu ORDER BY parentid, id";
+        // check access level
+        if (isset($_SESSION['user_id'])) {
+          $accesslevel = $_SESSION['accesslevel']; // set level
+        } else { // set default level 
+          $accesslevel = 3;
+        }       
+        // get menu items based on access level
+        $query = "SELECT id, parentid, title, link, accesslevel FROM menu WHERE accesslevel >= '$accesslevel' ORDER BY parentid, id";
         $result = @mysqli_query($db_connection, $query);
         $menu = array();
-        while ($row = mysqli_fetch_array($result)) {
+        while ($row = mysqli_fetch_array($result)) { // save data to array
           $menu[] = array(  
             'id' => $row['id'],  
             'parentid' => $row['parentid'], 
@@ -37,14 +40,12 @@
             'link' => $row['link'], 
             'accesslevel' => $row['accesslevel']
           );         
-        }
-
-      
+        }    
 
         ?>
         <ul>
           <?php    
-            for ($row = 0; $row < sizeof($menu); $row++) {           
+            for ($row = 0; $row < sizeof($menu); $row++) {   // loop array        
               if ($menu[$row]['parentid'] == 0) { // if top level, print item (but leave open ended)
               ?>         
               <li><a href="<?php echo $menu[$row]['link']; ?>"><?php echo $menu[$row]['title']; ?></a>
@@ -68,38 +69,22 @@
             } 
           ?>
           </ul>
-        <?php
-        
-
-
-
+        <?php   
       ?>
-
-<!--   <ul>
-        <li><a href="#">Link</a></li>
-        <li><a href="#">Link</a></li>
-        <li><a href="#">Link</a></li>
-        <li><a href="#">Link</a></li>
-        <li><a href="#">Dropdown</a>
-          <ul class="dropdown">
-            <li><a href="#">Drop Link</a></li>
-            <li><a href="#">Drop Link</a></li>
-            <li><a href="#">Drop Link</a></li>
-          </ul>
-        </li>
-      </ul>
--->
       <div class="nav-buttons">
-        <button class="btn btn-primary btn-primary">Sign Up</button>
-        <button class="btn btn-primary btn-secondary">Log In</button>
-        <!-- <button class="btn btn-primary btn-secondary show-log-in-modal">Log Out</button> -->
+        <?php if(isset($_SESSION['user_id'])) { // if logged in, sow logout button
+          ?>
+          <button class="btn btn-primary btn-primary"><a href="scripts/logout.php">Log Out</a></button> 
+          <?php
+        } else { // show sign up and login button
+          ?>
+          <button class="btn btn-primary btn-primary"><a href="sign-up-form.php">Sign Up</a></button> 
+          <button class="btn btn-primary btn-primary"><a href="login-form.php">Log In</a></button> 
+          <?php
+        }
+        ?>    
       </div>
-
-    </div>
-
+    </div>  
   </div>
-  <!-- End Navigation -->
-
 </body>
-
 </html>
