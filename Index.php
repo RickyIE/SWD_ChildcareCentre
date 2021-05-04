@@ -18,59 +18,7 @@
 
     <!-- Navbar -->
     <?php include 'header.php' ?>
-    <!-- End Navigation -->
-
-    <!-- Modals -->
-    <div class="sign-up-modal">
-      <button class="close-sign-up-modal">&times;</button>
-      <h1>Sign Up</h1>
-      <div class="form-card">
-        <form class="sign-up-form" action='scripts\signup.php' method='POST'>
-          <label for="first_name">First Name</label>
-          <input type="text" name="first_name" id="first_name">
-
-          <label for="last_name">Last Name</label>
-          <input type="text" name="last_name" id="last_name">
-
-          <label for="username">Username</label>
-          <input type="text" name="username" id="username">
-
-          <label for="password">Password</label>
-          <input type="password" name="password" id="password">
-
-          <label for="password_confirm">Confirm Password</label>
-          <input type="password" name="password_confirm" id="password_confirm">
-
-          <!-- might use these fields later, but commenting out for now.
-
-          <label for="home-phone">Home Phone</label>
-          <input type="tel" name="password" id="home-phone">
-
-          <label for="address">Address</label>
-          <textarea name="address" id="address" cols="30" rows="10"></textarea>
-
-          -->
-
-          <button class="btn btn-primary">Sign Up</button>
-        </form>
-      </div>
-    </div>
-
-    <div class="log-in-modal">
-      <button class="close-log-in-modal">&times;</button>
-      <h1>Log In</h1>
-      <div class="form-card">
-        <form class="log-in-form" action='scripts\login.php' method='POST'>
-          <label for="username">Username</label>
-          <input type="text" name="username" id="username">
-
-          <label for="password">Password</label>
-          <input type="password" name="password" id="password">
-
-          <button class="btn btn-primary">Log In</button>
-        </form>
-      </div>
-    </div>
+    <!-- End Navigation -->   
 
 
     <!-- Showcase Area -->
