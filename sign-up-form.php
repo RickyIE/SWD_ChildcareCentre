@@ -158,6 +158,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
       $row = mysqli_fetch_array($result1);
       $_SESSION['user_id'] = $row['username'];
       $_SESSION['name'] = $row['firstName'].' '. $row['lastName'];   
+      $_SESSION['accesslevel'] = $row['usertypeid'];
 
       // save address
       $query2 = "INSERT INTO address (username, street, town, county, country, eircode) VALUES('$username', '$street', '$town', '$county', '$country', '$eircode')";
@@ -206,8 +207,14 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
 
 <section class="sign-up">
-  <div class="container">  
-    <form class="sign-up-form" action='' method='POST'>
+  <div class="grid">  
+    <div class="left-content">
+      <figure>
+      <img class="log-img" src="img/login-img-01.svg" alt="">
+    </figure>
+    </div>
+   <div class="form sign-up-form-card">
+      <form class="sign-up-form" action='' method='POST'>
       <label for="first_name">First Name</label>
       <input type="text" name="first_name" id="first_name" value="<?php if (isset($first_name)) { echo $first_name; } ?>">
       <div class='red-text'><?php echo $errors['first_name']; ?></div>
@@ -248,8 +255,12 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
       <input type="password" name="password_confirm" id="password_confirm" value="<?php if (isset($password_confirm)) { echo $password_confirm; } ?>">
       <div class='red-text'><?php echo $errors['password_confirm']; ?></div>   
 
-      <button class="btn btn-primary">Sign Up</button>
-    </form>        
+      <div class="flex">
+        <button class="btn btn-primary sign-up-btn">Sign Up</button>
+      </div>
+      
+    </form>    
+   </div>    
   </div>      
 </section>
 

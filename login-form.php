@@ -11,7 +11,7 @@
     crossorigin="anonymous" />
   <link rel="stylesheet" href="css/utilities.css">
   <link rel="stylesheet" href="css/style.css">
-  <title>New Day Details</title>
+  <title>Login Form</title>
 </head>
 
 <body>
@@ -107,20 +107,30 @@ else
   <!-- End Navigation -->
 
 <section class="login">
-  <div class="container">  
-  <form class="log-in-form" action='' method='POST'>
-    <label for="username">Username</label>
-    <input type="text" name="username" id="username" value="<?php if (isset($username)) { echo $username; } ?>">
-    <div class='red-text'><?php echo $errors['username']; ?></div>
+  <div class="grid">  
+    <div class="left-content">
+      <figure>
+        <img class="login-img" src="img/login-img-01.svg" alt="">
+      </figure>
+    </div>
+    
+    <div class="form login-form-card">
+      <form class="log-in-form" action='' method='POST'>
+      <label for="username">Username</label>
+      <input type="text" name="username" id="username" value="<?php if (isset($username)) { echo $username; } ?>">
+      <div class='red-text'><?php echo $errors['username']; ?></div>
 
-    <label for="password">Password</label>
-    <input type="password" name="password" id="password" value="<?php if (isset($password)) { echo $password; } ?>">
-    <div class='red-text'><?php echo $errors['password']; ?></div>
+      <label for="password">Password</label>
+      <input type="password" name="password" id="password" value="<?php if (isset($password)) { echo $password; } ?>">
+      <div class='red-text'><?php echo $errors['password']; ?></div>
 
-    <button class="btn btn-primary">Log In</button>
-    <div class='red-text'><?php echo $errors['failure']; ?></div>
-  </form>          
-  </div>      
+      <div class="flex">
+        <button class="btn btn-primary">Log In</button>
+        <div class='red-text'><?php echo $errors['failure']; ?></div>
+      </div>
+      </form>          
+    </div> 
+  </div>
 </section>
 
       <?php include 'footer.html' ?>
