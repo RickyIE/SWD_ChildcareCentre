@@ -3,7 +3,7 @@
 
 <head>
   <?php include 'header.php' ?>
-  <title>Day Details</title>
+  <title>Day Details Edit</title>
 </head>
 
 <body>
@@ -104,7 +104,9 @@
             <th>Breakfast</th>
             <th>Lunch</th>
             <th>Activities</th>
-            <th>Date</th>         
+            <th>Date</th>
+            <th>Update</th>
+            <th>Delete</th>            
           </tr>
         </thead>
         <tbody>
@@ -120,6 +122,8 @@
                   <td> <?php echo $records[$row]['lunch']; ?> </td>
                   <td> <?php echo $records[$row]['activitytitle']; ?> </td>
                   <td> <?php echo $records[$row]['created']; ?> </td>
+                  <td><button type='submit' name='btn_update' class="btn-up">Update</button></td>
+                  <td><button type="submit" formaction="scripts/delete_daily_details.php" class="btn-del">Delete</button></td>   
                 </form>
               </tr>  
               <?php  
@@ -127,6 +131,8 @@
           ?>        
         </tbody>
       </table>
+
+      <button class="btn btn-primary btn-add" ><a href="new-day-details-form.php">+ Add Record</a></button> 
     </div>
   </section>  
 

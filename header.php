@@ -11,7 +11,6 @@
     crossorigin="anonymous" />
   <link rel="stylesheet" href="css/utilities.css">
   <link rel="stylesheet" href="css/style.css">
-  <title>New Header</title>
 </head>
 <body>
   <div class="menu-area">
