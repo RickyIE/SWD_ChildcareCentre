@@ -2,22 +2,13 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" /> -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
-    integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w=="
-    crossorigin="anonymous" />
-  <link rel="stylesheet" href="css/utilities.css">
-  <link rel="stylesheet" href="css/style.css">
-  <title>New Day Details</title>
+  <?php include 'header.php' ?>
+  <title>Day Details Add</title>
 </head>
 
 <body>
 
-<?php 
-  require ('scripts/connect.php'); 
+<?php    
   // clear array and start validation again
   $errors = array('childname' => '', 'temperature' => '', 'breakfast' => '', 'lunch' => '', 'activities' => '');
 ?>
@@ -97,80 +88,6 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     }
 }
 ?>
-
-  <!-- Navbar -->
-  <div class="navbar" id="home">
-    <div class="container flex">
-      <figure><img class="logo" src="img/logo-01.svg" alt=""></figure>
-      <nav>
-        <ul>
-          <li><a href="#home">Home</a></li>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#updates">Updates</a></li>
-          <li><a href="#offers">Offers</a></li>
-        </ul>
-      </nav>
-
-      <div class="nav-buttons">
-        <button class="btn btn-primary btn-primary show-sign-up-modal">Sign Up</button>
-        <button class="btn btn-primary btn-secondary show-log-in-modal">Log In</button>
-      </div>
-
-    </div>
-  </div>
-  <!-- End Navigation -->
-
-  <!-- Modals -->
-  <div class="sign-up-modal">
-    <button class="close-sign-up-modal">&times;</button>
-    <h1>Sign Up</h1>
-    <div class="form-card">
-      <form class="sign-up-form" action='scripts\signup.php' method='POST'>
-        <label for="first_name">First Name</label>
-        <input type="text" name="first_name" id="first_name">
-
-        <label for="last_name">Last Name</label>
-        <input type="text" name="last_name" id="last_name">
-
-        <label for="username">Username</label>
-        <input type="text" name="username" id="username">
-
-        <label for="password">Password</label>
-        <input type="password" name="password" id="password">
-
-        <label for="password_confirm">Confirm Password</label>
-        <input type="password" name="password_confirm" id="password_confirm">
-
-        <!-- might use these fields later, but commenting out for now.
-
-          <label for="home-phone">Home Phone</label>
-          <input type="tel" name="password" id="home-phone">
-
-          <label for="address">Address</label>
-          <textarea name="address" id="address" cols="30" rows="10"></textarea>
-
-          -->
-
-        <button class="btn btn-primary">Sign Up</button>
-      </form>
-    </div>
-  </div>
-
-  <div class="log-in-modal">
-    <button class="close-log-in-modal">&times;</button>
-    <h1>Log In</h1>
-    <div class="form-card">
-      <form class="log-in-form" action='scripts\login.php' method='POST'>
-        <label for="username">Username</label>
-        <input type="text" name="username" id="username">
-
-        <label for="password">Password</label>
-        <input type="password" name="password" id="password">
-
-        <button class="btn btn-primary">Log In</button>
-      </form>
-    </div>
-  </div>
 
   <!-- get children from database.. only select children that have no record for current day. -->
   <?php       
