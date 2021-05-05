@@ -144,7 +144,6 @@
 
     <?php include 'footer.html' ?>
 
-    <div class="overlay hidden"></div>
     <script src="js/app.js"></script>
   </body>
 

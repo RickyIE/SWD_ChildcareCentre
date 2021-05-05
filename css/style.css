@@ -329,18 +329,18 @@ img {
 
 .day-details-info .btn-primary {
   margin-top: 20px;
+  width: 25%;
 }
 
 .day-details-info form input {
   width: 100%;
   padding: 1em 0;
-  outline: none;
-  border: none;
+  border: 1px solid var(--color-grey);
+  border-radius: 5px;
 }
 
 .dateFilter {
-  border-bottom: 2px solid var(--color-primary) !important;
-  background-color: transparent;
+  /* background-color: transparent; */
 }
 
 ::-webkit-datetime-edit {
@@ -350,18 +350,18 @@ img {
   /* background: silver; */
 }
 ::-webkit-datetime-edit-text {
-  color: red;
+  /* color: red; */
   padding: 0 0.3em;
 }
 ::-webkit-datetime-edit-month-field {
-  color: blue;
+  /* color: blue; */
   font-family: var(--body-font);
 }
 ::-webkit-datetime-edit-day-field {
-  color: green;
+  /* color: green; */
 }
 ::-webkit-datetime-edit-year-field {
-  color: purple;
+  /* color: purple; */
 }
 ::-webkit-inner-spin-button {
   /* display: none; */
@@ -378,8 +378,9 @@ img {
 .custom-select select {
   padding: 15px 20px;
   width: 100%;
-  border: 0;
-  border-bottom: 2px solid var(--color-primary);
+  border: 1px solid var(--color-grey);
+  border-radius: 5px;
+  /* border-bottom: 2px solid var(--color-primary); */
   background-color: transparent;
 }
 
