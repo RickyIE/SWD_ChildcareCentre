@@ -459,3 +459,17 @@ table th.last {
 .day-details-info.parent .grid {
   grid-template-columns: 80% 20%;
 }
+
+/* Activities Page */
+.activities-intro {
+  background-color: var(--color-grey-light);
+  height: 400px;
+}
+
+.activities-intro .flex {
+  justify-content: center;
+  align-items: center;
+}
+.activities-intro .btn {
+  margin-top: 20px;
+}
