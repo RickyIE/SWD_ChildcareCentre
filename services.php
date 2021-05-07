@@ -38,7 +38,7 @@
    <section class="daily-activities p-top">
       <div class="container grid">
          <div>
-            <img src="<?php echo $services[$row]['imagepath']; ?>" alt="" class="activity-image">
+            <img src="<?php echo $services[$row]['imagepath']; ?>" alt="" class="activity-image service-image">
          </div>
          <div class="activity-text">
             <h2 class="heading-2"><?php echo $services[$row]['servicetitle']; ?></h2>
@@ -56,7 +56,7 @@
             <p><?php echo $services[$row]['servicedetail']; ?></p>
          </div>
          <div>
-            <img src="<?php echo $services[$row]['imagepath']; ?>" alt="" class="activity-image">
+            <img src="<?php echo $services[$row]['imagepath']; ?>" alt="" class="activity-image service-image">
          </div>
       </div>
    </section>

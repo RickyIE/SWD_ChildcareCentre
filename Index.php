@@ -50,7 +50,7 @@
           we
           provide to make sure your child has a great stay with us.
         </h2>
-        <div class="flex">
+        <div class="flex center">
           <div>
             <figure><img src="<?php echo $services[0]['imagePath']; ?>" alt=""></figure>
             <h3 class="heading-3"><?php echo $services[0]['serviceTitle']?></h3>
@@ -65,9 +65,10 @@
 
           <div>
             <figure><img src="<?php echo $services[2]['imagePath']; ?>" alt=""></figure>
-            <h3 class="heading-3"><?php echo $services[2]['serviceTitle']?></h3>
-            <p><?php echo $services[2]['serviceDetail']?></p>
+              <h3 class="heading-3"><?php echo $services[2]['serviceTitle']?></h3>
+            <p><?php echo $services[2]['serviceDetail']?></p></div>
           </div>
+        
         </div>
       </div>
     </section>

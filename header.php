@@ -77,8 +77,8 @@
           <?php
         } else { // show sign up and login button
           ?>
-          <button class="btn btn-primary btn-primary"><a href="sign-up-form.php">Sign Up</a></button> 
-          <button class="btn btn-primary btn-primary"><a href="login-form.php">Log In</a></button> 
+          <a class="btn btn-primary" href="sign-up-form.php">Sign Up</a> 
+          <a class="btn btn-primary" href="login-form.php">Log In</a>
           <?php
         }
         ?>    

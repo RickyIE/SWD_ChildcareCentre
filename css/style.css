@@ -89,10 +89,13 @@ img {
 .services {
   background-color: var(--color-grey-light);
 }
+
 .services .flex {
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.services .flex div {
+  width: 28%;
 }
 
 .services img {
@@ -472,4 +475,12 @@ table th.last {
 }
 .activities-intro .btn {
   margin-top: 20px;
+}
+
+.daily-activities:nth-child(odd) {
+  background-color: var(--color-grey-light);
+}
+
+.service-image {
+  width: 80%;
 }
