@@ -12,7 +12,7 @@
          </div>
       </div>
    </section>
-   <!-- get activities from database -->
+   <!-- get services from database -->
    <?php 
       // select data
       $query = "SELECT serviceid, servicetitle, servicedetail, imagepath, link FROM service";
