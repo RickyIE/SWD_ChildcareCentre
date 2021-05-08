@@ -73,7 +73,7 @@
       <div class="nav-buttons">
         <?php if(isset($_SESSION['user_id'])) { // if logged in, sow logout button
           ?>
-          <button class="btn btn-primary btn-primary"><a href="scripts/logout.php">Log Out</a></button> 
+          <a class="btn btn-primary" href="scripts/logout.php">Log Out</a> 
           <?php
         } else { // show sign up and login button
           ?>
