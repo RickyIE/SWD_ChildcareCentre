@@ -156,7 +156,11 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
   ?>
 
 <section class="day-details">
-  <div class="container">  
+  <div class="grid">
+    <div class="left-content">
+      <figure><img src="img/cog-01.svg" alt=""></figure>
+    </div>
+    
     <form method='post' action="" class="update-details-form">     
         <label for="">Record ID</label>
         <input type="number" id="recordid-update" name="recordid-update" placeholder="" value="<?php echo $recordid; ?>" readonly>
@@ -199,7 +203,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
           <div class='red-text'><?php echo $errors['activities']; ?></div>
         </div>
         <button class="btn btn-primary">Update Details</button>
-      </form>      
+      </form>  
   </div>
 </section>
 

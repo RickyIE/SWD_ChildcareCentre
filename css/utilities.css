@@ -334,7 +334,24 @@
 }
 
 .sign-up-form .flex,
-.login .flex {
+.login .flex,
+.day-details .flex {
   flex-direction: row;
   justify-content: flex-end;
+}
+
+.day-details .btn {
+  margin-bottom: 15px;
+}
+
+input[type="number"] {
+  /* border: none;
+  outline: none; */
+  /* width: 80%; */
+}
+
+.day-details .containerD {
+  margin: 0 auto;
+  overflow: hidden;
+  padding: 0 2.5em;
 }
