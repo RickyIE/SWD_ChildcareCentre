@@ -92,10 +92,8 @@
     ?>  
 
   <section class="day-details">
-
-    <div class="container">
-    
-      <table class="day-details-table">
+    <div class="containerD">
+      <table class="day-details-table table">
         <thead>
           <tr>
             <th>ID</th>
@@ -106,7 +104,7 @@
             <th>Activities</th>
             <th>Date</th>
             <th>Update</th>
-            <th>Delete</th>            
+            <th>Delete</th>           
           </tr>
         </thead>
         <tbody>
@@ -114,7 +112,7 @@
             for ($row = 0; $row < sizeof($records); $row++) { 
               ?>              
               <tr>
-                <form method='get' action='update-day-details-form.php'>
+                <form method='get' action='update-day-details-form.php' class="day-details-edit-form">
                   <td><input type='number' name='recordid' value='<?php  echo $records[$row]['recordid']; ?>' readonly></td>
                   <td> <?php echo $records[$row]['firstname'] . ' ' . $records[$row]['lastname']; ?> </td>
                   <td> <?php echo $records[$row]['temperature']; ?> </td>
@@ -131,8 +129,9 @@
           ?>        
         </tbody>
       </table>
-
-      <button class="btn btn-primary btn-add" ><a href="new-day-details-form.php">+ Add Record</a></button> 
+      <div class="flex">
+        <a class="btn btn-primary" href="new-day-details-form.php">+ Add Record</a>
+      </div> 
     </div>
   </section>  
 
