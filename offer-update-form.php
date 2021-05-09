@@ -11,30 +11,30 @@
 <?php 
 if ($_SERVER['REQUEST_METHOD'] == "POST") { 
   
-  $errors = array('serviceid' => '', 'servicetitle' => '', 'servicedetail' => '', 'imagepath' => '', 'link' => '', 'failure' => '');  
+  $errors = array('offerid' => '', 'offertitle' => '', 'offerdetail' => '', 'imagepath' => '', 'link' => '', 'failure' => '');  
 
-  // validate serviceid
-  if (empty($_POST['serviceid-update']))
+  // validate offerid
+  if (empty($_POST['offerid-update']))
   {
-      $errors['serviceid'] = 'serviceid missing!';
+      $errors['offerid'] = 'offerid missing!';
   } else {
-      $serviceid = trim($_POST['serviceid-update']);
+      $offerid = trim($_POST['offerid-update']);
   }
 
-  // validate servicetitle
-  if (empty($_POST['servicetitle-update']))
+  // validate offertitle
+  if (empty($_POST['offertitle-update']))
   {
-      $errors['servicetitle'] = 'servicetitle missing!';
+      $errors['offertitle'] = 'offertitle missing!';
   } else {
-      $servicetitle = trim($_POST['servicetitle-update']);
+      $offertitle = trim($_POST['offertitle-update']);
   }
 
-  // validate servicedetail
-  if (empty($_POST['servicedetail-update']))
+  // validate offerdetail
+  if (empty($_POST['offerdetail-update']))
   {
-      $errors['servicedetail'] = 'servicedetail missing!';
+      $errors['offerdetail'] = 'offerdetail missing!';
   } else {
-      $servicedetail = trim($_POST['servicedetail-update']);
+      $offerdetail = trim($_POST['offerdetail-update']);
   }
 
   // validate imagepath
@@ -82,7 +82,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
   // update record in database
   if (count(array_filter($errors)) == 0)
   { 
-    $query = "UPDATE service SET servicetitle = '$servicetitle', servicedetail = '$servicedetail', imagepath = '$imagepath', link = '$link' WHERE serviceid = '$serviceid'";
+    $query = "UPDATE special_offer SET offertitle = '$offertitle', offerdetail = '$offerdetail', imagepath = '$imagepath', link = '$link' WHERE offerid = '$offerid'";
     $result = @mysqli_query($db_connection, $query);    
 
       // if the query ran successfully
@@ -104,44 +104,44 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
   if ($_SERVER['REQUEST_METHOD'] == "GET") {   
 
     // make sure array exists when page first loads
-    $errors = array('serviceid' => '', 'servicetitle' => '', 'servicedetail' => '', 'imagepath' => '', 'link' => '', 'failures' => '');
+    $errors = array('offerid' => '', 'offertitle' => '', 'offerdetail' => '', 'imagepath' => '', 'link' => '', 'failure' => '');  
 
       // get record id to be updated
-      $service = $_GET['serviceid']; 
+      $offer = $_GET['offerid']; 
       // get record from database
-      $query = "SELECT serviceid, servicetitle, servicedetail, imagepath, link FROM service WHERE serviceid = '$service'";
+      $query = "SELECT offerid, offertitle, offerdetail, imagepath, link FROM special_offer WHERE offerid = '$offer'";
       $result = @mysqli_query($db_connection, $query);
-      $service_detail = array();
+      $offer_detail = array();
       // store data in array
       while ($row = mysqli_fetch_array($result)) {
-        $service_detail[] = array(  
-          'serviceid' => $row['serviceid'],  
-          'servicetitle' => $row['servicetitle'], 
-          'servicedetail' => $row['servicedetail'], 
+        $offer_detail[] = array(  
+          'offerid' => $row['offerid'],  
+          'offertitle' => $row['offertitle'], 
+          'offerdetail' => $row['offerdetail'], 
           'imagepath' => $row['imagepath'], 
           'link' => $row['link']
         ); 
       } 
       // save values to variables
-      $serviceid = $service_detail[0]['serviceid'];
-      $servicetitle = $service_detail[0]['servicetitle'];
-      $servicedetail = $service_detail[0]['servicedetail'];
-      $imagepath = $service_detail[0]['imagepath'];
-      $link = $service_detail[0]['link'];
+      $offerid = $offer_detail[0]['offerid'];
+      $offertitle = $offer_detail[0]['offertitle'];
+      $offerdetail = $offer_detail[0]['offerdetail'];
+      $imagepath = $offer_detail[0]['imagepath'];
+      $link = $offer_detail[0]['link'];
     }  
   ?> 
 
 <section class="day-details">
   <div class="container">  
     <form enctype="multipart/form-data" method='post' action="" class="update-details-form">          
-        <label for="serviceid-update">Service ID</label>
-        <input type="number" id="serviceid-update" name="serviceid-update" placeholder="" value="<?php echo $serviceid; ?>" readonly>
-        <label for="servicetitle-update">Title</label>
-        <input type="text" id="servicetitle-update" name="servicetitle-update" placeholder="" value="<?php echo $servicetitle ?>">
-        <div class='red-text'><?php if(isset($errors['servicetitle'])) { echo $errors['servicetitle']; } ?></div>   
-        <label for="servicedetail-update">Detail</label>
-        <textarea name="servicedetail-update" id="servicedetail-update" cols="30" rows="10"><?php if(isset($servicedetail)) { echo $servicedetail; } ?></textarea>
-        <div class='red-text'><?php if(isset($errors['servicedetail'])) { echo $errors['servicedetail']; } ?></div>   
+        <label for="serviceid-update">Offfer ID</label>
+        <input type="number" id="offerid-update" name="offerid-update" placeholder="" value="<?php echo $offerid; ?>" readonly>
+        <label for="offertitle-update">Title</label>
+        <input type="text" id="offertitle-update" name="offertitle-update" placeholder="" value="<?php echo $offertitle ?>">
+        <div class='red-text'><?php if(isset($errors['offertitle'])) { echo $errors['offertitle']; } ?></div>   
+        <label for="offerdetail-update">Detail</label>
+        <textarea name="offerdetail-update" id="offerdetail-update" cols="30" rows="10"><?php if(isset($offerdetail)) { echo $offerdetail; } ?></textarea>
+        <div class='red-text'><?php if(isset($errors['offerdetail'])) { echo $errors['offerdetail']; } ?></div>   
         <label for="imagepath-update">Image</label>
         <input type="file" name="imagepath-update" id="imagepath-update">
         <div class='red-text'><?php if(isset($errors['imagepath'])) { echo $errors['imagepath']; } ?></div>   

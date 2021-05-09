@@ -75,7 +75,7 @@
 
     <!-- get events from database -->
     <?php 
-      $query = "SELECT eventTitle, startTime, endTime, link FROM event limit 5";
+      $query = "SELECT eventTitle, startTime, endTime, imagepath, link FROM event limit 5";
       $result = @mysqli_query($db_connection, $query);
 
       $events = array();
@@ -85,6 +85,7 @@
           'eventTitle' => $row['eventTitle'],  
           'startTime' => $row['startTime'], 
           'endTime' => $row['endTime'],  
+          'imagepath' => $row['imagepath'],  
           'link' => $row['link']
         ); 
       }
@@ -92,8 +93,8 @@
 
     <section class="updates p-top" id="updates">
       <div class="container grid">
-        <!-- <figure><img src="img/updates-img.jpg" alt=""></figure> -->
-        <div class="img"></div>
+        
+        <div><figure><img src="<?php if(isset($events[4]['imagepath'])) { echo $events[4]['imagepath']; } ?>" alt=""></figure></div>
 
         <div class="update-info">
           <h3 class="heading-3">Events</h3>
