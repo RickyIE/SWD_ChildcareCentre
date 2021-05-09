@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -39,8 +38,7 @@
             'link' => $row['link'], 
             'accesslevel' => $row['accesslevel']
           );         
-        }    
-
+        }
         ?>
         <ul>
           <?php    
@@ -55,11 +53,7 @@
                   ?>         
                   <li><a href="<?php echo $menu[$sub]['link']; ?>"><?php echo $menu[$sub]['title']; ?></a></li>
                   <?php
-                } else { // close original item
-                  ?>
-                  </li>
-                  <?php
-                }
+                } else { echo '</li>  '; }
               }
               ?>
               </ul>
@@ -81,7 +75,7 @@
           <a class="btn btn-primary" href="login-form.php">Log In</a>
           <?php
         }
-        ?>    
+        ?>
       </div>
     </div>  
   </div>

@@ -72,9 +72,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     if (count(array_filter($errors)) == 0)
     { 
       $query = "UPDATE daily_record SET temperature = '$temperature', breakfast = '$breakfast', lunch = '$lunch', activityId = '$activityid' WHERE recordid = '$recordid'";
-      $result = @mysqli_query($db_connection, $query);
-
-    
+      $result = @mysqli_query($db_connection, $query);    
 
       // if the query ran successfully
       if ($result)
