@@ -124,7 +124,7 @@
                         <td> <?php echo $events[$row]['endtime']; ?> </td>
                         <td> <?php echo $events[$row]['link']; ?> </td>
                         <td><button type='submit' name='' class="btn-up">Update</button></td>
-                        <td><button type="submit" formaction="delete_event.php" class="btn-del">Delete</button></td>
+                        <td><button type="submit" formaction="scripts/delete_event.php" class="btn-del">Delete</button></td>
                      </form>
                   </tr>
                   <?php  
@@ -161,7 +161,7 @@
                         <td> <?php echo $offers[$row]['offerdetail']; ?> </td>
                         <td> <?php echo $offers[$row]['link']; ?> </td>
                         <td><button type='submit' name='' class="btn-up">Update</button></td>
-                        <td><button type="submit" formaction="delete_offer.php" class="btn-del">Delete</button></td>
+                        <td><button type="submit" formaction="scripts/delete_offer.php" class="btn-del">Delete</button></td>
                      </form>
                   </tr>
                   <?php  

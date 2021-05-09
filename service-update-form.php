@@ -3,7 +3,7 @@
 
 <head>
   <?php include 'header.php'; ?>
-  <title>Day Details Update</title>
+  <title>Update Service</title>
 </head>
 
 <body>

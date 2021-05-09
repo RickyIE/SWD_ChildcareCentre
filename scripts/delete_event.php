@@ -7,7 +7,7 @@ if (empty($_GET['eventid']))
 {
     $errors[] = 'No event id found!';
 } else {
-    $service = $_GET['eventid']; 
+    $event = $_GET['eventid']; 
 }
 
 if (empty($errors))
