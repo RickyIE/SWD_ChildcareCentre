@@ -3,7 +3,7 @@
 
 <head>
   <?php include 'header.php'; ?>
-  <title>Event Update Form</title>
+  <title>Update Event</title>
 </head>
 
 <body>

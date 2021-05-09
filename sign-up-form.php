@@ -2,30 +2,19 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" /> -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
-    integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w=="
-    crossorigin="anonymous" />
-  <link rel="stylesheet" href="css/utilities.css">
-  <link rel="stylesheet" href="css/style.css">
-  <title>New Day Details</title>
+  <?php include 'header.php'; ?>
+  <title>New Service</title>
 </head>
 
 <body>
 
 <?php 
-  require ('scripts/connect.php'); 
   // clear array and start validation again
   $errors = array('first_name' => '', 'last_name' => '', 'home_phone' => '', 'mobile_phone' => '', 'street' => '', 'town' => '', 'county' => '', 'country' => '', 'eircode' => '', 'username' => '', 'password' => '', 'password_confirm' => '');
 ?>
 
 <?php 
 if ($_SERVER['REQUEST_METHOD'] == "POST") {   
-
-  session_start();
 
   // validate username / email
   if (empty($_POST['username']))
@@ -185,28 +174,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 }
 ?>
 
-  <!-- Navbar -->
-  <div class="navbar" id="home">
-    <div class="container flex">
-      <figure><img class="logo" src="img/logo-01.svg" alt=""></figure>
-      <nav>
-        <ul>
-          <li><a href="#home">Home</a></li>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#updates">Updates</a></li>
-          <li><a href="#offers">Offers</a></li>
-        </ul>
-      </nav>
-
-      <div class="nav-buttons">
-        <button class="btn btn-primary btn-primary show-sign-up-modal">Sign Up</button>
-        <button class="btn btn-primary btn-secondary show-log-in-modal">Log In</button>
-      </div>
-    </div>
-  </div>
-  <!-- End Navigation -->
-
-
+ 
 <section class="sign-up">
   <div class="grid">  
     <div class="left-content">
