@@ -316,7 +316,8 @@
 }
 
 .sign-up .grid,
-.login .grid {
+.login .grid,
+.day-details .grid {
   grid-gap: 0;
   height: 100%;
   grid-template-columns: 55% 45%;
@@ -324,7 +325,8 @@
 }
 
 .sign-up .sign-up-form-card,
-.login .login-form-card {
+.login .login-form-card,
+.update-details-form {
   margin: 0 auto;
   width: 80%;
   padding: 20px;

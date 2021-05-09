@@ -117,7 +117,11 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
   ?>
 
 <section class="day-details">
-    <div class="container">  
+    <div class="grid"> 
+      <div class="left-content">
+        <figure><img src="img/cog-01.svg" alt=""></figure>
+      </div>
+      
       <form method='post' action="" class="update-details-form">   
       <div class="custom-select">
         <select name="childname">            
@@ -198,14 +202,12 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
       <div class='red-text'><?php echo $errors['activities']; ?></div>
       </div>
             <button class="btn btn-primary">Add Details</button>
-          </form>      
-      </div>
+          </form>  
+    </div>
       
-      </section>
+</section>
 
       <?php include 'footer.html' ?>
-      
-  <div class="overlay hidden"></div>
   <script src="js/app.js"></script>
 </body>
 
