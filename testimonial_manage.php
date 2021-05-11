@@ -13,19 +13,80 @@
   <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/alex_temp.css">
   <title>Testimonial Manager</title>
+    <script type="text/javascript" src="lib/jquery-3.6.0.min.js"></script>
     <?php include 'header.php' ?>
 </head>
 
 <body>
 
+<?php require ('scripts/connect.php'); ?>
+<?php //require ('scripts/updateTestimonials.php'); ?>
+
+<?php
+
+$query = "SELECT t2.testimonialId, t1.firstName, t1.lastName, t2.comment, t2.serviceName, t2.created, t3.county, t3.country
+FROM user AS t1
+INNER JOIN testimonial AS t2 ON t1.username = t2.parentEmail
+INNER JOIN address AS t3 ON t1.username = t3.username;";
+
+$result = mysqli_query($db_connection, $query);
+
+
+
+
+
+$dataArray = array();
+
+
+if (mysqli_num_rows($result) > 0) {
+    // output data of each row
+    while ($row = mysqli_fetch_assoc($result)) {
+        $dataArray[] = $row;
+
+    }
+
+} else {
+    echo "0 results";
+}
+
+
+$searchForm = $_POST['search-form'];
+echo $searchForm;
+
+$query2 = "SELECT * FROM testimonial_panels;";
+
+$result2 = mysqli_query($db_connection, $query2);
+
+$dataArray2 = array();
+
+if (mysqli_num_rows($result2) > 0) {
+    // output data of each row
+    while ($row = mysqli_fetch_assoc($result2)) {
+        $dataArray2[] = $row;
+
+    }
+
+} else {
+    echo "0 results";
+}
+
+
+$string = "";
+$rowsCounter = count($dataArray);
+
+?>
+
+
+
+
   <section class="day-details-info p-top">
       <div class="container grid">
           <!-- Search filter -->
-          <form method='post' action=''>
-              <label for="id">Search for Keyword</label>
-              <input type='text' class='dateFilter' name='date' value=''>
+          <form method='post' action='' id="testimonials-search-form">
+              <label for="search-form-id">Search for Keyword</label>
+              <input type='search' class='dateFilter' name='search-form' id="search-form-id" placeholder="Enter search criteria and click sort ...">
+              <input type='button' class="btn btn-primary" name='btn_search' value='sort' id="testimonials-search">
           </form>
-          <input type='submit' class="btn btn-primary" name='btn_search' value='Search' id="testimonials-search">
       </div>
   </section>
 
@@ -63,51 +124,41 @@
         <div class="slider">
           <section>
             <div class="slide-content flex" id="testimonials-panel-1">
-              <h3 class="heading-3 italic" id="testimonials-panel-1-heading">"Words cannot express the thanks that my family has for each and every
-                Kiddie Clubhouse early childhood teacher and staff person that has been a part of our family for
-                almost nine years."
+              <h3 class="heading-3 italic" id="testimonials-panel-1-heading"> <?php echo '"'.$dataArray2[0]['testimonial'].'"' ?>
               </h3>
               <figure><img src="img/user-pic-2.jpg" alt=""></figure>
-              <h4 class="testimonial-name" id="testimonials-panel-1-name">Archie Andrews</h4>
-              <h5 class="testimonial-location" id="testimonials-panel-1-location">Dublin, Ireland</h5>
+              <h4 class="testimonial-name" id="testimonials-panel-1-name"><?php echo $dataArray2[0]['first_name']." ".$dataArray2[0]['last_name'] ?></h4>
+              <h5 class="testimonial-location" id="testimonials-panel-1-location"><?php echo $dataArray2[0]['county'].", ".$dataArray2[0]['country'] .", ". $dataArray2[0]['date']?></h5>
             </div>
           </section>
 
           <section>
             <div class="slide-content flex" id="testimonials-panel-2">
-              <h3 class="heading-3 italic" id="testimonials-panel-2-heading">"We have been attending the creche for the 7 years with both of our boys
-                and
-                we have always appreciated the wonderful care provided to them."
+              <h3 class="heading-3 italic" id="testimonials-panel-2-heading"><?php echo '"'.$dataArray2[1]['testimonial'].'"' ?>
               </h3>
               <figure><img src="img/user-pic-1.jpg" alt=""></figure>
-              <h4 class="testimonial-name" id="testimonials-panel-2-name">Veronica Lodge</h4>
-              <h5 class="testimonial-location" id="testimonials-panel-2-location">Cork, Ireland</h5>
+              <h4 class="testimonial-name" id="testimonials-panel-2-name"><?php echo $dataArray2[1]['first_name']." ".$dataArray2[1]['last_name'] ?></h4>
+              <h5 class="testimonial-location" id="testimonials-panel-2-location"><?php echo $dataArray2[1]['county'].", ".$dataArray2[1]['country'] .", ". $dataArray2[1]['date']?></h5>
             </div>
           </section>
 
           <section>
             <div class="slide-content flex" id="testimonials-panel-3">
-              <h3 class="heading-3 italic" id="testimonials-panel-3-heading">"My son Matteo has been going to Share and Care since he was 1 year old and
-                now he is going to be 4 in March. He looks forward to it every day!! The atmosphere is amazing and the
-                teachers, can’t ask for anything more. Thumbs up to them all!."
+              <h3 class="heading-3 italic" id="testimonials-panel-3-heading"><?php echo '"'.$dataArray2[2]['testimonial'].'"' ?>
               </h3>
               <figure><img src="img/user-pic-4.jpg" alt=""></figure>
-              <h4 class="testimonial-name" id="testimonials-panel-3-name">Kevin Keller</h4>
-              <h5 class="testimonial-location" id="testimonials-panel-3-location">Dublin, Ireland</h5>
+              <h4 class="testimonial-name" id="testimonials-panel-3-name"><?php echo $dataArray2[2]['first_name']." ".$dataArray2[2]['last_name'] ?></h4>
+              <h5 class="testimonial-location" id="testimonials-panel-3-location"><?php echo $dataArray2[2]['county'].", ".$dataArray2[2]['country'] .", ". $dataArray2[2]['date']?></h5>
             </div>
           </section>
 
           <section>
             <div class="slide-content flex" id="testimonials-panel-4">
-              <h3 class="heading-3 italic" id="testimonials-panel-4-heading">"We’ve had a few daycare experiences before, I can absolutely say that
-                Kiddie
-                Clubhouse is a six-star experience for the kids. They’ve learnt to socialise, they’re writing their
-                names,
-                one of my kids is 4 and a half and the other is two."
+              <h3 class="heading-3 italic" id="testimonials-panel-4-heading"><?php echo '"'.$dataArray2[3]['testimonial'].'"' ?>
               </h3>
               <figure><img src="img/user-pic-3.jpg" alt=""></figure>
-              <h4 class="testimonial-name" id="testimonials-panel-4-name">Alice Cooper</h4>
-                <h5 class="testimonial-location" id="testimonials-panel-4-location">Kerry, Ireland</h5>
+              <h4 class="testimonial-name" id="testimonials-panel-4-name"><?php echo $dataArray2[3]['first_name']." ".$dataArray2[3]['last_name'] ?></h4>
+                <h5 class="testimonial-location" id="testimonials-panel-4-location"><?php echo $dataArray2[3]['county'].", ".$dataArray2[3]['country'] .", ". $dataArray2[3]['date']?></h5>
             </div>
           </section>
 
@@ -142,62 +193,15 @@
 </html>
 
 
-<?php require ('scripts/connect.php'); ?>
-
-<?php
-
-$query = "SELECT t2.testimonialId, t1.firstName, t1.lastName, t2.comment, t2.serviceName, t2.created, t3.county, t3.country
-FROM user AS t1
-INNER JOIN testimonial AS t2 ON t1.username = t2.parentEmail
-INNER JOIN address AS t3 ON t1.username = t3.username;";
-
-$result = mysqli_query($db_connection, $query);
-
-//$query1 = "INSERT INTO testimonial_panels (first_name, last_name, testimonial, activity)
-//VALUES ('Josh' , 'Walsh', 'This place is like haven', 'Mine Laying')";
-//
-//$result1 = mysqli_query($db_connection, $query1);
-
-$dataArray = array();
-
-//function myphpfunction(){
-//
-//    $query = "INSERT INTO testimonial_panels (panel_id) VALUES (6);";
-//    $result = mysqli_query($db_connection, $query);
-//    return $query;
-//
-//}
-
-if (mysqli_num_rows($result) > 0) {
-    // output data of each row
-    while ($row = mysqli_fetch_assoc($result)) {
-        $dataArray[] = $row;
-
-    }
-
-} else {
-    echo "0 results";
-}
-
-
-//$db_connection->close();
-
-// ***************************** FOR TESTING *****************************
-
-        $string = "";
-        $rowsCounter = count($dataArray);
-
-// ***************************** FOR TESTING *****************************
-
-?>
-
-<script>
+<script type="text/javascript">
 
     const allDataArray = <?php echo json_encode($dataArray); ?>; // parse the PHP array in to a JavaScript array
     const buttonPopulate = document.querySelector('#testimonials-button-populate');
     const buttonClear = document.querySelector('#testimonials-button-clear').addEventListener('click' , removeTable);
     const tableContainer = document.querySelector('#testimonials-table-container'); // create the table inside teh container
     const searchButton = document.querySelector('#testimonials-search').addEventListener('click' , populateEntriesRegex);
+    let panelNumber = 1;
+    let panelFName = "My first name";
     document.querySelector('body').addEventListener("load", loadEntries);
     window.onload = loadEntries(allDataArray);
 
@@ -208,8 +212,40 @@ if (mysqli_num_rows($result) > 0) {
 
     function populateEntriesRegex(){
 
-        // var dataArray = myArray
-        alert(allDataArray[1]['country'])
+        let formInput = document.getElementById('search-form-id');
+
+        if ( formInput.value.length > 0) {
+
+            let arr = [];
+
+            for (let i = 0; i < allDataArray.length; i++){
+
+                let input = formInput.value.toLowerCase();
+                let regex = new RegExp(input);
+
+
+                if (regex.test(allDataArray[i]['testimonialId'].toLowerCase()) === true ||
+                    regex.test(allDataArray[i]['firstName'].toLowerCase()) === true ||
+                    regex.test(allDataArray[i]['lastName'].toLowerCase()) === true ||
+                    regex.test(allDataArray[i]['comment'].toLowerCase()) === true ||
+                    regex.test(allDataArray[i]['serviceName'].toLowerCase()) === true ||
+                    regex.test(allDataArray[i]['created'].toLowerCase()) === true ||
+                    regex.test(allDataArray[i]['county'].toLowerCase()) === true ||
+                    regex.test(allDataArray[i]['country'].toLowerCase()) === true){
+
+                    arr.push(allDataArray[i]);
+
+                }
+
+
+            }
+
+            loadEntries(arr);
+
+
+        }else{
+            alert("Please input search criteria!")
+        }
 
     }
 
@@ -217,7 +253,6 @@ if (mysqli_num_rows($result) > 0) {
 
    function loadEntries(myArray){
 
-       //let insertInToDatabase = "<?php //echo myphpfunction() ?>//";
 
        if(!!document.getElementById('testimonials-table') === true){
            removeTable();
@@ -309,6 +344,7 @@ if (mysqli_num_rows($result) > 0) {
                cellButton.id = 'testimonials-body-update-'+id_count;
 
 
+
                cellButton.onclick = function (){
 
                    sortedArray[0] = cellId.innerHTML;
@@ -320,6 +356,8 @@ if (mysqli_num_rows($result) > 0) {
                    sortedArray[6] = cellCounty.innerHTML;
                    sortedArray[7] = cellCountry.innerHTML;
 
+                   let update;
+
                    switch(cellPanelChoice.value){
 
                        case"1":
@@ -327,6 +365,10 @@ if (mysqli_num_rows($result) > 0) {
                            let header = document.getElementById('testimonials-panel-1-heading').innerHTML = (sortedArray[3]);
                            let name = document.getElementById('testimonials-panel-1-name').innerHTML = (sortedArray[1]+" "+sortedArray[2]);
                            let date = document.getElementById('testimonials-panel-1-location').innerHTML = (sortedArray[6]+", "+sortedArray[7]+" - "+sortedArray[5]);
+
+                           const numberTwo = 2;
+
+
 
                            break;
 
@@ -336,13 +378,14 @@ if (mysqli_num_rows($result) > 0) {
                            let name2 = document.getElementById('testimonials-panel-2-name').innerHTML = (sortedArray[1]+" "+sortedArray[2]);
                            let date2 = document.getElementById('testimonials-panel-2-location').innerHTML = (sortedArray[6]+", "+sortedArray[7]+" - "+sortedArray[5]);
 
+
                            break;
 
                        case"3":
 
                            let header3 = document.getElementById('testimonials-panel-3-heading').innerHTML = (sortedArray[3]);
                            let name3 = document.getElementById('testimonials-panel-3-name').innerHTML = (sortedArray[1]+" "+sortedArray[2]);
-                           let date3 = document.getElementById('testimonials-panel-3-location').innerHTML = (sortedArray[6]+", "+sortedArray[7]+" - "+sortedArray[5]);
+                           let date3 = document.getElementById('testimonials-panel-3-location').innerHTML = (sortedArray[6]+", "+sortedArray[7]+" - "+sortedArray[5])
 
                            break;
 
@@ -351,6 +394,7 @@ if (mysqli_num_rows($result) > 0) {
                            let header4 = document.getElementById('testimonials-panel-4-heading').innerHTML = (sortedArray[3]);
                            let name4 = document.getElementById('testimonials-panel-4-name').innerHTML = (sortedArray[1]+" "+sortedArray[2]);
                            let date4 = document.getElementById('testimonials-panel-4-location').innerHTML = (sortedArray[6]+", "+sortedArray[7]+" - "+sortedArray[5]);
+
 
                            break;
                    }
