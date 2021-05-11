@@ -16,7 +16,7 @@
    <!-- get activities from database -->
    <?php 
       // select data
-      $query = "SELECT eventid, eventtitle, eventdetail, starttime, endtime, imagepath, link FROM event";
+      $query = "SELECT eventid, eventtitle, eventdetail, starttime, endtime, imagepath FROM event";
       
       // add results to array for later    
       $result = @mysqli_query($db_connection, $query);
@@ -28,8 +28,7 @@
           'eventdetail' => $row['eventdetail'],  
           'starttime' => $row['starttime'],  
           'endtime' => $row['endtime'],  
-          'imagepath' => $row['imagepath'],  
-          'link' => $row['link']
+          'imagepath' => $row['imagepath']
         ); 
       }
       ?>  
