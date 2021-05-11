@@ -4,6 +4,7 @@
       <?php include 'header.php' ?>
       <title>Activities</title>
    </head>
+   <body>
    <section class="activities-intro p-top">
       <div class="container flex center">
          <div class="intro-text">
@@ -15,7 +16,7 @@
    <!-- get activities from database -->
    <?php 
       // select data
-      $query = "SELECT activityid, activitytitle, activitydetail, imagepath, link FROM activity";
+      $query = "SELECT activityid, activitytitle, activitydetail, imagepath FROM activity";
       
       // add results to array for later    
       $result = @mysqli_query($db_connection, $query);
@@ -25,8 +26,7 @@
           'activityid' => $row['activityid'],  
           'activitytitle' => $row['activitytitle'], 
           'activitydetail' => $row['activitydetail'],  
-          'imagepath' => $row['imagepath'],  
-          'link' => $row['link']
+          'imagepath' => $row['imagepath']
         ); 
       }
       ?>  

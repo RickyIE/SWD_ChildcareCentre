@@ -11,7 +11,7 @@
 <?php 
 if ($_SERVER['REQUEST_METHOD'] == "POST") { 
   
-  $errors = array('serviceid' => '', 'servicetitle' => '', 'servicedetail' => '', 'imagepath' => '', 'link' => '', 'failure' => '');  
+  $errors = array('serviceid' => '', 'servicetitle' => '', 'servicedetail' => '', 'imagepath' => '', 'failure' => '');  
 
   // validate serviceid
   if (empty($_POST['serviceid-update']))
@@ -60,14 +60,6 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     $errors['imagepath'] = 'No file found!';
   }
 
-  // validate link
-  if (empty($_POST['link-update']))
-  {
-      $errors['link'] = 'link missing!';
-  } else {
-      $link = trim($_POST['link-update']);
-  }
-
   // Evaluates array because it always has keyes, so never empty
   foreach($errors as $key => $value) {
     if ($value!=''){
@@ -82,7 +74,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
   // update record in database
   if (count(array_filter($errors)) == 0)
   { 
-    $query = "UPDATE service SET servicetitle = '$servicetitle', servicedetail = '$servicedetail', imagepath = '$imagepath', link = '$link' WHERE serviceid = '$serviceid'";
+    $query = "UPDATE service SET servicetitle = '$servicetitle', servicedetail = '$servicedetail', imagepath = '$imagepath' WHERE serviceid = '$serviceid'";
     $result = @mysqli_query($db_connection, $query);    
 
       // if the query ran successfully
@@ -104,12 +96,12 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
   if ($_SERVER['REQUEST_METHOD'] == "GET") {   
 
     // make sure array exists when page first loads
-    $errors = array('serviceid' => '', 'servicetitle' => '', 'servicedetail' => '', 'imagepath' => '', 'link' => '', 'failures' => '');
+    $errors = array('serviceid' => '', 'servicetitle' => '', 'servicedetail' => '', 'imagepath' => '', 'failures' => '');
 
       // get record id to be updated
       $service = $_GET['serviceid']; 
       // get record from database
-      $query = "SELECT serviceid, servicetitle, servicedetail, imagepath, link FROM service WHERE serviceid = '$service'";
+      $query = "SELECT serviceid, servicetitle, servicedetail, imagepath FROM service WHERE serviceid = '$service'";
       $result = @mysqli_query($db_connection, $query);
       $service_detail = array();
       // store data in array
@@ -118,8 +110,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
           'serviceid' => $row['serviceid'],  
           'servicetitle' => $row['servicetitle'], 
           'servicedetail' => $row['servicedetail'], 
-          'imagepath' => $row['imagepath'], 
-          'link' => $row['link']
+          'imagepath' => $row['imagepath']
         ); 
       } 
       // save values to variables
@@ -127,12 +118,14 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
       $servicetitle = $service_detail[0]['servicetitle'];
       $servicedetail = $service_detail[0]['servicedetail'];
       $imagepath = $service_detail[0]['imagepath'];
-      $link = $service_detail[0]['link'];
     }  
   ?> 
 
 <section class="day-details">
-  <div class="container">  
+<div class="grid"> 
+      <div class="left-content">
+        <figure><img src="img/cog-01.svg" alt=""></figure>
+      </div> 
     <form enctype="multipart/form-data" method='post' action="" class="update-details-form">          
         <label for="serviceid-update">Service ID</label>
         <input type="number" id="serviceid-update" name="serviceid-update" placeholder="" value="<?php echo $serviceid; ?>" readonly>
@@ -144,19 +137,15 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         <div class='red-text'><?php if(isset($errors['servicedetail'])) { echo $errors['servicedetail']; } ?></div>   
         <label for="imagepath-update">Image</label>
         <input type="file" name="imagepath-update" id="imagepath-update">
-        <div class='red-text'><?php if(isset($errors['imagepath'])) { echo $errors['imagepath']; } ?></div>   
-        <img src="<?php if(isset($imagepath)) { echo $imagepath; } ?>" alt="" class="activity-image service-image" width="200" height="200">
-        <label for="">Link</label>
-        <input type="text" id="link-update" name="link-update" placeholder="" value="<?php echo $link ?>">
-        <div class='red-text'><?php if(isset($errors['link'])) { echo $errors['link']; } ?></div> 
-        <button type="submit" class="btn btn-primary" >Update Details</button>
-        <div class='red-text'><?php if(isset($errors['failure'])) { echo $errors['failure']; } ?></div> 
+        <div class='red-text'><?php if(isset($errors['imagepath'])) { echo $errors['imagepath']; } ?></div>
+        <div class="flex">
+          <button type="submit" class="btn btn-primary" >Update Service</button>
+          <div class='red-text'><?php if(isset($errors['failure'])) { echo $errors['failure']; } ?></div> 
+        </div> 
       </form>      
   </div>
 </section>
-
 <?php include 'footer.html'; ?>
-
   <div class="overlay hidden"></div>
   <script src="js/app.js"></script>
 </body>

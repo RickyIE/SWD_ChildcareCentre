@@ -4,6 +4,7 @@
       <?php include 'header.php' ?>
       <title>Events</title>
    </head>
+   <body>
    <section class="activities-intro p-top">
       <div class="container flex center">
          <div class="intro-text">
@@ -37,7 +38,7 @@
       for ($row = 0; $row < sizeof($events); $row++) { 
           if ($row % 2 == 0) { // if even
             ?>
-   <section class="daily-activities p-top">
+   <section id="<?php echo "event" . $events[$row]['eventid']; ?>" class="daily-activities p-top">
       <div class="container grid">
          <div>
             <img src="<?php echo $events[$row]['imagepath']; ?>" alt="" class="activity-image">
@@ -52,7 +53,7 @@
    <?php          
       } else {
         ?>
-   <section class="daily-activities p-top">
+   <section id="<?php echo "event" . $events[$row]['eventid']; ?>" class="daily-activities p-top">
       <div class="container grid">
          <div class="activity-text">
             <h2 class="heading-2"><?php echo $events[$row]['eventtitle']; ?></h2>

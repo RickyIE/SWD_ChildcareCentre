@@ -26,19 +26,19 @@
       <!-- End Container -->
     </section>
 
-    <!-- get services from database -->
+    <!-- get services from database. Only ever use 3 services. -->
     <?php 
-      $query = "SELECT serviceTitle, serviceDetail, imagePath, link FROM service limit 3";
+      $query = "SELECT serviceid, serviceTitle, serviceDetail, imagePath FROM service ORDER BY serviceid DESC limit 3";
       $result = @mysqli_query($db_connection, $query);
 
       $services = array();
 
       while ($row = mysqli_fetch_array($result)) {
         $services[] = array(  
+          'serviceid' => $row['serviceid'],  
           'serviceTitle' => $row['serviceTitle'],  
           'serviceDetail' => $row['serviceDetail'], 
-          'imagePath' => $row['imagePath'],  
-          'link' => $row['link']
+          'imagePath' => $row['imagePath']
         ); 
       }
     ?>
@@ -46,67 +46,64 @@
     <section class="services p-top" id="services">
       <div class="container">
         <h2 class="heading-2 center">We strive to create a comforting
-          learning experience where children will learn and interact in harmony. Here you can see some of the services
-          we
+          learning experience where children will learn and interact in harmony. Here you can see some of the services we
           provide to make sure your child has a great stay with us.
         </h2>
         <div class="flex center">
+        <?php for ($row = 0; $row < sizeof($services); $row++) { 
+          ?>
           <div>
-            <figure><img src="<?php echo $services[0]['imagePath']; ?>" alt=""></figure>
-            <h3 class="heading-3"><?php echo $services[0]['serviceTitle']?></h3>
-            <p><?php echo $services[0]['serviceDetail']?></p>
-          </div>
-
-          <div>
-            <figure><img src="<?php echo $services[1]['imagePath']; ?>" alt=""></figure>
-            <h3 class="heading-3"><?php echo $services[1]['serviceTitle']?></h3>
-            <p><?php echo $services[1]['serviceDetail']?></p>
-          </div>
-
-          <div>
-            <figure><img src="<?php echo $services[2]['imagePath']; ?>" alt=""></figure>
-              <h3 class="heading-3"><?php echo $services[2]['serviceTitle']?></h3>
-            <p><?php echo $services[2]['serviceDetail']?></p></div>
-          </div>
-        
+            <a href="<?php echo "services.php#service" . $services[$row]['serviceid']; ?>">
+              <figure><img src="<?php echo $services[$row]['imagePath']; ?>" alt=""></figure>
+              <h3 class="heading-3"><?php echo $services[$row]['serviceTitle']?></h3>
+              <p><?php echo $services[$row]['serviceDetail']?></p>
+            </a>  
+          </div>              
+          <?php
+            }        
+          ?>        
         </div>
       </div>
     </section>
 
-    <!-- get events from database -->
+    <!-- get events from database. only take the latest 5 events  -->
     <?php 
-      $query = "SELECT eventTitle, startTime, endTime, imagepath, link FROM event limit 5";
+      $query = "SELECT eventid, eventTitle, startTime, endTime, imagepath FROM event ORDER BY eventid DESC LIMIT 5 ";
       $result = @mysqli_query($db_connection, $query);
 
       $events = array();
 
       while ($row = mysqli_fetch_array($result)) {
         $events[] = array(  
+          'eventid' => $row['eventid'], 
           'eventTitle' => $row['eventTitle'],  
           'startTime' => $row['startTime'], 
           'endTime' => $row['endTime'],  
-          'imagepath' => $row['imagepath'],  
-          'link' => $row['link']
+          'imagepath' => $row['imagepath']
         ); 
       }
     ?>
 
     <section class="updates p-top" id="updates">
       <div class="container grid">
-        
-        <div><figure><img src="<?php if(isset($events[4]['imagepath'])) { echo $events[4]['imagepath']; } ?>" alt=""></figure></div>
+        <!-- use latest event as image -->
+        <div><figure><img src="<?php if(isset($events[0]['imagepath'])) { echo $events[0]['imagepath']; } ?>" alt=""></figure></div>
 
         <div class="update-info">
           <h3 class="heading-3">Events</h3>
           <ul>
-            <li><?php $start_time = DateTime::createFromFormat ( "Y-m-d H:i:s", $events[4]['startTime'] ); $end_time = DateTime::createFromFormat ( "Y-m-d H:i:s", $events[4]['endTime'] ); echo $events[4]['eventTitle'] . ' - ' . $start_time->format('F j, Y, g:i a') . ' to ' . $end_time->format('g:i a');?></li>
-            <li><?php $start_time = DateTime::createFromFormat ( "Y-m-d H:i:s", $events[3]['startTime'] ); $end_time = DateTime::createFromFormat ( "Y-m-d H:i:s", $events[3]['endTime'] ); echo $events[3]['eventTitle'] . ' - ' . $start_time->format('F j, Y, g:i a') . ' to ' . $end_time->format('g:i a');?></li>
-            <li><?php $start_time = DateTime::createFromFormat ( "Y-m-d H:i:s", $events[2]['startTime'] ); $end_time = DateTime::createFromFormat ( "Y-m-d H:i:s", $events[2]['endTime'] ); echo $events[2]['eventTitle'] . ' - ' . $start_time->format('F j, Y, g:i a') . ' to ' . $end_time->format('g:i a');?></li>
-            <li><?php $start_time = DateTime::createFromFormat ( "Y-m-d H:i:s", $events[1]['startTime'] ); $end_time = DateTime::createFromFormat ( "Y-m-d H:i:s", $events[1]['endTime'] ); echo $events[1]['eventTitle'] . ' - ' . $start_time->format('F j, Y, g:i a') . ' to ' . $end_time->format('g:i a');?></li>
-            <li><?php $start_time = DateTime::createFromFormat ( "Y-m-d H:i:s", $events[0]['startTime'] ); $end_time = DateTime::createFromFormat ( "Y-m-d H:i:s", $events[0]['endTime'] ); echo $events[0]['eventTitle'] . ' - ' . $start_time->format('F j, Y, g:i a') . ' to ' . $end_time->format('g:i a');?></li>
+          <?php for ($row = 0; $row < sizeof($events); $row++) { 
+                      ?>
+            <a href="<?php echo "events.php#event" . $events[$row]['eventid']; ?>">
+              <li><?php $start_time = DateTime::createFromFormat ( "Y-m-d H:i:s", $events[$row]['startTime'] ); $end_time = DateTime::createFromFormat ( "Y-m-d H:i:s", $events[$row]['endTime'] ); echo $events[$row]['eventTitle'] . ' - ' . $start_time->format('F j, Y, g:i a') . ' to ' . $end_time->format('g:i a');?></li>
+            </a>
+            <?php
+                }
+            ?>
           </ul>
-
-          <button class="btn btn-primary">More Update Information</button>
+          <div class="flex">
+               <a class="btn btn-primary" href="events.php">More Information</a>
+          </div> 
         </div>
         <!-- End Update Info -->
       </div>
@@ -114,15 +111,16 @@
 
     <!-- get offers from database -->
     <?php 
-      $query = "SELECT offerTitle, link FROM special_offer limit 5";
+      $query = "SELECT offerid, offerTitle, imagepath FROM special_offer ORDER BY offerid DESC limit 5";
       $result = @mysqli_query($db_connection, $query);
 
       $offers = array();
 
       while ($row = mysqli_fetch_array($result)) {
-        $offers[] = array(  
+        $offers[] = array( 
+          'offerid' => $row['offerid'],   
           'offerTitle' => $row['offerTitle'],  
-          'link' => $row['link']
+          'imagepath' => $row['imagepath']
         ); 
       }
     ?>
@@ -132,15 +130,22 @@
         <div class="offer-info">
           <h3 class="heading-3">Latest Offers</h3>
           <ul>
-            <li><?php echo $offers[4]['offerTitle'];?></li>
-            <li><?php echo $offers[3]['offerTitle'];?></li>
-            <li><?php echo $offers[2]['offerTitle'];?></li>
-            <li><?php echo $offers[1]['offerTitle'];?></li>
-            <li><?php echo $offers[0]['offerTitle'];?></li>
+          <?php for ($row = 0; $row < sizeof($offers); $row++) { 
+                      ?>
+            <a href="<?php echo "offers.php#offer" . $offers[$row]['offerid']; ?>">
+              <li><?php echo $offers[$row]['offerTitle'];?></li>
+            </a>
+            <?php
+            }
+            ?>
           </ul>
-          <button class="btn btn-secondary">More Offers Information</button>
+          <div class="flex">
+               <a class="btn btn-primary" href="offers.php">More Information</a>
+          </div> 
         </div>
-        <div class="img"></div>
+         <!-- use latest offer as image -->
+         <div><figure><img src="<?php if(isset($offers[0]['imagepath'])) { echo $offers[0]['imagepath']; } ?>" alt=""></figure></div>
+
       </div>
     </section>
 
