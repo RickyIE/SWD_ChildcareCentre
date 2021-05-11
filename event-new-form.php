@@ -11,7 +11,7 @@
 <?php 
 if ($_SERVER['REQUEST_METHOD'] == "POST") { 
   
-  $errors = array('eventid' => '', 'eventtitle' => '', 'eventdetail' => '', 'starttime' => '', 'endtime' => '', 'imagepath' => '',  'link' => '',  'failure' => '');  
+  $errors = array('eventid' => '', 'eventtitle' => '', 'eventdetail' => '', 'starttime' => '', 'endtime' => '', 'imagepath' => '', 'failure' => '');  
 
   // validate eventtitle
   if (empty($_POST['eventtitle-new']))
@@ -72,14 +72,6 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     $errors['imagepath'] = 'No file found!';
   }
 
-  // validate link
-  if (empty($_POST['link-new']))
-  {
-      $errors['link'] = 'link missing!';
-  } else {
-      $link = trim($_POST['link-new']);
-  }
-
   // Evaluates array because it always has keyes, so never empty
   foreach($errors as $key => $value) {
     if ($value!=''){
@@ -94,7 +86,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
   // update record in database
   if (count(array_filter($errors)) == 0)
   { 
-    $query = "INSERT INTO event (eventtitle, eventdetail, starttime, endtime, imagepath, link ) VALUES('$eventtitle', '$eventdetail', '$starttime', '$endtime', '$imagepath', '$link')";
+    $query = "INSERT INTO event (eventtitle, eventdetail, starttime, endtime, imagepath) VALUES('$eventtitle', '$eventdetail', '$starttime', '$endtime', '$imagepath')";
     $result = @mysqli_query($db_connection, $query);    
 
       // if the query ran successfully
@@ -111,8 +103,13 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
   }
 ?>
 
+
+
 <section class="day-details">
-  <div class="container">  
+  <div class="grid"> 
+      <div class="left-content">
+        <figure><img src="img/cog-01.svg" alt=""></figure>
+      </div>
     <form enctype="multipart/form-data" method='post' action="" class="update-details-form"> 
         <label for="eventtitle-new">Title</label>
         <input type="text" id="eventtitle-new" name="eventtitle-new" placeholder="" value="<?php if(isset($eventtitle)) { echo $eventtitle; } ?>">
@@ -129,11 +126,10 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         <label for="imagepath-new">Image</label>       
         <input type="file" name="imagepath-new" id="imagepath-new">
         <div class='red-text'><?php if(isset($errors['imagepath'])) { echo $errors['imagepath']; } ?></div> 
-        <label for="">Link</label>
-        <input type="text" id="link-new" name="link-new" placeholder="" value="<?php if(isset($link)) { echo $link; } ?>">
-        <div class='red-text'><?php if(isset($errors['link'])) { echo $errors['link']; } ?></div> 
-        <button type="submit" class="btn btn-primary" >Add Details</button>
-        <div class='red-text'><?php if(isset($errors['failure'])) { echo $errors['failure']; } ?></div> 
+        <div class="flex">
+          <button type="submit" class="btn btn-primary" >Add Event</button>
+          <div class='red-text'><?php if(isset($errors['failure'])) { echo $errors['failure']; } ?></div> 
+        </div> 
       </form>      
   </div>
 </section>
