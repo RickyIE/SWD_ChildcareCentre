@@ -16,7 +16,7 @@
    <!-- get services from database -->
    <?php 
       // select data
-      $query = "SELECT serviceid, servicetitle, servicedetail, imagepath, link FROM service";
+      $query = "SELECT serviceid, servicetitle, servicedetail, imagepath FROM service";
       
       // add results to array for later    
       $result = @mysqli_query($db_connection, $query);
@@ -26,8 +26,7 @@
           'serviceid' => $row['serviceid'],  
           'servicetitle' => $row['servicetitle'], 
           'servicedetail' => $row['servicedetail'],  
-          'imagepath' => $row['imagepath'],  
-          'link' => $row['link']
+          'imagepath' => $row['imagepath']
         ); 
       }
       ?>  
