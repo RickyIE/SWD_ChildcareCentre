@@ -16,7 +16,7 @@
    <!-- get services from database -->
    <?php 
       // select data
-      $query = "SELECT offerid, offertitle, offerdetail, imagepath, link FROM special_offer";
+      $query = "SELECT offerid, offertitle, offerdetail, imagepath FROM special_offer";
       
       // add results to array for later    
       $result = @mysqli_query($db_connection, $query);
@@ -26,8 +26,7 @@
           'offerid' => $row['offerid'],  
           'offertitle' => $row['offertitle'], 
           'offerdetail' => $row['offerdetail'],  
-          'imagepath' => $row['imagepath'],  
-          'link' => $row['link']
+          'imagepath' => $row['imagepath']
         ); 
       }
       ?>  
