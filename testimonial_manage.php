@@ -2,25 +2,21 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" /> -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
-    integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w=="
-    crossorigin="anonymous" />
-  <link rel="stylesheet" href="css/utilities.css">
-  <link rel="stylesheet" href="css/style.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css"/>
+    <link rel="stylesheet" href="css/utilities.css">
+    <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/alex_temp.css">
-  <title>Testimonial Manager</title>
+    <title>Testimonial Manager</title>
     <script type="text/javascript" src="lib/jquery-3.6.0.min.js"></script>
     <?php include 'header.php' ?>
+    <?php require('scripts/connect.php'); ?>
 </head>
 
 <body>
 
-<?php require ('scripts/connect.php'); ?>
-<?php //require ('scripts/updateTestimonials.php'); ?>
 
 <?php
 
@@ -29,18 +25,14 @@ FROM user AS t1
 INNER JOIN testimonial AS t2 ON t1.username = t2.parentEmail
 INNER JOIN address AS t3 ON t1.username = t3.username;";
 
-$result = mysqli_query($db_connection, $query);
-
-
-
-
+$retrieveFirstName = mysqli_query($db_connection, $query);
 
 $dataArray = array();
 
 
-if (mysqli_num_rows($result) > 0) {
+if (mysqli_num_rows($retrieveFirstName) > 0) {
     // output data of each row
-    while ($row = mysqli_fetch_assoc($result)) {
+    while ($row = mysqli_fetch_assoc($retrieveFirstName)) {
         $dataArray[] = $row;
 
     }
@@ -51,7 +43,6 @@ if (mysqli_num_rows($result) > 0) {
 
 
 $searchForm = $_POST['search-form'];
-echo $searchForm;
 
 $query2 = "SELECT * FROM testimonial_panels;";
 
@@ -74,151 +65,191 @@ if (mysqli_num_rows($result2) > 0) {
 $string = "";
 $rowsCounter = count($dataArray);
 
+if(array_key_exists('btn_clear_panels', $_POST)) {
+
+    for ($i = 1 ; $i <= 4 ; $i++) {
+
+        $data = ($_POST);
+        $firstName = $data['none'];
+        $lastName = $data['Empty'];
+        $activity = $data['Empty'];
+        $comment = $data['Empty'];
+        $county = $data['Empty'];
+        $country = $data['Empty'];
+        $date = $data['0000-00-00'];
+
+        $db_connection = @mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME) or
+        die("Could not connect to MySQL! " . mysqli_connect_error());
+        mysqli_set_charset($db_connection, 'utf8');
+
+        $query = "
+    UPDATE testimonial_panels
+    SET first_name = '$firstName' , last_name = '$lastName' , testimonial = '$comment' , activity = '$activity' , date = '$date' , county = '$county' , country = '$country'
+    WHERE panel_id = '$i';";
+
+        $result = mysqli_query($db_connection, $query);
+
+    }
+
+}
+
+
 ?>
 
-
-
-
-  <section class="day-details-info p-top">
-      <div class="container grid">
-          <!-- Search filter -->
-          <form method='post' action='' id="testimonials-search-form">
-              <label for="search-form-id">Search for Keyword</label>
-              <input type='search' class='dateFilter' name='search-form' id="search-form-id" placeholder="Enter search criteria and click sort ...">
-              <input type='button' class="btn btn-primary" name='btn_search' value='sort' id="testimonials-search">
-          </form>
-      </div>
-  </section>
-
-  <section class="testimonial-top-text">
+<section class="day-details-info p-top">
     <div class="container grid">
-      <div class="feedback-text">
-          <div id="testimonials-wrapper">
-              <div class="container" id="testimonials-table-container">
+        <!-- Search filter -->
+        <form method='post' id="testimonials-search-form">
+            <label for="search-form-id">Search for Keyword</label>
+            <input type='search' class='dateFilter' name='search-form' id="search-form-id"
+                   placeholder="Enter search criteria and click sort ...">
+            <input type='button' class="btn btn-primary" name='btn_search' value='sort' id="testimonials-search">
+            <input type='submit' class="btn btn-primary" name='btn_clear_panels' value='clear all panels' id="testimonials-clear-all-panels">
 
-                  <!-- JS elements -->
-
-          </div>
-          </div>
-
-          <div class="container">
-              <table class="day-details-table">
-                  <tbody>
-                  <tr>
-                      <td><button class="btn-del show-del-modal" id="testimonials-button-populate">Populate</button></td>
-                      <td><button class="btn-del show-del-modal" id="testimonials-button-clear">Clear</button></td>
-                  </tr>
-                  </tbody>
-              </table>
-          </div>
-
-      </div>
-      <figure><img src="img/parent-feedback-01.svg" alt=""></figure>
+        </form>
     </div>
-  </section>
+</section>
 
+<section class="testimonial-top-text">
+    <div class="container grid">
+        <div class="feedback-text">
+            <div id="testimonials-wrapper">
+                <div class="container" id="testimonials-table-container">
 
-  <section class="testimonials p-top">
-    <div class="container">
-      <div class="carousel">
-        <div class="slider">
-          <section>
-            <div class="slide-content flex" id="testimonials-panel-1">
-              <h3 class="heading-3 italic" id="testimonials-panel-1-heading"> <?php echo '"'.$dataArray2[0]['testimonial'].'"' ?>
-              </h3>
-              <figure><img src="img/user-pic-2.jpg" alt=""></figure>
-              <h4 class="testimonial-name" id="testimonials-panel-1-name"><?php echo $dataArray2[0]['first_name']." ".$dataArray2[0]['last_name'] ?></h4>
-              <h5 class="testimonial-location" id="testimonials-panel-1-location"><?php echo $dataArray2[0]['county'].", ".$dataArray2[0]['country'] .", ". $dataArray2[0]['date']?></h5>
+                    <!-- JS elements -->
+
+                </div>
             </div>
-          </section>
 
-          <section>
-            <div class="slide-content flex" id="testimonials-panel-2">
-              <h3 class="heading-3 italic" id="testimonials-panel-2-heading"><?php echo '"'.$dataArray2[1]['testimonial'].'"' ?>
-              </h3>
-              <figure><img src="img/user-pic-1.jpg" alt=""></figure>
-              <h4 class="testimonial-name" id="testimonials-panel-2-name"><?php echo $dataArray2[1]['first_name']." ".$dataArray2[1]['last_name'] ?></h4>
-              <h5 class="testimonial-location" id="testimonials-panel-2-location"><?php echo $dataArray2[1]['county'].", ".$dataArray2[1]['country'] .", ". $dataArray2[1]['date']?></h5>
+            <div class="container">
+                <table class="day-details-table">
+                    <tbody>
+                    <tr>
+                        <td>
+                            <button class="btn-del show-del-modal" id="testimonials-button-populate">Reset Table</button>
+                        </td>
+                        <td>
+                            <button class="btn-del show-del-modal" id="testimonials-button-clear">Clear Table</button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
             </div>
-          </section>
-
-          <section>
-            <div class="slide-content flex" id="testimonials-panel-3">
-              <h3 class="heading-3 italic" id="testimonials-panel-3-heading"><?php echo '"'.$dataArray2[2]['testimonial'].'"' ?>
-              </h3>
-              <figure><img src="img/user-pic-4.jpg" alt=""></figure>
-              <h4 class="testimonial-name" id="testimonials-panel-3-name"><?php echo $dataArray2[2]['first_name']." ".$dataArray2[2]['last_name'] ?></h4>
-              <h5 class="testimonial-location" id="testimonials-panel-3-location"><?php echo $dataArray2[2]['county'].", ".$dataArray2[2]['country'] .", ". $dataArray2[2]['date']?></h5>
-            </div>
-          </section>
-
-          <section>
-            <div class="slide-content flex" id="testimonials-panel-4">
-              <h3 class="heading-3 italic" id="testimonials-panel-4-heading"><?php echo '"'.$dataArray2[3]['testimonial'].'"' ?>
-              </h3>
-              <figure><img src="img/user-pic-3.jpg" alt=""></figure>
-              <h4 class="testimonial-name" id="testimonials-panel-4-name"><?php echo $dataArray2[3]['first_name']." ".$dataArray2[3]['last_name'] ?></h4>
-                <h5 class="testimonial-location" id="testimonials-panel-4-location"><?php echo $dataArray2[3]['county'].", ".$dataArray2[3]['country'] .", ". $dataArray2[3]['date']?></h5>
-            </div>
-          </section>
-
 
         </div>
+        <figure><img src="img/parent-feedback-01.svg" alt=""></figure>
+    </div>
+</section>
 
-        <div class="controls">
+<section class="testimonials p-top">
+    <div class="container">
+        <div class="carousel">
+            <div class="slider">
+                <section>
+                    <div class="slide-content flex" id="testimonials-panel-1">
+                        <h3 class="heading-3 italic"
+                            id="testimonials-panel-1-heading"><?php echo '"' . $dataArray2[0]['testimonial'] . '"' ?>
+                        </h3>
+                        <figure><img src="img/user-pic-2.jpg" alt=""></figure>
+                        <h4 class="testimonial-name"
+                            id="testimonials-panel-1-name"><?php echo $dataArray2[0]['first_name'] . " " . $dataArray2[0]['last_name'] ?></h4>
+                        <h5 class="testimonial-location"
+                            id="testimonials-panel-1-location"><?php echo $dataArray2[0]['county'] . ", " . $dataArray2[0]['country'] . ", " . $dataArray2[0]['date'] ?></h5>
+                    </div>
+                </section>
+
+                <section>
+                    <div class="slide-content flex" id="testimonials-panel-2">
+                        <h3 class="heading-3 italic"
+                            id="testimonials-panel-2-heading"><?php echo '"' . $dataArray2[1]['testimonial'] . '"' ?>
+                        </h3>
+                        <figure><img src="img/user-pic-1.jpg" alt=""></figure>
+                        <h4 class="testimonial-name"
+                            id="testimonials-panel-2-name"><?php echo $dataArray2[1]['first_name'] . " " . $dataArray2[1]['last_name'] ?></h4>
+                        <h5 class="testimonial-location"
+                            id="testimonials-panel-2-location"><?php echo $dataArray2[1]['county'] . ", " . $dataArray2[1]['country'] . ", " . $dataArray2[1]['date'] ?></h5>
+                    </div>
+                </section>
+
+                <section>
+                    <div class="slide-content flex" id="testimonials-panel-3">
+                        <h3 class="heading-3 italic"
+                            id="testimonials-panel-3-heading"><?php echo '"' . $dataArray2[2]['testimonial'] . '"' ?>
+                        </h3>
+                        <figure><img src="img/user-pic-4.jpg" alt=""></figure>
+                        <h4 class="testimonial-name"
+                            id="testimonials-panel-3-name"><?php echo $dataArray2[2]['first_name'] . " " . $dataArray2[2]['last_name'] ?></h4>
+                        <h5 class="testimonial-location"
+                            id="testimonials-panel-3-location"><?php echo $dataArray2[2]['county'] . ", " . $dataArray2[2]['country'] . ", " . $dataArray2[2]['date'] ?></h5>
+                    </div>
+                </section>
+
+                <section>
+                    <div class="slide-content flex" id="testimonials-panel-4">
+                        <h3 class="heading-3 italic"
+                            id="testimonials-panel-4-heading"><?php echo '"' . $dataArray2[3]['testimonial'] . '"' ?>
+                        </h3>
+                        <figure><img src="img/user-pic-3.jpg" alt=""></figure>
+                        <h4 class="testimonial-name"
+                            id="testimonials-panel-4-name"><?php echo $dataArray2[3]['first_name'] . " " . $dataArray2[3]['last_name'] ?></h4>
+                        <h5 class="testimonial-location"
+                            id="testimonials-panel-4-location"><?php echo $dataArray2[3]['county'] . ", " . $dataArray2[3]['country'] . ", " . $dataArray2[3]['date'] ?></h5>
+                    </div>
+                </section>
+
+
+            </div>
+
+            <div class="controls">
           <span class="arrow left">
             <i class="fas fa-chevron-left"></i>
           </span>
-          <span class="arrow right">
+                <span class="arrow right">
             <i class="fas fa-chevron-right"></i>
           </span>
-          <ul>
-            <li class="selected"></li>
-            <li></li>
-            <li></li>
-            <li></li>
-          </ul>
+                <ul>
+                    <li class="selected"></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+            </div>
         </div>
-      </div>
     </div>
-  </section>
+</section>
 
-    <?php include 'footer.html' ?>
+<?php include 'footer.html' ?>
 
-  <div class="overlay hidden"></div>
-  <script src="js/app.js"></script>
+<div class="overlay hidden"></div>
+<script src="js/app.js"></script>
 <script src="js/testimonial_manager.js"></script>
 </body>
-
-</html>
-
 
 <script type="text/javascript">
 
     const allDataArray = <?php echo json_encode($dataArray); ?>; // parse the PHP array in to a JavaScript array
     const buttonPopulate = document.querySelector('#testimonials-button-populate');
-    const buttonClear = document.querySelector('#testimonials-button-clear').addEventListener('click' , removeTable);
+    const buttonClear = document.querySelector('#testimonials-button-clear').addEventListener('click', removeTable);
     const tableContainer = document.querySelector('#testimonials-table-container'); // create the table inside teh container
-    const searchButton = document.querySelector('#testimonials-search').addEventListener('click' , populateEntriesRegex);
-    let panelNumber = 1;
-    let panelFName = "My first name";
+    const searchButton = document.querySelector('#testimonials-search').addEventListener('click', populateEntriesRegex);
+    var sortedArray = [];
     document.querySelector('body').addEventListener("load", loadEntries);
     window.onload = loadEntries(allDataArray);
 
 
-    buttonPopulate.onclick = function populateEntries(){
+    buttonPopulate.onclick = function populateEntries() {
         loadEntries(allDataArray);
     }
 
-    function populateEntriesRegex(){
+    function populateEntriesRegex() {
 
         let formInput = document.getElementById('search-form-id');
 
-        if ( formInput.value.length > 0) {
+        if (formInput.value.length > 0) {
 
             let arr = [];
 
-            for (let i = 0; i < allDataArray.length; i++){
+            for (let i = 0; i < allDataArray.length; i++) {
 
                 let input = formInput.value.toLowerCase();
                 let regex = new RegExp(input);
@@ -231,7 +262,7 @@ $rowsCounter = count($dataArray);
                     regex.test(allDataArray[i]['serviceName'].toLowerCase()) === true ||
                     regex.test(allDataArray[i]['created'].toLowerCase()) === true ||
                     regex.test(allDataArray[i]['county'].toLowerCase()) === true ||
-                    regex.test(allDataArray[i]['country'].toLowerCase()) === true){
+                    regex.test(allDataArray[i]['country'].toLowerCase()) === true) {
 
                     arr.push(allDataArray[i]);
 
@@ -243,201 +274,216 @@ $rowsCounter = count($dataArray);
             loadEntries(arr);
 
 
-        }else{
+        } else {
             alert("Please input search criteria!")
         }
 
     }
 
 
+    function loadEntries(myArray) {
 
-   function loadEntries(myArray){
 
+        if (!!document.getElementById('testimonials-table') === true) {
+            removeTable();
+        }
 
-       if(!!document.getElementById('testimonials-table') === true){
-           removeTable();
-       }
+        var dataArray = myArray // parse the PHP array in to a JavaScript array
 
+        let headers = ['ID', 'First Name', 'Last Name', 'Testimonial', 'Activity', 'Date', 'County', 'Country', 'Update'];
 
-            let variableCounter =  <?php echo $rowsCounter; ?>; // size of array
+        let table = document.createElement('table');
+        table.id = 'testimonials-table';
+        let headerRow = document.createElement('tr');
 
 
-       var dataArray = myArray // parse the PHP array in to a JavaScript array
-        var sortedArray = [];
+        for (let i = 0; i < headers.length; i++) { // fill the headers
 
-       let headers = ['ID', 'First Name', 'Last Name' , 'Testimonial' , 'Activity' , 'Date' ,'County', 'Country' ,'Update'];
+            let arrayRowCounter = i - 1;
 
-       let table = document.createElement('table');
-       table.id = 'testimonials-table';
-       let headerRow = document.createElement('tr');
+            let headerCell = document.createElement('th');
+            headerCell.innerHTML = headers[i];
+            headerRow.appendChild(headerCell);
 
+        }
+        ;
 
-       for (let i = 0 ; i < headers.length; i++) { // fill the headers
+        table.appendChild(headerRow); // append the cells to the header
 
-           let arrayRowCounter = i - 1;
+        for (let i = 0; i < dataArray.length; i++) {
 
-           let headerCell = document.createElement('th');
-           headerCell.innerHTML = headers[i];
-           headerRow.appendChild(headerCell);
+            let id_count = i + 1;
 
-       };
+            let row = document.createElement('tr');
 
-       table.appendChild(headerRow); // append the cells to the header
+            let cellId = document.createElement('td');
+            cellId.innerHTML = (dataArray[i]['testimonialId']);
+            cellId.id = 'testimonials-body-id-' + id_count;
 
-       for (let i = 0 ; i < dataArray.length  ; i++){
+            row.appendChild(cellId);
 
-           let id_count = i + 1;
+            let cellFirstName = document.createElement('td');
+            cellFirstName.innerHTML = (dataArray[i]['firstName']);
+            cellFirstName.id = 'testimonials-body-first-name-' + id_count;
 
-           let row = document.createElement('tr');
+            row.appendChild(cellFirstName);
 
-               let cellId = document.createElement('td');
-                cellId.innerHTML = (dataArray[i]['testimonialId']);
-                cellId.id = 'testimonials-body-id-'+id_count;
+            let cellLastName = document.createElement('td');
+            cellLastName.innerHTML = (dataArray[i]['lastName']);
+            cellLastName.id = 'testimonials-body-last-name-' + id_count;
 
-               row.appendChild(cellId);
+            row.appendChild(cellLastName);
 
-               let cellFirstName = document.createElement('td');
-                cellFirstName.innerHTML = (dataArray[i]['firstName']);
-                cellFirstName.id = 'testimonials-body-first-name-'+id_count;
+            let cellComment = document.createElement('td');
+            cellComment.innerHTML = (dataArray[i]['comment']);
+            cellComment.id = 'testimonials-body-testimonial-' + id_count;
 
-               row.appendChild(cellFirstName);
+            row.appendChild(cellComment);
 
-               let cellLastName = document.createElement('td');
-                cellLastName.innerHTML = (dataArray[i]['lastName']);
-                cellLastName.id = 'testimonials-body-last-name-'+id_count;
+            let cellServiceName = document.createElement('td');
+            cellServiceName.innerHTML = (dataArray[i]['serviceName']);
+            cellServiceName.id = 'testimonials-body-activity-' + id_count;
 
-               row.appendChild(cellLastName);
+            row.appendChild(cellServiceName);
 
-               let cellComment = document.createElement('td');
-                cellComment.innerHTML = (dataArray[i]['comment']);
-                cellComment.id = 'testimonials-body-testimonial-'+id_count;
+            let cellCreated = document.createElement('td');
+            cellCreated.innerHTML = (dataArray[i]['created']);
+            cellCreated.id = 'testimonials-body-date-' + id_count;
 
-               row.appendChild(cellComment);
+            row.appendChild(cellCreated);
 
-               let cellServiceName = document.createElement('td');
-                cellServiceName.innerHTML = (dataArray[i]['serviceName']);
-                cellServiceName.id = 'testimonials-body-activity-'+id_count;
+            let cellCounty = document.createElement('td');
+            cellCounty.innerHTML = (dataArray[i]['county']);
+            cellCounty.id = 'testimonials-body-county-' + id_count;
 
-               row.appendChild(cellServiceName);
+            row.appendChild(cellCounty);
 
-               let cellCreated = document.createElement('td');
-                cellCreated.innerHTML = (dataArray[i]['created']);
-                cellCreated.id = 'testimonials-body-date-'+id_count;
+            let cellCountry = document.createElement('td');
+            cellCountry.innerHTML = (dataArray[i]['country']);
+            cellCountry.id = 'testimonials-body-country-' + id_count;
 
-               row.appendChild(cellCreated);
+            row.appendChild(cellCountry);
 
-               let cellCounty = document.createElement('td');
-               cellCounty.innerHTML = (dataArray[i]['county']);
-               cellCounty.id = 'testimonials-body-county-'+id_count;
+            let cellButton = document.createElement('button');
+            cellButton.classList.add('btn-del');
+            cellButton.innerHTML = ('Update');
+            cellButton.id = 'testimonials-body-update-' + id_count;
+            cellButton.type = "submit";
 
-               row.appendChild(cellCounty);
 
-               let cellCountry = document.createElement('td');
-               cellCountry.innerHTML = (dataArray[i]['country']);
-               cellCountry.id = 'testimonials-body-country-'+id_count;
+            cellButton.onclick = function () {
 
-               row.appendChild(cellCountry);
+                sortedArray[0] = cellId.innerHTML;
+                sortedArray[1] = cellFirstName.innerHTML;
+                sortedArray[2] = cellLastName.innerHTML;
+                sortedArray[3] = cellComment.innerHTML;
+                sortedArray[4] = cellServiceName.innerHTML;
+                sortedArray[5] = cellCreated.innerHTML;
+                sortedArray[6] = cellCounty.innerHTML;
+                sortedArray[7] = cellCountry.innerHTML;
 
-               let cellButton = document.createElement('button');
-               cellButton.classList.add('btn-del');
-               cellButton.innerHTML = ('Update');
-               cellButton.id = 'testimonials-body-update-'+id_count;
 
+                switch (cellPanelChoice.value) {
 
+                    case"1":
 
-               cellButton.onclick = function (){
+                        let header = document.getElementById('testimonials-panel-1-heading').innerHTML = (sortedArray[3]);
+                        let name = document.getElementById('testimonials-panel-1-name').innerHTML = (sortedArray[1] + "," + sortedArray[2]);
+                        let date = document.getElementById('testimonials-panel-1-location').innerHTML = (sortedArray[6] + ",\u00A0" + sortedArray[7] + ",\u00A0" + sortedArray[5]);
 
-                   sortedArray[0] = cellId.innerHTML;
-                   sortedArray[1] = cellFirstName.innerHTML;
-                   sortedArray[2] = cellLastName.innerHTML;
-                   sortedArray[3] = cellComment.innerHTML;
-                   sortedArray[4] = cellServiceName.innerHTML;
-                   sortedArray[5] = cellCreated.innerHTML;
-                   sortedArray[6] = cellCounty.innerHTML;
-                   sortedArray[7] = cellCountry.innerHTML;
+                        updatePanels("1" , sortedArray);
 
-                   let update;
+                        break;
 
-                   switch(cellPanelChoice.value){
+                    case"2":
 
-                       case"1":
+                        let header2 = document.getElementById('testimonials-panel-2-heading').innerHTML = (sortedArray[3]);
+                        let name2 = document.getElementById('testimonials-panel-2-name').innerHTML = (sortedArray[1] + " " + sortedArray[2]);
+                        let date2 = document.getElementById('testimonials-panel-2-location').innerHTML = (sortedArray[6] + ", " + sortedArray[7] + " - " + sortedArray[5]);
 
-                           let header = document.getElementById('testimonials-panel-1-heading').innerHTML = (sortedArray[3]);
-                           let name = document.getElementById('testimonials-panel-1-name').innerHTML = (sortedArray[1]+" "+sortedArray[2]);
-                           let date = document.getElementById('testimonials-panel-1-location').innerHTML = (sortedArray[6]+", "+sortedArray[7]+" - "+sortedArray[5]);
+                        updatePanels("2" , sortedArray);
 
-                           const numberTwo = 2;
+                        break;
 
+                    case"3":
 
+                        let header3 = document.getElementById('testimonials-panel-3-heading').innerHTML = (sortedArray[3]);
+                        let name3 = document.getElementById('testimonials-panel-3-name').innerHTML = (sortedArray[1] + " " + sortedArray[2]);
+                        let date3 = document.getElementById('testimonials-panel-3-location').innerHTML = (sortedArray[6] + ", " + sortedArray[7] + " - " + sortedArray[5])
 
-                           break;
+                        updatePanels("3" , sortedArray);
 
-                       case"2":
+                        break;
 
-                           let header2 = document.getElementById('testimonials-panel-2-heading').innerHTML = (sortedArray[3]);
-                           let name2 = document.getElementById('testimonials-panel-2-name').innerHTML = (sortedArray[1]+" "+sortedArray[2]);
-                           let date2 = document.getElementById('testimonials-panel-2-location').innerHTML = (sortedArray[6]+", "+sortedArray[7]+" - "+sortedArray[5]);
+                    case"4":
 
+                        let header4 = document.getElementById('testimonials-panel-4-heading').innerHTML = (sortedArray[3]);
+                        let name4 = document.getElementById('testimonials-panel-4-name').innerHTML = (sortedArray[1] + " " + sortedArray[2]);
+                        let date4 = document.getElementById('testimonials-panel-4-location').innerHTML = (sortedArray[6] + ", " + sortedArray[7] + " - " + sortedArray[5]);
 
-                           break;
+                        updatePanels("4" , sortedArray);
 
-                       case"3":
-
-                           let header3 = document.getElementById('testimonials-panel-3-heading').innerHTML = (sortedArray[3]);
-                           let name3 = document.getElementById('testimonials-panel-3-name').innerHTML = (sortedArray[1]+" "+sortedArray[2]);
-                           let date3 = document.getElementById('testimonials-panel-3-location').innerHTML = (sortedArray[6]+", "+sortedArray[7]+" - "+sortedArray[5])
-
-                           break;
-
-                       case"4":
-
-                           let header4 = document.getElementById('testimonials-panel-4-heading').innerHTML = (sortedArray[3]);
-                           let name4 = document.getElementById('testimonials-panel-4-name').innerHTML = (sortedArray[1]+" "+sortedArray[2]);
-                           let date4 = document.getElementById('testimonials-panel-4-location').innerHTML = (sortedArray[6]+", "+sortedArray[7]+" - "+sortedArray[5]);
-
-
-                           break;
-                   }
-
-
-               }
-               row.appendChild(cellButton);
-
-
-               let cellPanelChoice = document.createElement('select');
-               cellPanelChoice.name = 'testimonials-select-panel';
-                cellPanelChoice.id = 'testimonials-body-select-'+id_count;
-
-                let testimonialPanels = document.querySelector('.slider').childElementCount;
-
-                for (let i = 0 ; i < testimonialPanels ; i++) { // give options for panels
-
-                    let id_counter = i + 1;
-
-                    let option = document.createElement("option");
-                    option.text = "Panel "+id_counter;
-                    option.value = id_counter.toString();
-                    cellPanelChoice.add(option, cellPanelChoice[i]);
-
+                        break;
                 }
 
-               row.appendChild(cellPanelChoice);
 
-           table.appendChild(row);
-       }
-
+            }
+            row.appendChild(cellButton);
 
 
+            let cellPanelChoice = document.createElement('select');
+            cellPanelChoice.name = 'testimonials-select-panel';
+            cellPanelChoice.id = 'testimonials-body-select-' + id_count;
 
-       tableContainer.appendChild(table); // append everything to the table Div
+            let testimonialPanels = document.querySelector('.slider').childElementCount;
 
+            for (let i = 0; i < testimonialPanels; i++) { // give options for panels
+
+                let id_counter = i + 1;
+
+                let option = document.createElement("option");
+                option.text = "Panel " + id_counter;
+                option.value = id_counter.toString();
+                cellPanelChoice.add(option, cellPanelChoice[i]);
+
+            }
+
+            row.appendChild(cellPanelChoice);
+
+            table.appendChild(row);
+        }
+
+
+        tableContainer.appendChild(table); // append everything to the table Div
 
 
     }
 
-    function removeTable(){
-       const removeElement = document.querySelector('#testimonials-table');
-       removeElement.parentElement.removeChild(removeElement);
+    function removeTable() {
+        const removeElement = document.querySelector('#testimonials-table');
+        removeElement.parentElement.removeChild(removeElement);
     }
 
-</script>;
+    function updatePanels(stringPanel, sortedArray)
+    {
+        <?php require('scripts/updateTestimonials.php'); ?>
+
+        var data = new FormData();
+        data.append('panel', stringPanel);
+        data.append('firstName', sortedArray[1].toString());
+        data.append('lastName', sortedArray[2].toString());
+        data.append('comment', sortedArray[3].toString());
+        data.append('activity', sortedArray[4].toString());
+        data.append('county', sortedArray[6].toString());
+        data.append('country', sortedArray[7].toString());
+        data.append('date', sortedArray[5].toString());
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', "scripts/updateTestimonials.php");
+        xhr.send(data);
+
+    }
+
+</script>
+;
+
+</html>
