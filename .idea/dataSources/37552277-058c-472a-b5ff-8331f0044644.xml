@@ -1223,30 +1223,37 @@
     <column id="350" parent="241" name="first_name">
       <Position>2</Position>
       <DataType>varchar(255)|0s</DataType>
+      <DefaultExpression>&apos;Empty&apos;</DefaultExpression>
     </column>
     <column id="351" parent="241" name="last_name">
       <Position>3</Position>
       <DataType>varchar(255)|0s</DataType>
+      <DefaultExpression>&apos;Empty&apos;</DefaultExpression>
     </column>
     <column id="352" parent="241" name="testimonial">
       <Position>4</Position>
       <DataType>varchar(255)|0s</DataType>
+      <DefaultExpression>&apos;Empty&apos;</DefaultExpression>
     </column>
     <column id="353" parent="241" name="activity">
       <Position>5</Position>
       <DataType>varchar(255)|0s</DataType>
+      <DefaultExpression>&apos;Empty&apos;</DefaultExpression>
     </column>
     <column id="354" parent="241" name="date">
       <Position>6</Position>
-      <DataType>date|0s</DataType>
+      <DataType>varchar(255)|0s</DataType>
+      <DefaultExpression>&apos;Empty&apos;</DefaultExpression>
     </column>
     <column id="355" parent="241" name="county">
       <Position>7</Position>
       <DataType>varchar(255)|0s</DataType>
+      <DefaultExpression>&apos;Empty&apos;</DefaultExpression>
     </column>
     <column id="356" parent="241" name="country">
       <Position>8</Position>
       <DataType>varchar(255)|0s</DataType>
+      <DefaultExpression>&apos;Empty&apos;</DefaultExpression>
     </column>
     <key id="357" parent="241" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
