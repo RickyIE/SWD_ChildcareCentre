@@ -99,7 +99,19 @@ img {
 }
 
 .services img {
-  width: 100%;
+  width: 90%;
+}
+
+.service-image {
+  border: 4px solid red;
+}
+
+.services .heading-3 {
+  color: var(--color-tertiary);
+}
+
+.service-detail {
+  color: var(--color-grey-darkest);
 }
 
 /********** Update **********/
@@ -114,6 +126,15 @@ img {
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
+}
+
+.update-img {
+  border: 8px solid var(--color-primary);
+  transition: 0.5s ease-in-out;
+}
+
+.update-img:hover {
+  transform: scale(1.05);
 }
 
 .update-info ul {
@@ -151,12 +172,22 @@ img {
   background-repeat: no-repeat;
 }
 
+.offer-img {
+  border: 8px solid var(--color-secondary);
+  transition: 0.5s ease-in-out;
+}
+
+.offer-img:hover {
+  transform: scale(1.05);
+}
+
 .offer-info ul,
 .offer-info .btn {
   margin-left: 3.125em;
 }
 
-.offer-info .heading-3 {
+.offer-info .heading-3,
+.update-info .heading-3 {
   margin-left: 1.75em;
 }
 
@@ -164,11 +195,13 @@ img {
   margin-top: 1.25em;
 }
 
-.offers-link {
+.offers-link,
+.events-link {
   color: var(--color-grey-darkest);
 }
 
-.offers-link:hover {
+.offers-link:hover,
+.events-link:hover {
   color: var(--color-primary);
 }
 

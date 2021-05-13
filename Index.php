@@ -52,11 +52,11 @@
         <div class="flex center">
         <?php for ($row = 0; $row < sizeof($services); $row++) { 
           ?>
-          <div>
+          <div data-aos="slide-right">
             <a href="<?php echo "services.php#service" . $services[$row]['serviceid']; ?>">
-              <figure><img src="<?php echo $services[$row]['imagePath']; ?>" alt=""></figure>
+              <figure><img class="service-img" src="<?php echo $services[$row]['imagePath']; ?>" alt=""></figure>
               <h3 class="heading-3"><?php echo $services[$row]['serviceTitle']?></h3>
-              <p><?php echo $services[$row]['serviceDetail']?></p>
+              <p class="service-detail"><?php echo $services[$row]['serviceDetail']?></p>
             </a>  
           </div>              
           <?php
@@ -87,15 +87,15 @@
     <section class="updates p-top" id="updates">
       <div class="container grid">
         <!-- use latest event as image -->
-        <div><figure><img src="<?php if(isset($events[0]['imagepath'])) { echo $events[0]['imagepath']; } ?>" alt=""></figure></div>
+        <div><figure><img class="update-img" src="<?php if(isset($events[0]['imagepath'])) { echo $events[0]['imagepath']; } ?>" alt=""></figure></div>
 
-        <div class="update-info">
+        <div class="update-info" data-aos="slide-left">
           <h3 class="heading-3">Events</h3>
           <ul>
           <?php for ($row = 0; $row < sizeof($events); $row++) { 
                       ?>
             <a href="<?php echo "events.php#event" . $events[$row]['eventid']; ?>">
-              <li><?php $start_time = DateTime::createFromFormat ( "Y-m-d H:i:s", $events[$row]['startTime'] ); $end_time = DateTime::createFromFormat ( "Y-m-d H:i:s", $events[$row]['endTime'] ); echo $events[$row]['eventTitle'] . ' - ' . $start_time->format('F j, Y, g:i a') . ' to ' . $end_time->format('g:i a');?></li>
+              <li class="events-link"><?php $start_time = DateTime::createFromFormat ( "Y-m-d H:i:s", $events[$row]['startTime'] ); $end_time = DateTime::createFromFormat ( "Y-m-d H:i:s", $events[$row]['endTime'] ); echo $events[$row]['eventTitle'] . ' - ' . $start_time->format('F j, Y, g:i a') . ' to ' . $end_time->format('g:i a');?></li>
             </a>
             <?php
                 }
@@ -126,8 +126,8 @@
     ?>
 
     <section class="offers p-top" id="offers">
-      <div class="container grid">
-        <div class="offer-info">
+      <div class="container grid ">
+        <div class="offer-info" data-aos="slide-right">
           <h3 class="heading-3">Latest Offers</h3>
           <ul>
           <?php for ($row = 0; $row < sizeof($offers); $row++) { 
@@ -144,7 +144,7 @@
           </div> 
         </div>
          <!-- use latest offer as image -->
-         <div><figure><img src="<?php if(isset($offers[0]['imagepath'])) { echo $offers[0]['imagepath']; } ?>" alt=""></figure></div>
+         <div><figure><img class="offer-img" src="<?php if(isset($offers[0]['imagepath'])) { echo $offers[0]['imagepath']; } ?>" alt=""></figure></div>
 
       </div>
     </section>
