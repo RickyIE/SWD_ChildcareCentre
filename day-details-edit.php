@@ -96,7 +96,7 @@
       <table class="day-details-table table">
         <thead>
           <tr>
-            <th>ID</th>
+            <th style="width: 20px;">ID</th>
             <th>Name</th>
             <th>Temperature</th>
             <th>Breakfast</th>

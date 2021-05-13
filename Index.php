@@ -133,7 +133,7 @@
           <?php for ($row = 0; $row < sizeof($offers); $row++) { 
                       ?>
             <a href="<?php echo "offers.php#offer" . $offers[$row]['offerid']; ?>">
-              <li><?php echo $offers[$row]['offerTitle'];?></li>
+              <li class="offers-link"><?php echo $offers[$row]['offerTitle'];?></li>
             </a>
             <?php
             }

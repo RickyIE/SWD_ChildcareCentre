@@ -131,6 +131,10 @@ img {
 }
 /********** Offers **********/
 
+.offers {
+  background-color: var(--color-grey-light);
+}
+
 .offer-info ul {
   list-style: disc;
 }
@@ -148,13 +152,24 @@ img {
 }
 
 .offer-info ul,
-.offer-info .heading-3,
 .offer-info .btn {
   margin-left: 3.125em;
 }
 
+.offer-info .heading-3 {
+  margin-left: 1.75em;
+}
+
 .offer-info .btn {
   margin-top: 1.25em;
+}
+
+.offers-link {
+  color: var(--color-grey-darkest);
+}
+
+.offers-link:hover {
+  color: var(--color-primary);
 }
 
 /********** Footer **********/
@@ -266,8 +281,17 @@ img {
   height: 80vh;
 }
 
+.contact-us .form-card {
+  background-color: red;
+}
+
 .contact-us .contact-img {
   width: 70%;
+}
+
+.contact-form input,
+.contact-form textarea {
+  border: 10px solid red;
 }
 
 .social-media-list ul {
@@ -485,7 +509,7 @@ table th.last {
   width: 80%;
 }
 
-.data-table input[type='number'] {
+.data-table input[type="number"] {
   border: none;
   background-color: transparent;
 
