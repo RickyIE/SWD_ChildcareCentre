@@ -2,10 +2,10 @@
 
 <?php
 
-DEFINE('DB_USER', 'meetalex_websiteRoot');
-DEFINE('DB_PASSWORD', 'pXZOkNzt}hsIT2WAH+1X*(HGo');
-DEFINE('DB_HOST', '50.87.177.72');
-DEFINE('DB_NAME', 'meetalex_ChildcareDatabse');
+    DEFINE('DB_USER', 'meetalex_websiteRoot');
+    DEFINE('DB_PASSWORD', 'pXZOkNzt}hsIT2WAH+1X*(HGo');
+    DEFINE('DB_HOST', '50.87.177.72');
+    DEFINE('DB_NAME', 'meetalex_ChildcareDatabse');
 
 
     $data = ($_POST);
