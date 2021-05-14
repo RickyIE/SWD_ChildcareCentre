@@ -12,34 +12,12 @@
     <link rel="stylesheet" href="css/utilities.css">
     <link rel="stylesheet" href="css/style.css">
     <title>Contact Us</title>
+    <?php include 'header.php' ?>
+    <?php require('scripts/connect.php'); ?>
   </head>
 
   <body>
-
-    <!-- Navbar -->
-    <div class="navbar" id="home">
-      <div class="container flex">
-        <figure><img class="logo" src="img/logo-01.svg" alt=""></figure>
-        <nav>
-          <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#services">Services</a></li>
-            <li><a href="#updates">Updates</a></li>
-            <li><a href="#offers">Offers</a></li>
-          </ul>
-        </nav>
-
-        <div class="nav-buttons">
-          <button class="btn btn-primary btn-primary show-sign-up-modal">Sign Up</button>
-          <button class="btn btn-primary btn-secondary show-log-in-modal">Log In</button>
-        </div>
-
-      </div>
-    </div>
-    <!-- End Navigation -->
-
-
-    <section class="contact-us p-top">
+  <section class="contact-us p-top">
       <div class="container grid">
         <div>
           <img class="contact-img" src="img/contact-img-01.svg" alt="">
@@ -75,23 +53,7 @@
         </div>
       </div>
     </section>
-
-    <footer class="footer">
-      <div class="container flex">
-        <div>
-          <figure><img class="logo" src="img/logo-white-01.svg" alt=""></figure>
-        </div>
-
-        <nav>
-          <ul>
-            <li>Contact Us</li>
-            <li>Find Us</li>
-            <li>Private Policy</li>
-          </ul>
-        </nav>
-        <a href="#home">Back To Top<i class="fas fa-long-arrow-alt-up"></i></a>
-      </div>
-    </footer>
+    <?php include 'footer.html' ?>
     <div class="overlay hidden"></div>
     <script src="js/app.js"></script>
   </body>
