@@ -65,34 +65,6 @@ if (mysqli_num_rows($result2) > 0) {
 $string = "";
 $rowsCounter = count($dataArray);
 
-if(array_key_exists('btn_clear_panels', $_POST)) {
-
-    for ($i = 1 ; $i <= 4 ; $i++) {
-
-        $data = ($_POST);
-        $firstName = $data['none'];
-        $lastName = $data['Empty'];
-        $activity = $data['Empty'];
-        $comment = $data['Empty'];
-        $county = $data['Empty'];
-        $country = $data['Empty'];
-        $date = $data['0000-00-00'];
-
-        $db_connection = @mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME) or
-        die("Could not connect to MySQL! " . mysqli_connect_error());
-        mysqli_set_charset($db_connection, 'utf8');
-
-        $query = "
-    UPDATE testimonial_panels
-    SET first_name = '$firstName' , last_name = '$lastName' , testimonial = '$comment' , activity = '$activity' , date = '$date' , county = '$county' , country = '$country'
-    WHERE panel_id = '$i';";
-
-        $result = mysqli_query($db_connection, $query);
-
-    }
-
-}
-
 
 ?>
 
@@ -104,9 +76,9 @@ if(array_key_exists('btn_clear_panels', $_POST)) {
             <input type='search' class='dateFilter' name='search-form' id="search-form-id"
                    placeholder="Enter search criteria and click sort ...">
             <input type='button' class="btn btn-primary" name='btn_search' value='sort' id="testimonials-search">
-            <input type='submit' class="btn btn-primary" name='btn_clear_panels' value='clear all panels' id="testimonials-clear-all-panels">
-
+            <input type='submit' class="btn btn-primary" name='btn_clear_panels' value='clear all panels' id="testimonials-clear-all-panels" onclick="deletePanels()" >
         </form>
+
     </div>
 </section>
 
@@ -464,9 +436,8 @@ if(array_key_exists('btn_clear_panels', $_POST)) {
         removeElement.parentElement.removeChild(removeElement);
     }
 
-    function updatePanels(stringPanel, sortedArray)
+    function updatePanels(stringPanel, sortedArray) // ajax call
     {
-        <?php require('scripts/updateTestimonials.php'); ?>
 
         var data = new FormData();
         data.append('panel', stringPanel);
@@ -480,6 +451,22 @@ if(array_key_exists('btn_clear_panels', $_POST)) {
         var xhr = new XMLHttpRequest();
         xhr.open('POST', "scripts/updateTestimonials.php");
         xhr.send(data);
+
+    }
+
+    function deletePanels() // ajax call
+    {
+
+        if (confirm("Delete all panel data ? ")) {
+
+            var data = new FormData();
+            data.append('panel', 'delete');
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', "scripts/deleteTestimonials.php");
+            xhr.send(data);
+            window.parent.location = window.parent.location.href;
+        }
+
 
     }
 

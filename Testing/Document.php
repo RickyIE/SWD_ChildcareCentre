@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="../Testing/style.css">
 </head>
 <body>
+
+<div id="testDiv">FirstName Surname</div>
 <!-- (A) HIDDEN HTML FORM -->
 <form id="ninja" method="post" style="display:none;">
     <input type="hidden" id="numA" name="numA" required/>
@@ -35,22 +37,22 @@ if (isset($_POST['numA'])) { require "testPhp.php"; }
 
 
 <?php
-//
-//        $doc = new DOMDocument();
-//
-//        $doc->loadHTMLFile("Document.php");
-//
-//        $getName = $doc->getElementById('testDiv')->textContent;
-//        $names = explode(",", $getName);
-//        $fName = $names[0];
-//        $lName = $names[1];
-//
-//        echo "PHP echo".$fName."-".$lName;
-//
-//
-//
-//
-//
-//
-//
-//?><!--;-->
+
+        $doc = new DOMDocument();
+
+        $doc->loadHTMLFile("Document.php");
+
+        $getName = $doc->getElementById('testDiv')->textContent;
+        $names = explode(",", $getName);
+        $fName = $names[0];
+        $lName = $names[1];
+
+        echo "PHP echo".$fName."-".$lName;
+
+
+
+
+
+
+
+?>

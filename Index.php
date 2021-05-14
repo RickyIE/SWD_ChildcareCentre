@@ -45,7 +45,8 @@
 
     <section class="services p-top" id="services">
       <div class="container">
-        <h2 class="heading-2 center">We strive to create a comforting
+        <h2 class="heading-2
+        center">We strive to create a comforting
           learning experience where children will learn and interact in harmony. Here you can see some of the services we
           provide to make sure your child has a great stay with us.
         </h2>
