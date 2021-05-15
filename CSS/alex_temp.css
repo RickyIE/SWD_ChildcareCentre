@@ -28,6 +28,7 @@
 
 #contact-us-container-id{
     overflow: scroll;
+    max-width: 50vw;
 }
 
 #contact-us-outer-container-id{
@@ -35,12 +36,13 @@
     flex-direction: column;
 }
 
-#testimonials-search-form{
+#contact-us-search-form {
     display: flex;
     flex-direction: column;
+    width: 100%;
 }
 
-#search-form-id{
+#search-form-contact-us-id{
     min-height: 3rem;
     border-radius: 10px;
 
