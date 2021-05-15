@@ -21,7 +21,7 @@
 
   <?php
 
-  $query = "SELECT created , name , message, email, phone FROM contact_us;";
+  $query = "SELECT contactId, created , name , message, email, phone FROM contact_us;";
 
   $retrieveContacts = mysqli_query($db_connection, $query);
 
@@ -110,7 +110,7 @@
 
           var dataArray = myArray // parse the PHP array in to a JavaScript array
 
-          let headers = ['Created', 'Name', 'Message', 'Email', 'Phone' , 'Delete'];
+          let headers = ['Created', 'Name', 'Message', 'Email', 'Phone'];
 
           let table = document.createElement('table');
           table.id = 'contact-us-table-id';
@@ -135,6 +135,7 @@
               let row = document.createElement('tr');
 
               let cellCreatedDate = document.createElement('td');
+              cellCreatedDate.className = "contact-us-form-cell";
               cellCreatedDate.innerHTML = (dataArray[i]['created']);
               cellCreatedDate.id = 'contact-us-body-id-' + id_count;
 
@@ -164,18 +165,25 @@
 
               row.appendChild(cellPhone);
 
-              let cellButton = document.createElement('button');
-              cellButton.classList.add('btn-del');
-              cellButton.innerHTML = ('Delete');
-              cellButton.id = 'contact-us-body-delete-' + id_count;
-              cellButton.type = "submit";
-
-
-              cellButton.onclick = function () {
-
-              }
-
-              row.appendChild(cellButton);
+              // let cellButton = document.createElement('button');
+              // cellButton.classList.add('btn-del');
+              // cellButton.innerHTML = ('Delete');
+              // cellButton.id = 'contact-us-body-delete-' + id_count;
+              // cellButton.type = "submit";
+              //
+              //
+              // cellButton.onclick = function () {
+              //
+              //     var data = new FormData();
+              //     data.append('deleteMessage', dataArray[i]['contactId'].toString());
+              //     var xhr = new XMLHttpRequest();
+              //     xhr.open('POST', "scripts/delete_contact_message.php");
+              //     xhr.send(data);
+              //     window.parent.location = window.parent.location.href;
+              //
+              // }
+              //
+              // row.appendChild(cellButton);
 
               table.appendChild(row);
           }
@@ -226,39 +234,6 @@
           removeElement.parentElement.removeChild(removeElement);
       }
 
-      function updatePanels(stringPanel, sortedArray) // ajax call
-      {
-
-          var data = new FormData();
-          data.append('panel', stringPanel);
-          data.append('firstName', sortedArray[1].toString());
-          data.append('lastName', sortedArray[2].toString());
-          data.append('comment', sortedArray[3].toString());
-          data.append('activity', sortedArray[4].toString());
-          data.append('county', sortedArray[6].toString());
-          data.append('country', sortedArray[7].toString());
-          data.append('date', sortedArray[5].toString());
-          var xhr = new XMLHttpRequest();
-          xhr.open('POST', "scripts/updateTestimonials.php");
-          xhr.send(data);
-
-      }
-
-      function deletePanels() // ajax call
-      {
-
-          if (confirm("Delete all panel data ? ")) {
-
-              var data = new FormData();
-              data.append('panel', 'delete');
-              var xhr = new XMLHttpRequest();
-              xhr.open('POST', "scripts/deleteTestimonials.php");
-              xhr.send(data);
-              window.parent.location = window.parent.location.href;
-          }
-
-
-      }
 
   </script>
 
