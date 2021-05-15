@@ -104,10 +104,6 @@ $userEmail = 'abasek2q@samsung.com';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-
-
-
-
     if (empty($comment) === false) {
 
         $query5 = "INSERT INTO testimonial (comment, parentEmail, serviceName, created ,isDisplayed)
@@ -179,8 +175,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 <?php echo $userFirstName ?>">
 
                             <label for="testimonial-add-comment">Comment</label>
-                            <input type="text" name="testimonial-add-comment" id="testimonial-add-comment-id" value="<?php if (isset($comment)) { echo $comment; } ?>">
-                            <input class="btn btn-primary sign-up-btn"   type="submit" name="submit" value="Save" id="save-testimonial" >
+                            <textarea type="text" name="testimonial-add-comment" id="testimonial-add-comment-id" value="<?php if (isset($comment)) { echo $comment; } ?>" cols="30" rows="10" required></textarea>
+                                <input class="btn btn-primary sign-up-btn"   type="submit" name="submit" value="Save" id="save-testimonial" >
 
                         </form>
                     </div>
@@ -370,7 +366,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         var dataArray = myArray // parse the PHP array in to a JavaScript array
 
-        let headers = ['ID', 'First Name', 'Last Name', 'Testimonial', 'Activity', 'Date', 'County', 'Country'];
+        let headers = ['First Name', 'Last Name', 'Testimonial', 'Activity', 'Date', 'County', 'Country'];
 
         let table = document.createElement('table');
         table.id = 'testimonials-table';
@@ -395,12 +391,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             let id_count = i + 1;
 
             let row = document.createElement('tr');
-
-            let cellId = document.createElement('td');
-            cellId.innerHTML = (dataArray[i]['testimonialId']);
-            cellId.id = 'testimonials-body-id-' + id_count;
-
-            row.appendChild(cellId);
 
             let cellFirstName = document.createElement('td');
             cellFirstName.innerHTML = (dataArray[i]['firstName']);
