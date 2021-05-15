@@ -72,13 +72,15 @@
           </div>
         </div>
           <div class="container" id="contact-us-outer-container-id">
-              <form method='post' id="testimonials-search-form">
-                  <label for="search-form-id">Search for Keyword</label>
-                  <input type='search' class='dateFilter' name='search-form' id="search-form-id"
+              <form method='post' id="contact-us-search-form">
+                  <label for="search-form-contact-us-id">Search for Keyword</label>
+                  <input type='search' class='dateFilter' name='search-form' id="search-form-contact-us-id"
                          placeholder="Enter search criteria and click sort ...">
-                  <input type='button' class="btn btn-primary" name='btn_search' value='sort' id="testimonials-search">
+                  <div>
+                  <input type='button' class="btn btn-primary" name='btn_search' value='Show results' id="contact-us-search-button-id">
+                      <input type='button' class="btn btn-primary" name='btn_reset' value='Reset values' id="contact-us-reset-button-id">
+                  </div>
               </form>
-
               <div class="form-card-container" id="contact-us-container-id">
 
               </div>
@@ -93,6 +95,10 @@
 
       const dataQuery = <?php echo json_encode($dataArray); ?>;
       const tableContainer = document.querySelector('#contact-us-container-id');
+      const searchButton = document.querySelector('#contact-us-search-button-id').addEventListener('click', populateEntriesRegex);
+      const buttonPopulate = document.querySelector('#contact-us-reset-button-id').onclick = function populateEntries() {
+          loadEntries(dataQuery);
+      };
 
       window.onload = loadEntries(dataQuery);
 
@@ -181,28 +187,25 @@
 
       function populateEntriesRegex() {
 
-          let formInput = document.getElementById('search-form-id');
+          let formInput = document.getElementById('search-form-contact-us-id');
 
           if (formInput.value.length > 0) {
 
               let arr = [];
 
-              for (let i = 0; i < allDataArray.length; i++) {
+              for (let i = 0; i < dataQuery.length; i++) {
 
                   let input = formInput.value.toLowerCase();
                   let regex = new RegExp(input);
 
 
-                  if (regex.test(allDataArray[i]['testimonialId'].toLowerCase()) === true ||
-                      regex.test(allDataArray[i]['firstName'].toLowerCase()) === true ||
-                      regex.test(allDataArray[i]['lastName'].toLowerCase()) === true ||
-                      regex.test(allDataArray[i]['comment'].toLowerCase()) === true ||
-                      regex.test(allDataArray[i]['serviceName'].toLowerCase()) === true ||
-                      regex.test(allDataArray[i]['created'].toLowerCase()) === true ||
-                      regex.test(allDataArray[i]['county'].toLowerCase()) === true ||
-                      regex.test(allDataArray[i]['country'].toLowerCase()) === true) {
+                  if (regex.test(dataQuery[i]['created'].toLowerCase()) === true ||
+                      regex.test(dataQuery[i]['name'].toLowerCase()) === true ||
+                      regex.test(dataQuery[i]['message'].toLowerCase()) === true ||
+                      regex.test(dataQuery[i]['email'].toLowerCase()) === true ||
+                      regex.test(dataQuery[i]['phone'].toLowerCase()) === true) {
 
-                      arr.push(allDataArray[i]);
+                      arr.push(dataQuery[i]);
 
                   }
 

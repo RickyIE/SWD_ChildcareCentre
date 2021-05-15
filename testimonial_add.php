@@ -1,13 +1,4 @@
-<?php
 
-// create user session profile session here
-
-$userId = 'abasek2q@samsung.com';
-
-
-// create user session profile session here
-
-?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -24,6 +15,30 @@ $userId = 'abasek2q@samsung.com';
     <script type="text/javascript" src="lib/jquery-3.6.0.min.js"></script>
     <?php include 'header.php' ?>
     <?php require('scripts/connect.php'); ?>
+
+    <?php
+
+    // create user session profile session here
+
+    session_start();
+
+
+
+    if (isset($_SESSION['user_id'])){
+        $userId = $_SESSION['user_id'];
+    }else{
+        $userId = 'abasek2q@samsung.com'; // default for testing
+    }
+
+
+
+
+    echo "<script>console.log('$userId');</script>";
+
+
+    // create user session profile session here
+
+    ?>
 </head>
 
 <body>
@@ -100,7 +115,7 @@ $comment = $_POST['testimonial-add-comment'];
 $commentDate = date("Y-m-d");
 $userFirstName = $dataArray4 [0]['firstName'];
 $service =$_POST['testimonial-add-service'];
-$userEmail = 'abasek2q@samsung.com';
+$userEmail = $userId;
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
