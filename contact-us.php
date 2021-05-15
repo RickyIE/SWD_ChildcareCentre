@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="css/style.css">
     <title>Contact Us</title>
     <?php include 'header.php' ?>
-    <?php require('scripts/connect.php'); ?>
+    
   </head>
 
   <body>
