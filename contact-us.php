@@ -24,7 +24,7 @@
   $email = "";
   $phoneNumber = "";
   $message = "";
-  $dateAndTime = date("Y/m/d - H:i:s");
+  $dateAndTime = date("Y/m/d - G:i:s");
 
   $nameError = "";
   $emailError = "";

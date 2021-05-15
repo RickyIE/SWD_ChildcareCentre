@@ -25,3 +25,23 @@
     display: none; /* Hide scrollbar for chrome, Opera Safary */
 
 }
+
+#contact-us-container-id{
+    overflow: scroll;
+}
+
+#contact-us-outer-container-id{
+    display: flex;
+    flex-direction: column;
+}
+
+#testimonials-search-form{
+    display: flex;
+    flex-direction: column;
+}
+
+#search-form-id{
+    min-height: 3rem;
+    border-radius: 10px;
+
+}
