@@ -25,7 +25,3 @@
     display: none; /* Hide scrollbar for chrome, Opera Safary */
 
 }
-
-#testimonials-form-container > * {
-    display: none;
-}
