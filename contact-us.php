@@ -89,11 +89,9 @@
       <div class="container grid">
         <div>
           <img class="contact-img" src="img/contact-img-01.svg" alt="">
-          <p class="p-text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repellat quidem quis quibusdam
-            similique, nulla
-            distinctio soluta et voluptatem quasi illum aspernatur amet! Nisi, fugit nam commodi eius magnam officia
-            pariatur.</p>
+          <p class="p-text">Got a question ?</p>
           <br>
+          <p class="p-text">Send us any queries you may have using the form here. Alternatively, you can contact us on any of our social media platforms such as Facebook, Twitter and Pintrest. Or you can give us a call at: </p>
           <p class="p-text">(01) 254 1349</p>
 
           <div class="social-media-list">
