@@ -213,44 +213,6 @@ $rowsCounter = count($dataArray);
         loadEntries(allDataArray);
     }
 
-    function populateEntriesRegex() {
-
-        let formInput = document.getElementById('search-form-id');
-
-        if (formInput.value.length > 0) {
-
-            let arr = [];
-
-            for (let i = 0; i < allDataArray.length; i++) {
-
-                let input = formInput.value.toLowerCase();
-                let regex = new RegExp(input);
-
-
-                if (regex.test(allDataArray[i]['testimonialId'].toLowerCase()) === true ||
-                    regex.test(allDataArray[i]['firstName'].toLowerCase()) === true ||
-                    regex.test(allDataArray[i]['lastName'].toLowerCase()) === true ||
-                    regex.test(allDataArray[i]['comment'].toLowerCase()) === true ||
-                    regex.test(allDataArray[i]['serviceName'].toLowerCase()) === true ||
-                    regex.test(allDataArray[i]['created'].toLowerCase()) === true ||
-                    regex.test(allDataArray[i]['county'].toLowerCase()) === true ||
-                    regex.test(allDataArray[i]['country'].toLowerCase()) === true) {
-
-                    arr.push(allDataArray[i]);
-
-                }
-
-
-            }
-
-            loadEntries(arr);
-
-
-        } else {
-            alert("Please input search criteria!")
-        }
-
-    }
 
 
     function loadEntries(myArray) {
@@ -428,6 +390,45 @@ $rowsCounter = count($dataArray);
 
         tableContainer.appendChild(table); // append everything to the table Div
 
+
+    }
+
+    function populateEntriesRegex() {
+
+        let formInput = document.getElementById('search-form-id');
+
+        if (formInput.value.length > 0) {
+
+            let arr = [];
+
+            for (let i = 0; i < allDataArray.length; i++) {
+
+                let input = formInput.value.toLowerCase();
+                let regex = new RegExp(input);
+
+
+                if (regex.test(allDataArray[i]['testimonialId'].toLowerCase()) === true ||
+                    regex.test(allDataArray[i]['firstName'].toLowerCase()) === true ||
+                    regex.test(allDataArray[i]['lastName'].toLowerCase()) === true ||
+                    regex.test(allDataArray[i]['comment'].toLowerCase()) === true ||
+                    regex.test(allDataArray[i]['serviceName'].toLowerCase()) === true ||
+                    regex.test(allDataArray[i]['created'].toLowerCase()) === true ||
+                    regex.test(allDataArray[i]['county'].toLowerCase()) === true ||
+                    regex.test(allDataArray[i]['country'].toLowerCase()) === true) {
+
+                    arr.push(allDataArray[i]);
+
+                }
+
+
+            }
+
+            loadEntries(arr);
+
+
+        } else {
+            alert("Please input search criteria!")
+        }
 
     }
 
