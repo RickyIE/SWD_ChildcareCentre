@@ -56,7 +56,7 @@
       <section class="day-details">
          <div class="container">
             <h2 class="heading-2">Services</h2>
-            <table class="day-details-table data-table">
+            <table class="day-details-table data-table services-table-edit">
                <thead>
                   <tr>
                      <th width=1px >ID</th>
@@ -94,7 +94,7 @@
       <section class="day-details">
          <div class="container">
             <h2 class="heading-2">Events</h2>
-            <table class="day-details-table">
+            <table class="day-details-table day-details-table-edit">
                <thead>
                   <tr>
                      <th>ID</th>
@@ -136,7 +136,7 @@
       <section class="day-details">
          <div class="container">
             <h2 class="heading-2">Special Offers</h2>
-            <table class="day-details-table">
+            <table class="day-details-table special-offers-table-edit">
                <thead>
                   <tr>
                      <th>ID</th>

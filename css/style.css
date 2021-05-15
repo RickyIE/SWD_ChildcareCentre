@@ -102,9 +102,8 @@ img {
   width: 90%;
 }
 
-.service-image {
-  border: 4px solid red;
-}
+/* .service-image {
+} */
 
 .services .heading-3 {
   color: var(--color-tertiary);
@@ -465,7 +464,7 @@ table td {
 }
 
 table th {
-  background: var(--color-grey-dark);
+  background: var(--color-primary);
   color: #fff;
   text-transform: uppercase;
   font-size: 12px;
@@ -543,4 +542,14 @@ table th.last {
   text-align: center;
   display: block;
   color: black;
+}
+
+/* Admin Styles */
+.day-details-table-edit th,
+.services-table-edit th,
+.special-offers-table-edit th {
+  background: var(--color-grey-dark);
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 12px;
 }

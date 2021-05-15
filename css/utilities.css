@@ -242,7 +242,7 @@
 
 .menu-area a {
   padding: 0.625em;
-  margin: 0 0.3125em;
+  /* margin: 0 0.3125em; */
   font-weight: 700;
   font-size: 0.9em;
   color: var(--color-secondary);
@@ -265,23 +265,23 @@
   text-align: center;
 }
 
-.menu-area li:hover .dropdown > li {
-  display: block;
-  background-color: var(--color-grey-light);
-  text-align: left;
-}
-
 .dropdown {
   position: absolute;
   display: flex;
   flex-direction: column;
-  width: 100%;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin-left: -35px;
 }
 
 .dropdown li {
   display: none;
-  position: relative;
-  right: 0;
+}
+
+.menu-area li:hover .dropdown > li {
+  display: block;
+  background-color: var(--color-grey-light);
+  text-align: left;
 }
 
 .menu-area .nav-buttons {

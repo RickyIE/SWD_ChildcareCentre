@@ -56,7 +56,7 @@
             <p><?php echo $services[$row]['servicedetail']; ?></p>
          </div>
          <div>
-            <img src="<?php echo $services[$row]['imagepath']; ?>" alt="" class="activity-image service-image">
+            <img data-aos="slide-right" src="<?php echo $services[$row]['imagepath']; ?>" alt="" class="activity-image service-image">
          </div>
       </div>
    </section>

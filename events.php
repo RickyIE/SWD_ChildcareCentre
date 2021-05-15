@@ -40,7 +40,7 @@
    <section id="<?php echo "event" . $events[$row]['eventid']; ?>" class="daily-activities p-top">
       <div class="container grid">
          <div>
-            <img src="<?php echo $events[$row]['imagepath']; ?>" alt="" class="activity-image">
+            <img data-aos="slide-right" src="<?php echo $events[$row]['imagepath']; ?>" alt="" class="activity-image">
          </div>
          <div class="activity-text">
             <h2 class="heading-2"><?php echo $events[$row]['eventtitle']; ?></h2>
@@ -60,7 +60,7 @@
             <h4 class="heading-4"><?php $start_time = DateTime::createFromFormat ( "Y-m-d H:i:s", $events[$row]['starttime'] ); $end_time = DateTime::createFromFormat ( "Y-m-d H:i:s", $events[$row]['endtime'] ); echo $start_time->format('F j, Y, g:i a') . ' to ' . $end_time->format('g:i a');?></h4>
          </div>
          <div>
-            <img src="<?php echo $events[$row]['imagepath']; ?>" alt="" class="activity-image">
+            <img data-aos="slide-left" src="<?php echo $events[$row]['imagepath']; ?>" alt="" class="activity-image">
          </div>
       </div>
    </section>
