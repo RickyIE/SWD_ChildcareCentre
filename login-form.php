@@ -59,7 +59,7 @@ else
         $_SESSION['name'] = $row['firstname'].' '. $row['lastname'];  
         $_SESSION['accesslevel'] = $row['usertypeid'];     
         // go to home page
-        header("Location: ../index.php");
+        header("Location: https://www.meetalex.org/swd/index.php");
         exit();        
       } else {
         $errors['failure'] = 'Invalid username or password!';
