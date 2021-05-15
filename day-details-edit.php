@@ -93,7 +93,7 @@
 
   <section class="day-details">
     <div class="containerD">
-      <table class="day-details-table table">
+      <table class="day-details-table day-details-table-edit">
         <thead>
           <tr>
             <th style="width: 20px;">ID</th>
