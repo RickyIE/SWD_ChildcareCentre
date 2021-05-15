@@ -310,7 +310,7 @@ img {
 /* Contact Page */
 .contact-us {
   background-color: var(--color-grey-light);
-  height: 80vh;
+  height: 100vh;
 }
 
 .social-media-list ul {
