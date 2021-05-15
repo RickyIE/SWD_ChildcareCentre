@@ -314,19 +314,6 @@ img {
   height: 80vh;
 }
 
-.contact-us .form-card {
-  background-color: red;
-}
-
-.contact-us .contact-img {
-  width: 70%;
-}
-
-.contact-form input,
-.contact-form textarea {
-  border: 10px solid red;
-}
-
 .social-media-list ul {
   display: flex;
 }
@@ -341,11 +328,6 @@ img {
   color: var(--color-primary);
 }
 
-.contact-us .form-card {
-  background-color: #fff;
-  border-radius: 15px;
-}
-
 .contact-form {
   display: flex;
   flex-direction: column;
@@ -354,11 +336,6 @@ img {
 
 .contact-form input,
 .contact-form textarea {
-  padding: 1em 1.5em;
-  background-color: transparent;
-  outline: none;
-  border: none;
-  border-bottom: 2px solid var(--color-primary);
 }
 
 .contact-form label {
@@ -397,6 +374,12 @@ img {
   padding: 1em 0;
   border: 1px solid var(--color-grey);
   border-radius: 5px;
+}
+
+.day-details-table .number-read-only {
+  border: none;
+  outline: none;
+  background-color: transparent;
 }
 
 .dateFilter {
@@ -463,15 +446,15 @@ img {
 table {
   margin: 25px auto;
   border-collapse: collapse;
-  border: 1px solid var(--color-grey);
-  border-bottom: 2px solid var(--color-primary);
+  border: 1px solid var(--color-grey-light);
 }
 
 table tr:hover {
   background: #f4f4f4;
+  color: var(--color-grey-darkest);
 }
 table tr:hover td {
-  color: var(--color-grey);
+  color: var(--color-grey-darkest);
 }
 
 table th,
@@ -482,7 +465,7 @@ table td {
 }
 
 table th {
-  background: var(--color-primary);
+  background: var(--color-grey-dark);
   color: #fff;
   text-transform: uppercase;
   font-size: 12px;
@@ -523,7 +506,9 @@ table th.last {
 /* Activities Page */
 .activities-intro {
   background-color: var(--color-grey-light);
-  height: 400px;
+}
+
+.activities-intro .grid {
 }
 
 .activities-intro .flex {
@@ -536,6 +521,15 @@ table th.last {
 
 .daily-activities:nth-child(odd) {
   background-color: var(--color-grey-light);
+}
+
+.activity-image {
+  border: 8px solid var(--color-secondary);
+  transition: 0.5s ease-in-out;
+}
+
+.activity-image:hover {
+  transform: scale(1.05);
 }
 
 .service-image {

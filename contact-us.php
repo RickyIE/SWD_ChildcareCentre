@@ -123,13 +123,14 @@
             <textarea name="contact-us-message" id="contact-us-message-id" cols="30" rows="10" placeholder="Anything we can help ?" value="<?php if (isset($message)) { echo $message; } ?>" ></textarea>
               <div class='red-text'><?php echo $messageError; ?></div>
 
-            <input type="submit" class="btn btn-primary" name="submit" value="Send" id="submit-contact">
+            <div class="flex">
+              <input type="submit" class="btn btn-primary" name="submit" value="Send" id="submit-contact">
+            </div>
           </form>
         </div>
       </div>
     </section>
     <?php include 'footer.html' ?>
-    <div class="overlay hidden"></div>
     <script src="js/app.js"></script>
   </body>
 

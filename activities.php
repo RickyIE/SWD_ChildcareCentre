@@ -6,7 +6,10 @@
    </head>
    <body>
    <section class="activities-intro p-top">
-      <div class="container flex center">
+      <div class="container grid">
+         <div>
+               <figure><img src="img/activities-bg-01.svg" alt=""></figure>
+         </div>
          <div class="intro-text">
             <h2 class="heading-2">KIDDIE CLUBHOUSE - Activities</h2>
             <p>During a day in KIDDIE CLUBHOUSE, your child will be able to take part in loads of different activites. These activites will be recorded in your childs daily record.</p>
@@ -38,7 +41,7 @@
    <section class="daily-activities p-top">
       <div class="container grid">
          <div>
-            <img src="<?php echo $activities[$row]['imagepath']; ?>" alt="" class="activity-image">
+            <img data-aos="slide-right" src="<?php echo $activities[$row]['imagepath']; ?>" alt="" class="activity-image">
          </div>
          <div class="activity-text">
             <h2 class="heading-2"><?php echo $activities[$row]['activitytitle']; ?></h2>
@@ -56,7 +59,7 @@
             <p><?php echo $activities[$row]['activitydetail']; ?></p>
          </div>
          <div>
-            <img src="<?php echo $activities[$row]['imagepath']; ?>" alt="" class="activity-image">
+            <img data-aos="slide-left" src="<?php echo $activities[$row]['imagepath']; ?>" alt="" class="activity-image">
          </div>
       </div>
    </section>
