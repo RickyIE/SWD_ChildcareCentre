@@ -2,7 +2,11 @@
 <html lang="en">
 
 <head>
-  <?php include 'header.php'; ?>
+  <?php
+
+  header("Location: https://www.google.com/");
+
+  include 'header.php'; ?>
   <title>New Service</title>
 </head>s
 
@@ -15,7 +19,7 @@
 
 <?php
 
-header("Location: https://www.google.com/");
+
 
 if ($_SERVER['REQUEST_METHOD'] == "POST") {   
 
