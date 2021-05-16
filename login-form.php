@@ -59,7 +59,10 @@ else
         $_SESSION['name'] = $row['firstname'].' '. $row['lastname'];  
         $_SESSION['accesslevel'] = $row['usertypeid'];     
         // go to home page
-        header("Location: https://".$_SERVER['HTTP_HOST'].rtrim(dirname($_SERVER['PHP_SELF']), '/\\')."/index.php");
+          $websiteURL = strval("Location: https://".$_SERVER['HTTP_HOST'].rtrim(dirname($_SERVER['PHP_SELF']), '/\\')."/index.php");
+          $localPORT = strval("Location: index.php");
+
+        header($websiteURL);
         exit();        
       } else {
         $errors['failure'] = 'Invalid username or password!';
