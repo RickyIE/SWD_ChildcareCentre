@@ -4,4 +4,8 @@ $websiteURL = strval("Location: https://".$_SERVER['HTTP_HOST'].rtrim(dirname($_
 
 echo $websiteURL;
 
+
+        $temp = "Location: https://new.example.com"."sub1.example.com";
+        echo $temp;
+
 ?>

@@ -62,7 +62,8 @@ else
           $websiteURL = strval("Location: https://".$_SERVER['HTTP_HOST'].rtrim(dirname($_SERVER['PHP_SELF']), '/\\')."/index.php");
           $localPORT = strval("Location: index.php");
 
-        header($websiteURL);
+        header("Location: https://meetalex.org/swd/index.php");
+
         exit();        
       } else {
         $errors['failure'] = 'Invalid username or password!';
