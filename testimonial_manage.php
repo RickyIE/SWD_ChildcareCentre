@@ -12,7 +12,6 @@
     <title>Testimonial Manager</title>
     <script type="text/javascript" src="lib/jquery-3.6.0.min.js"></script>
     <?php include 'header.php' ?>
-    <?php require('scripts/connect.php'); ?>
 </head>
 
 <body>
