@@ -2,8 +2,8 @@
 
 function redirectToIndex(){
 
-//    ob_flush();
-//    flush();
+    ob_flush();
+    flush();
 
     $websiteURLHardcoded = "Location: https://www.meetalex.org/swd/index.php";
     $websiteURL = strval("Location: https://".$_SERVER['HTTP_HOST'].rtrim(dirname($_SERVER['PHP_SELF']), '/\\')."/index.php");
@@ -14,7 +14,7 @@ function redirectToIndex(){
     if (preg_match($pattern, $location) === 1 ){ // if running on local machine redirect locally else redirect web
 
         header($localPORT , true , 303);
-        
+
 
     }else if(preg_match($pattern, $location) === 0) {
 
