@@ -16,7 +16,6 @@ $errors = array('username' => '', 'password' => '', 'failure' => '');
 
 <?php
 
-
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
     if (empty($_POST['username']))
@@ -78,9 +77,10 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                     header($websiteURL , true , 303);
 
                 }
-
-                die();
+                
                 echo "<script>window.location.replace('$websiteURLHardcoded');</script>";
+                die();
+
 
 
             } else {
