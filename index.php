@@ -1,12 +1,9 @@
   <!DOCTYPE html>
   <html lang="en">
-
   <head>
   <?php include 'header.php' ?>
   <title>Home</title>
-</head>  
-
-
+</head>
     <!-- Showcase Area -->
     <section class="showcase">
       <div class="container grid">

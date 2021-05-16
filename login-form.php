@@ -1,7 +1,8 @@
 
-
 <!DOCTYPE html>
 <html lang="en">
+
+
 
 <head>
     <?php include 'header.php'; ?>
@@ -10,13 +11,13 @@
 <body>
 
 <?php
+
 // clear array and start validation again
 $errors = array('username' => '', 'password' => '', 'failure' => '');
 ?>
 
 <?php
 
-echo "0000000000000000000000000000000000000000000000000000000000000000000000";
 
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
