@@ -38,13 +38,7 @@
       echo "0 results";
   }
 
-
-
-
   if ($_SERVER["REQUEST_METHOD"] == "POST") { // post on submit
-
-
-
 
 
   }

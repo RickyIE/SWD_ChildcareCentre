@@ -40,7 +40,7 @@ if (mysqli_num_rows($retrieveFirstName) > 0) {
     echo "0 results";
 }
 
-
+$searchForm ="";
 $searchForm = $_POST['search-form'];
 
 $query2 = "SELECT * FROM testimonial_panels;";
