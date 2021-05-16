@@ -59,7 +59,7 @@ else
         $_SESSION['name'] = $row['firstname'].' '. $row['lastname'];  
         $_SESSION['accesslevel'] = $row['usertypeid'];     
         // go to home page
-        header("Location: /home4/meetalex/public_html/swd/index.php");
+        header("Location: https://".$_SERVER['HTTP_HOST'].rtrim(dirname($_SERVER['PHP_SELF']), '/\\')."/index.php");
         exit();        
       } else {
         $errors['failure'] = 'Invalid username or password!';
