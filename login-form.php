@@ -63,20 +63,21 @@ else
         $_SESSION['accesslevel'] = $row['usertypeid'];     
         // go to home page
 
+          $websiteURLHardcoded = "Location: https://www.meetalex.org/swd/index.php";
           $websiteURL = strval("Location: https://".$_SERVER['HTTP_HOST'].rtrim(dirname($_SERVER['PHP_SELF']), '/\\')."/index.php");
           $localPORT = strval("Location: index.php");
           $location = $_SERVER['HTTP_HOST'];
           $pattern = "/localhost/i";
 
-            if (preg_match($pattern, $location) === 1 ){ // if running on local machine redirect locally else redirect web
+          if (preg_match($pattern, $location) === 1 ){ // if running on local machine redirect locally else redirect web
 
-                header($localPORT);
+              header($localPORT);
 
-            }else{
+          }else if(preg_match($pattern, $location) === 0) {
 
-                header($websiteURL);
+              header($websiteURL);
 
-            }
+          }
 
 
 
