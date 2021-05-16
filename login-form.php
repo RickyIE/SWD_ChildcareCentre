@@ -2,11 +2,7 @@
 <html lang="en">
 
 <head>
-  <?php
-
-  header("Location: https://www.google.com/");
-
-  include 'header.php'; ?>
+  <?php include 'header.php'; ?>
   <title>New Service</title>
 </head>s
 
