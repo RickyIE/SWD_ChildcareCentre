@@ -34,6 +34,7 @@ echo "\$uri   = rtrim(dirname(\$_SERVER['PHP_SELF']), '/\\') = ".$uri   = rtrim(
 echo  "\$_SERVER['HTTP_HOST'] \$_SERVER['REQUEST_URI'] = ".$_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']."<br>";
 echo "\$newurl = 'https://www.example.com/subdirectory'. \$_SERVER['REQUEST_URI'];"."https://www.example.com/subdirectory = ". $_SERVER['REQUEST_URI']."<br>";
 echo "header('Location: https://'. \$_SERVER['HTTP_HOST'] . '/new'); = ".  "Location: https://". $_SERVER['HTTP_HOST'] . "/new = "."<br>";
+echo "Location: https://".$host  = $_SERVER['HTTP_HOST'].$uri   = rtrim(dirname($_SERVER['PHP_SELF']), '/\\')."/index.php";
 
 exit();
 
