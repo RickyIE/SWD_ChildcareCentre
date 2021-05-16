@@ -6,7 +6,10 @@
    </head>
    <body>
    <section class="activities-intro p-top">
-      <div class="container flex center">
+      <div class="container grid">
+         <figure>
+            <img src="img/offers-showcase-bg-01.svg" alt="">
+         </figure>
          <div class="intro-text">
             <h2 class="heading-2">KIDDIE CLUBHOUSE - Special Offers</h2>
             <p>KIDDIE CLUBHOUSE have a wide range of special offers for you to choose from.</p>
@@ -38,7 +41,7 @@
    <section id="<?php echo "offer" . $offers[$row]['offerid']; ?>" class="daily-activities p-top">
       <div class="container grid">
          <div>
-            <img src="<?php echo $offers[$row]['imagepath']; ?>" alt="" class="activity-image service-image" data-aos="slide-left">
+            <img src="<?php echo $offers[$row]['imagepath']; ?>" alt="" class="activity-image service-image offer-image" data-aos="slide-left">
          </div>
          <div class="activity-text">
             <h2 class="heading-2"><?php echo $offers[$row]['offertitle']; ?></h2>
@@ -56,7 +59,7 @@
             <p><?php echo $offers[$row]['offerdetail']; ?></p>
          </div>
          <div>
-            <img data-aos="slide-right" src="<?php echo $offers[$row]['imagepath']; ?>" alt="" class="activity-image service-image">
+            <img data-aos="slide-right" src="<?php echo $offers[$row]['imagepath']; ?>" alt="" class="activity-image service-image offer-image">
          </div>
       </div>
    </section>

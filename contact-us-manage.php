@@ -14,7 +14,6 @@
       <link rel="stylesheet" href="css/alex_temp.css">
     <title>Contact US manage</title>
     <?php include 'header.php' ?>
-    <?php require('scripts/connect.php'); ?>
   </head>
 
   <body>
