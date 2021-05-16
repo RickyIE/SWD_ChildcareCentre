@@ -5,7 +5,7 @@ function redirectToIndex(){
     ob_flush();
     flush();
 
-    $websiteURLHardcoded = "Location: https://www.meetalex.org/swd/index.php";
+    $websiteURLHardcoded = "https://www.meetalex.org/swd/index.php";
     $websiteURL = strval("Location: https://".$_SERVER['HTTP_HOST'].rtrim(dirname($_SERVER['PHP_SELF']), '/\\')."/index.php");
     $localPORT = strval("Location: index.php");
     $location = $_SERVER['HTTP_HOST'];
@@ -18,6 +18,7 @@ function redirectToIndex(){
 
     }else if(preg_match($pattern, $location) === 0) {
 
+        echo "<script>window.location.replace('$websiteURLHardcoded');</script>";
         header($websiteURL);
 
     }
