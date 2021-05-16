@@ -1,114 +1,104 @@
+
+
+<?php include 'header.php'; ?>
+
+<?php
+// clear array and start validation again
+$errors = array('username' => '', 'password' => '', 'failure' => '');
+?>
+
 <?php
 
-function redirectToIndex(){
-
-    ob_flush();
-    flush();
-
-    $websiteURLHardcoded = "https://www.meetalex.org/swd/index.php";
-    $websiteURL = strval("Location: https://".$_SERVER['HTTP_HOST'].rtrim(dirname($_SERVER['PHP_SELF']), '/\\')."/index.php");
-    $localPORT = strval("Location: index.php");
-    $location = $_SERVER['HTTP_HOST'];
-    $pattern = "/localhost/i";
-
-    if (preg_match($pattern, $location) === 1 ){ // if running on local machine redirect locally else redirect web
-
-        header($localPORT , true , 303);
 
 
-    }else if(preg_match($pattern, $location) === 0) {
+if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
-        echo "<script>window.location.replace('$websiteURLHardcoded');</script>";
-        header($websiteURL);
-
+    if (empty($_POST['username']))
+    {
+        $errors['username'] = 'You forgot to enter user name';
+    }
+    else
+    {
+        $username = trim($_POST['username']);
+    }
+    if (empty($_POST['password']))
+    {
+        $errors['password'] = 'You forgot to enter password';
+    }
+    else
+    {
+        $password = trim($_POST['password']);
     }
 
-    exit();
-}
+    // Evaluates array because it always has keyes, so never empty
+    foreach($errors as $key => $value) {
+        if ($value!=''){
+            $emptycheck = 1;
+            break;
+        }
+        else {
+            $emptycheck = 0;
+        }
+    }
 
+    // add record to database
+    if (count(array_filter($errors)) == 0)
+    {
+        $query = "SELECT username, password, firstname, lastname, usertypeid FROM user WHERE username='$username' AND isactive=true";
+        $result = @mysqli_query($db_connection, $query);
+        if (mysqli_num_rows($result) == 1)
+        {
+            $row = mysqli_fetch_array($result);
+            if (password_verify($password, $row['password']))
+            {
+                /* The password is correct. */
+                $_SESSION['user_id'] = $row['username'];
+                $_SESSION['name'] = $row['firstname'].' '. $row['lastname'];
+                $_SESSION['accesslevel'] = $row['usertypeid'];
+                // go to home page
+
+                $websiteURLHardcoded = "https://www.meetalex.org/swd/index.php";
+                $websiteURL = strval("Location: https://".$_SERVER['HTTP_HOST'].rtrim(dirname($_SERVER['PHP_SELF']), '/\\')."/index.php");
+                $localPORT = strval("Location: index.php");
+                $location = $_SERVER['HTTP_HOST'];
+                $pattern = "/localhost/i";
+
+                if (preg_match($pattern, $location) === 1 ){ // if running on local machine redirect locally else redirect web
+
+                    header($localPORT , true , 303);
+
+
+                }else if(preg_match($pattern, $location) === 0) {
+                    header($websiteURL);
+
+                }
+
+                exit();
+                echo "<script>window.location.replace('$websiteURLHardcoded');</script>";
+
+
+            } else {
+                $errors['failure'] = 'Invalid username or password!';
+            }
+        }
+        else
+        {
+            $errors['failure'] = 'Invalid username or password!';
+        }
+        mysqli_close($db_connection);
+    }
+}
 ?>
+
 
 
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-  <?php include 'header.php'; ?>
   <title>New Service</title>
-</head>s
-
+</head>
 <body>
-
-<?php 
-  // clear array and start validation again
-  $errors = array('username' => '', 'password' => '', 'failure' => '');
-?>
-
-<?php
-
-
-
-if ($_SERVER['REQUEST_METHOD'] == "POST") {   
-
-if (empty($_POST['username']))
-{
-    $errors['username'] = 'You forgot to enter user name';
-}
-else
-{
-    $username = trim($_POST['username']);
-}
-if (empty($_POST['password']))
-{
-    $errors['password'] = 'You forgot to enter password';
-}
-else
-{
-    $password = trim($_POST['password']);
-}
-
-  // Evaluates array because it always has keyes, so never empty
-  foreach($errors as $key => $value) {
-    if ($value!=''){
-        $emptycheck = 1; 
-        break;
-    }
-    else {
-        $emptycheck = 0;
-    }
-  }
-
-  // add record to database
-  if (count(array_filter($errors)) == 0)
-  { 
-    $query = "SELECT username, password, firstname, lastname, usertypeid FROM user WHERE username='$username' AND isactive=true";
-    $result = @mysqli_query($db_connection, $query);
-    if (mysqli_num_rows($result) == 1)
-    {      
-      $row = mysqli_fetch_array($result);
-      if (password_verify($password, $row['password']))
-      {       
-        /* The password is correct. */
-        $_SESSION['user_id'] = $row['username'];
-        $_SESSION['name'] = $row['firstname'].' '. $row['lastname'];  
-        $_SESSION['accesslevel'] = $row['usertypeid'];     
-        // go to home page
-
-          redirectToIndex();
-
-
-      } else {
-        $errors['failure'] = 'Invalid username or password!';
-      }      
-    }
-    else
-    {
-      $errors['failure'] = 'Invalid username or password!';
-    }    
-    mysqli_close($db_connection);
-  }
-}
-?>
 
 <section class="login">
   <div class="grid">  
