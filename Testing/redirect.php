@@ -7,11 +7,12 @@ $pattern = "/localhost/i";
 
 if (preg_match($pattern, $location) === 1 ){ // if running on local machine redirect locally else redirect web
 
+
     header($localPORT);
 
 }else{
 
-    header($websiteURL);
+    header("Location: https://www.google.com/");
 
 }
 
