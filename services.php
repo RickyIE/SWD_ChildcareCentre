@@ -38,7 +38,7 @@
    <section id="<?php echo "service" . $services[$row]['serviceid']; ?>" class="daily-activities p-top">
       <div class="container grid">
          <div>
-            <img src="<?php echo $services[$row]['imagepath']; ?>" alt="" class="activity-image service-image">
+            <img data-aos="slide-right" src="<?php echo $services[$row]['imagepath']; ?>" alt="" class="activity-image service-image">
          </div>
          <div class="activity-text">
             <h2 class="heading-2"><?php echo $services[$row]['servicetitle']; ?></h2>
@@ -65,7 +65,6 @@
       }    
       ?>  
    <?php include 'footer.html' ?>
-   <div class="overlay hidden"></div>
    <script src="js/app.js"></script>
    </body>
 </html>

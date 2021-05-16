@@ -204,6 +204,10 @@ img {
   color: var(--color-primary);
 }
 
+.offer-image {
+  border: none;
+}
+
 /********** Footer **********/
 .footer {
   background-color: var(--color-tertiary);
