@@ -68,7 +68,7 @@ else
           $location = $_SERVER['HTTP_HOST'];
           $pattern = "/localhost/i";
 
-            if (preg_match($pattern, $location) == 1 ){ // if running on local machine redirect locally else redirect web
+            if (preg_match($pattern, $location) === 1 ){ // if running on local machine redirect locally else redirect web
 
                 header($localPORT);
 
