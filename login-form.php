@@ -69,7 +69,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
 
                 }else if(preg_match($pattern, $location) === 0) {
-                    header($websiteURL);
+                    header($websiteURL , true , 303);
 
                 }
 
