@@ -141,7 +141,7 @@
             ?>
           </ul>
           <div class="flex">
-               <a class="btn btn-primary" href="https://meetalex.org/swd/offers.php">More Information</a>
+               <a class="btn btn-primary" href="offers.php">More Information</a>
           </div> 
         </div>
          <!-- use latest offer as image -->

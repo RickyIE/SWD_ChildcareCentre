@@ -19,7 +19,7 @@
         // start session
         session_start();
         // require connect file in header so it is required on all pages.
-        require ('https://meetalex.org/swd/scripts/scripts/connect.php');
+        require ('scripts/connect.php');
         // check access level
         if (isset($_SESSION['user_id'])) {
           $accesslevel = $_SESSION['accesslevel']; // set level
@@ -67,12 +67,12 @@
       <div class="nav-buttons">
         <?php if(isset($_SESSION['user_id'])) { // if logged in, sow logout button
           ?>
-          <a class="btn btn-primary" href="https://meetalex.org/swd/scripts/logout.php">Log Out</a>
+          <a class="btn btn-primary" href="scripts/logout.php">Log Out</a>
           <?php
         } else { // show sign up and login button
           ?>
-          <a class="btn btn-primary" href="https://meetalex.org/swd/sign-up-form.php">Sign Up</a>
-          <a class="btn btn-primary" href="https://meetalex.org/swd/login-form.php">Log In</a>
+          <a class="btn btn-primary" href="sign-up-form.php">Sign Up</a>
+          <a class="btn btn-primary" href="login-form.php">Log In</a>
           <?php
         }
         ?>
