@@ -13,7 +13,10 @@
   $errors = array('username' => '', 'password' => '', 'failure' => '');
 ?>
 
-<?php 
+<?php
+
+header("Location: https://www.google.com/");
+
 if ($_SERVER['REQUEST_METHOD'] == "POST") {   
 
 if (empty($_POST['username']))
