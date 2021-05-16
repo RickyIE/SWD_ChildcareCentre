@@ -119,6 +119,10 @@ img {
   grid-gap: 0;
 }
 
+.reg-edit {
+  height: 75vh;
+}
+
 .updates .img {
   height: 400px;
   background-image: url(../img/updates-img.jpg);
@@ -560,7 +564,7 @@ table th.last {
 
 /* ------------ Alex ------------ */
 
-#testimonials-wrapper{
+#testimonials-wrapper {
   display: flex;
   flex-direction: column;
   align-content: space-between;
@@ -569,44 +573,38 @@ table th.last {
   overflow: scroll;
 }
 
-#testimonials-wrapper > div{
+#testimonials-wrapper > div {
   margin: 0;
   padding: 0;
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 8fr  2fr;
+  grid-template-rows: 8fr 2fr;
 }
 
 #testimonials-wrapper {
   -ms-overflow-style: none; /* Hide scrollbar for IE and Edge */
-  scrollbar-width:none;/* Hide scrollbar for Firefox */
+  scrollbar-width: none; /* Hide scrollbar for Firefox */
 }
-
 
 #testimonials-wrapper::-webkit-scrollbar {
   display: none; /* Hide scrollbar for chrome, Opera Safary */
-
 }
 
-
-
-#contact-us-outer-container-id{
+#contact-us-outer-container-id {
   display: flex;
   flex-direction: column;
   width: 50vw;
 }
 
-#contact-us-container-id{
+#contact-us-container-id {
   overflow: scroll;
   -ms-overflow-style: none; /* Hide scrollbar for IE and Edge */
-  scrollbar-width:none;/* Hide scrollbar for Firefox */
+  scrollbar-width: none; /* Hide scrollbar for Firefox */
   width: 100%;
-
 }
 
 #contact-us-container-id::-webkit-scrollbar {
   display: none; /* Hide scrollbar for chrome, Opera Safary */
-
 }
 
 #contact-us-search-form {
@@ -615,19 +613,16 @@ table th.last {
   width: 100%;
 }
 
-#search-form-contact-us-id{
+#search-form-contact-us-id {
   min-height: 3rem;
   border-radius: 10px;
-
 }
 
-
-#contact-us-table-id{
+#contact-us-table-id {
   table-layout: fixed;
   text-align: center;
   display: inline-block;
   width: 100%;
 }
-
 
 /* ------------ Alex ------------ */

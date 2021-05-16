@@ -23,7 +23,7 @@
            ); 
          }
          ?>
-      <section class="day-details">
+      <section class="day-details reg-edit p-top">
          <div class="container">
             <h2 class="heading-2">Fees</h2>
             <table class="day-details-table data-table">
