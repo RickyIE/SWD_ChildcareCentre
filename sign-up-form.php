@@ -10,7 +10,7 @@
 
 <?php 
   // clear array and start validation again
-  $errors = array('first_name' => '', 'last_name' => '', 'home_phone' => '', 'mobile_phone' => '', 'street' => '', 'town' => '', 'county' => '', 'country' => '', 'eircode' => '', 'username' => '', 'password' => '', 'password_confirm' => '');
+  $errors = array('first_name' => '', 'last_name' => '', 'home_phone' => '', 'mobile_phone' => '', 'street' => '', 'town' => '', 'county' => '', 'country' => '', 'eircode' => '', 'username' => '', 'password' => '', 'password_confirm' => '', 'failure' => '');
 ?>
 
 <?php 
@@ -134,21 +134,23 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     }
   }
 
+
   // add record to database
   if (count(array_filter($errors)) == 0)
   { 
     $query1 = "INSERT INTO user VALUES('$username', '$first_name', '$last_name', '$password', '2', true)";
-    $result1 = @mysqli_query($db_connection, $query1);
+    $result = @mysqli_query($db_connection, $query1);
 
     // if the query ran successfully
-    if ($result1)
+    if ($result)
     { 
       // set session variables
-      $row = mysqli_fetch_array($result1);
-      $_SESSION['user_id'] = $row['username'];
-      $_SESSION['name'] = $row['firstName'].' '. $row['lastName'];   
-
-      $_SESSION['accesslevel'] = $row['usertypeid'];
+      // save username
+      $_SESSION['user_id'] = $username;
+      // save name
+      $_SESSION['name'] = $first_name .' '. $last_name;   
+      // save access level
+      $_SESSION['accesslevel'] = 2; 
 
 
       // save address
@@ -166,8 +168,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
       header("Location: index.php");
       exit();            
     } else {
-      echo "Failed to connect to MySQL: " . mysqli_connect_error();
-      exit(); 
+      $errors['failure'] = "Failed to connect to MySQL: " . mysqli_connect_error(); // add error to array   
     }   
     mysqli_close($db_connection);
   }
@@ -225,8 +226,9 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
       <div class='red-text'><?php echo $errors['password_confirm']; ?></div>   
 
       <div class="flex">
-        <button class="btn btn-primary sign-up-btn">Sign Up</button>
+        <button class="btn btn-primary sign-up-btn">Sign Up</button>        
       </div>
+      <div class='red-text'><?php if(isset($errors['failure'])) { echo $errors['failure']; } ?></div>
       
     </form>    
    </div>    
