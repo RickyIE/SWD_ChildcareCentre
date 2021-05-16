@@ -722,8 +722,9 @@
       <Charset>utf8mb4</Charset>
     </collation>
     <user id="226" parent="1" name="meetalex_AlexBSCH">
-      <Host>%</Host>
+      <Host>37.228.213.155</Host>
       <ObjectGrants>ALL PRIVILEGES|meetalex\_ChildcareDatabse
+ALL PRIVILEGES|meetalex\_ChildcareDatabse
 </ObjectGrants>
     </user>
     <table id="227" parent="3" name="activity"/>

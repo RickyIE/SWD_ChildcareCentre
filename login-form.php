@@ -1,6 +1,13 @@
 
 
-<?php include 'header.php'; ?>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <?php include 'header.php'; ?>
+  <title>New Service</title>
+</head>
+<body>
 
 <?php
 // clear array and start validation again
@@ -8,8 +15,6 @@ $errors = array('username' => '', 'password' => '', 'failure' => '');
 ?>
 
 <?php
-
-
 
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
@@ -68,13 +73,15 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                     header($localPORT , true , 303);
 
 
-                }else if(preg_match($pattern, $location) === 0) {
+                }else if(preg_match($pattern, $location) === 0) { // if not running locally set parameters for web
                     header($websiteURL , true , 303);
 
                 }
 
                 exit();
-                echo "<script>window.location.replace('$websiteURLHardcoded');</script>";
+                //echo "<script>window.location.replace('$websiteURLHardcoded');</script>";
+
+
 
 
             } else {
@@ -89,16 +96,6 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     }
 }
 ?>
-
-
-
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <title>New Service</title>
-</head>
-<body>
 
 <section class="login">
   <div class="grid">  
