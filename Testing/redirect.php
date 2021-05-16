@@ -12,7 +12,7 @@ if (preg_match($pattern, $location) === 1 ){ // if running on local machine redi
 
 }else if(preg_match($pattern, $location) === 0) {
 
-    header($websiteURLHardcoded);
+    header($websiteURL);
 
 }
 
