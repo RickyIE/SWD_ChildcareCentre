@@ -28,13 +28,13 @@ $_SESSION['user'] = 'Alex';
 //echo $_SESSION['user'];
 //
 //
-//echo "\$host  = \$_SERVER['HTTP_HOST'] = ".$host  = $_SERVER['HTTP_HOST']."<br>";
-//echo "\$uri   = dirname(\$_SERVER['PHP_SELF'] = ".$uri   = dirname($_SERVER['PHP_SELF'])."<br>";
-//echo "\$uri   = rtrim(dirname(\$_SERVER['PHP_SELF']), '/\\') = ".$uri   = rtrim(dirname($_SERVER['PHP_SELF']), '/\\')."<br>";
-//echo  "\$_SERVER['HTTP_HOST'] \$_SERVER['REQUEST_URI'] = ".$_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']."<br>";
-//echo "\$newurl = 'https://www.example.com/subdirectory'. \$_SERVER['REQUEST_URI'];"."https://www.example.com/subdirectory = ". $_SERVER['REQUEST_URI']."<br>";
-//echo "header('Location: https://'. \$_SERVER['HTTP_HOST'] . '/new'); = ".  "Location: https://". $_SERVER['HTTP_HOST'] . "/new = "."<br>";
-//echo "Location: https://".$_SERVER['HTTP_HOST']."  ---  ".rtrim(dirname($_SERVER['PHP_SELF']), '/\\')." --- /index.php";
+echo "\$host  = \$_SERVER['HTTP_HOST'] = ".$host  = $_SERVER['HTTP_HOST']."<br>";
+echo "\$uri   = dirname(\$_SERVER['PHP_SELF'] = ".$uri   = dirname($_SERVER['PHP_SELF'])."<br>";
+echo "\$uri   = rtrim(dirname(\$_SERVER['PHP_SELF']), '/\\') = ".$uri   = rtrim(dirname($_SERVER['PHP_SELF']), '/\\')."<br>";
+echo  "\$_SERVER['HTTP_HOST'] \$_SERVER['REQUEST_URI'] = ".$_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']."<br>";
+echo "\$newurl = 'https://www.example.com/subdirectory'. \$_SERVER['REQUEST_URI'];"."https://www.example.com/subdirectory = ". $_SERVER['REQUEST_URI']."<br>";
+echo "header('Location: https://'. \$_SERVER['HTTP_HOST'] . '/new'); = ".  "Location: https://". $_SERVER['HTTP_HOST'] . "/new = "."<br>";
+echo "Location: https://".$_SERVER['HTTP_HOST'].rtrim(dirname($_SERVER['PHP_SELF']), '/\\')."/index.php";
 
 exit();
 
