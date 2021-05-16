@@ -77,9 +77,10 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                     header($websiteURL , true , 303);
 
                 }
-                
-                echo "<script>window.location.replace('$websiteURLHardcoded');</script>";
-                die();
+
+                exit();
+                //echo "<script>window.location.replace('$websiteURLHardcoded');</script>";
+
 
 
 
