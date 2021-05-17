@@ -54,7 +54,7 @@ if (mysqli_num_rows($retrieveUserInfo) > 0) {
 }
 
 
-$searchForm = $_POST['search-form'];
+//$searchForm = $_POST['search-form'];
 
 $query2 = "SELECT * FROM testimonial_panels;";
 
@@ -93,24 +93,6 @@ if (mysqli_num_rows($retrieveFirstName) > 0) {
 
 } else {
     echo "0 results";
-}
-
-$comment = $_POST['testimonial-add-comment'];
-$commentDate = date("Y-m-d");
-$userFirstName = $dataArray4 [0]['firstName'];
-$service =$_POST['testimonial-add-service'];
-$userEmail = 'abasek2q@samsung.com';
-
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-
-    if (empty($comment) === false) {
-
-        $query5 = "INSERT INTO testimonial (comment, parentEmail, serviceName, created ,isDisplayed)
-        VALUES ('$comment', '$userEmail' ,'$service', '$commentDate'  , 1);";
-
-        $insertIntoTestimonial = mysqli_query($db_connection, $query5);
-
-    }
 }
 
 ?>
