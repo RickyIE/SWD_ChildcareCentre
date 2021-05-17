@@ -53,8 +53,6 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         $result = @mysqli_query($db_connection, $query);
         if (mysqli_num_rows($result) == 1)
         {
-            header("Location: https://www.meetalex.org/swd/index.php" , true , 302);
-            exit();
 
             $row = mysqli_fetch_array($result);
             if (password_verify($password, $row['password']))
@@ -66,12 +64,13 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                 // go to home page
 
                 $websiteURLHardcoded = "Location: https://www.meetalex.org/swd/index.php";
+                $localPORTHardcode = "Location: index.php";
                 $websiteURL = strval("Location: https://".$_SERVER['HTTP_HOST'].rtrim(dirname($_SERVER['PHP_SELF']), '/\\')."/index.php");
                 $localPORT = strval("Location: index.php");
                 $location = $_SERVER['HTTP_HOST'];
                 $pattern = "/localhost/i";
 
-                header($websiteURLHardcoded , true , 302);
+                header($localPORTHardcode , true , 302);
 
 //                if (preg_match($pattern, $location) === 1 ){ // if running on local machine redirect locally else redirect web
 //
