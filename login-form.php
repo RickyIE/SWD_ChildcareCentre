@@ -19,8 +19,9 @@ function redirectPage ($paramether){
 
 
 
-    echo '<script>window.location.href = "https://www.meetalex.org/swd/index.php";</script>;';
-//    header($paramether , true , 302);
+//    echo '<script>window.location.href = "https://www.meetalex.org/swd/index.php";</script>;';
+    header('Status: 301 Moved Permanently', false, 301);
+    header($paramether , false , 301);
     exit();
     die();
 
