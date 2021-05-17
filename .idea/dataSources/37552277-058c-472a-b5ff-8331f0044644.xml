@@ -722,9 +722,8 @@
       <Charset>utf8mb4</Charset>
     </collation>
     <user id="226" parent="1" name="meetalex_AlexBSCH">
-      <Host>37.228.213.155</Host>
+      <Host>%</Host>
       <ObjectGrants>ALL PRIVILEGES|meetalex\_ChildcareDatabse
-ALL PRIVILEGES|meetalex\_ChildcareDatabse
 </ObjectGrants>
     </user>
     <table id="227" parent="3" name="activity"/>
@@ -740,585 +739,565 @@ ALL PRIVILEGES|meetalex\_ChildcareDatabse
     <table id="237" parent="3" name="registration"/>
     <table id="238" parent="3" name="service"/>
     <table id="239" parent="3" name="special_offer"/>
-    <table id="240" parent="3" name="test_log_in"/>
-    <table id="241" parent="3" name="testimonial"/>
-    <table id="242" parent="3" name="testimonial_panels"/>
-    <table id="243" parent="3" name="user"/>
-    <table id="244" parent="3" name="user_type"/>
-    <column id="245" parent="227" name="activityId">
+    <table id="240" parent="3" name="testimonial"/>
+    <table id="241" parent="3" name="testimonial_panels"/>
+    <table id="242" parent="3" name="user"/>
+    <table id="243" parent="3" name="user_type"/>
+    <column id="244" parent="227" name="activityId">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="246" parent="227" name="activityTitle">
+    <column id="245" parent="227" name="activityTitle">
       <Position>2</Position>
       <DataType>varchar(100)|0s</DataType>
     </column>
-    <column id="247" parent="227" name="activityDetail">
+    <column id="246" parent="227" name="activityDetail">
       <Position>3</Position>
       <DataType>varchar(1000)|0s</DataType>
     </column>
-    <column id="248" parent="227" name="imagePath">
+    <column id="247" parent="227" name="imagePath">
       <Position>4</Position>
       <DataType>varchar(1000)|0s</DataType>
     </column>
-    <key id="249" parent="227" name="PRIMARY">
+    <key id="248" parent="227" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>activityId</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="250" parent="228" name="addressId">
+    <column id="249" parent="228" name="addressId">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="251" parent="228" name="username">
+    <column id="250" parent="228" name="username">
       <Position>2</Position>
       <DataType>varchar(255)|0s</DataType>
     </column>
-    <column id="252" parent="228" name="street">
+    <column id="251" parent="228" name="street">
       <Position>3</Position>
       <DataType>varchar(100)|0s</DataType>
     </column>
-    <column id="253" parent="228" name="town">
+    <column id="252" parent="228" name="town">
       <Position>4</Position>
       <DataType>varchar(100)|0s</DataType>
     </column>
-    <column id="254" parent="228" name="county">
+    <column id="253" parent="228" name="county">
       <Position>5</Position>
       <DataType>varchar(50)|0s</DataType>
     </column>
-    <column id="255" parent="228" name="country">
+    <column id="254" parent="228" name="country">
       <Position>6</Position>
       <DataType>varchar(50)|0s</DataType>
     </column>
-    <column id="256" parent="228" name="eircode">
+    <column id="255" parent="228" name="eircode">
       <Position>7</Position>
       <DataType>varchar(10)|0s</DataType>
     </column>
-    <index id="257" parent="228" name="username">
+    <index id="256" parent="228" name="username">
       <ColNames>username</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="258" parent="228" name="PRIMARY">
+    <key id="257" parent="228" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>addressId</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="259" parent="228" name="address_ibfk_1">
+    <foreign-key id="258" parent="228" name="address_ibfk_1">
       <ColNames>username</ColNames>
       <RefTableName>user</RefTableName>
       <RefColNames>username</RefColNames>
     </foreign-key>
-    <column id="260" parent="229" name="categoryId">
+    <column id="259" parent="229" name="categoryId">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="261" parent="229" name="category">
+    <column id="260" parent="229" name="category">
       <Position>2</Position>
       <DataType>varchar(20)|0s</DataType>
     </column>
-    <column id="262" parent="229" name="categoryDesc">
+    <column id="261" parent="229" name="categoryDesc">
       <Position>3</Position>
       <DataType>varchar(1000)|0s</DataType>
     </column>
-    <key id="263" parent="229" name="PRIMARY">
+    <key id="262" parent="229" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>categoryId</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="264" parent="230" name="childId">
+    <column id="263" parent="230" name="childId">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="265" parent="230" name="username">
+    <column id="264" parent="230" name="username">
       <Position>2</Position>
       <DataType>varchar(255)|0s</DataType>
     </column>
-    <column id="266" parent="230" name="firstName">
+    <column id="265" parent="230" name="firstName">
       <Position>3</Position>
       <DataType>varchar(100)|0s</DataType>
     </column>
-    <column id="267" parent="230" name="lastName">
+    <column id="266" parent="230" name="lastName">
       <Position>4</Position>
       <DataType>varchar(100)|0s</DataType>
     </column>
-    <index id="268" parent="230" name="parentEmail">
+    <index id="267" parent="230" name="parentEmail">
       <ColNames>username</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="269" parent="230" name="PRIMARY">
+    <key id="268" parent="230" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>childId</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="270" parent="230" name="children_ibfk_1">
+    <foreign-key id="269" parent="230" name="children_ibfk_1">
       <ColNames>username</ColNames>
       <RefTableName>user</RefTableName>
       <RefColNames>username</RefColNames>
     </foreign-key>
-    <column id="271" parent="231" name="contactId">
+    <column id="270" parent="231" name="contactId">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="272" parent="231" name="name">
+    <column id="271" parent="231" name="name">
       <Position>2</Position>
       <DataType>varchar(255)|0s</DataType>
     </column>
-    <column id="273" parent="231" name="email">
+    <column id="272" parent="231" name="email">
       <Position>3</Position>
       <DataType>varchar(255)|0s</DataType>
     </column>
-    <column id="274" parent="231" name="phone">
+    <column id="273" parent="231" name="phone">
       <Position>4</Position>
       <DataType>varchar(100)|0s</DataType>
     </column>
-    <column id="275" parent="231" name="message">
+    <column id="274" parent="231" name="message">
       <Position>5</Position>
       <DataType>varchar(100)|0s</DataType>
     </column>
-    <column id="276" parent="231" name="created">
+    <column id="275" parent="231" name="created">
       <Position>6</Position>
       <DataType>datetime|0s</DataType>
     </column>
-    <key id="277" parent="231" name="PRIMARY">
+    <key id="276" parent="231" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>contactId</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="278" parent="232" name="recordId">
+    <column id="277" parent="232" name="recordId">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="279" parent="232" name="childId">
+    <column id="278" parent="232" name="childId">
       <Position>2</Position>
       <DataType>int(11)|0s</DataType>
     </column>
-    <column id="280" parent="232" name="temperature">
+    <column id="279" parent="232" name="temperature">
       <Position>3</Position>
       <DataType>float|0s</DataType>
     </column>
-    <column id="281" parent="232" name="breakfast">
+    <column id="280" parent="232" name="breakfast">
       <Position>4</Position>
       <DataType>varchar(100)|0s</DataType>
     </column>
-    <column id="282" parent="232" name="lunch">
+    <column id="281" parent="232" name="lunch">
       <Position>5</Position>
       <DataType>varchar(100)|0s</DataType>
     </column>
-    <column id="283" parent="232" name="activityId">
+    <column id="282" parent="232" name="activityId">
       <Position>6</Position>
       <DataType>int(11)|0s</DataType>
     </column>
-    <column id="284" parent="232" name="created">
+    <column id="283" parent="232" name="created">
       <Position>7</Position>
       <DataType>date|0s</DataType>
     </column>
-    <index id="285" parent="232" name="childId">
+    <index id="284" parent="232" name="childId">
       <ColNames>childId</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="286" parent="232" name="activityId">
+    <index id="285" parent="232" name="activityId">
       <ColNames>activityId</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="287" parent="232" name="PRIMARY">
+    <key id="286" parent="232" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>recordId</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="288" parent="232" name="daily_record_ibfk_1">
+    <foreign-key id="287" parent="232" name="daily_record_ibfk_1">
       <ColNames>childId</ColNames>
       <RefTableName>children</RefTableName>
       <RefColNames>childId</RefColNames>
     </foreign-key>
-    <foreign-key id="289" parent="232" name="daily_record_ibfk_2">
+    <foreign-key id="288" parent="232" name="daily_record_ibfk_2">
       <ColNames>activityId</ColNames>
       <RefTableName>activity</RefTableName>
       <RefColNames>activityId</RefColNames>
     </foreign-key>
-    <column id="290" parent="233" name="eventId">
+    <column id="289" parent="233" name="eventId">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="291" parent="233" name="eventTitle">
+    <column id="290" parent="233" name="eventTitle">
       <Position>2</Position>
       <DataType>varchar(100)|0s</DataType>
     </column>
-    <column id="292" parent="233" name="eventDetail">
+    <column id="291" parent="233" name="eventDetail">
       <Position>3</Position>
       <DataType>varchar(1000)|0s</DataType>
     </column>
-    <column id="293" parent="233" name="startTime">
+    <column id="292" parent="233" name="startTime">
       <Position>4</Position>
       <DataType>datetime|0s</DataType>
     </column>
-    <column id="294" parent="233" name="endTime">
+    <column id="293" parent="233" name="endTime">
       <Position>5</Position>
       <DataType>datetime|0s</DataType>
     </column>
-    <column id="295" parent="233" name="imagePath">
+    <column id="294" parent="233" name="imagePath">
       <Position>6</Position>
       <DataType>varchar(1000)|0s</DataType>
     </column>
-    <key id="296" parent="233" name="PRIMARY">
+    <key id="295" parent="233" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>eventId</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="297" parent="234" name="feeId">
+    <column id="296" parent="234" name="feeId">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="298" parent="234" name="registrationId">
+    <column id="297" parent="234" name="registrationId">
       <Position>2</Position>
       <DataType>int(11)|0s</DataType>
     </column>
-    <column id="299" parent="234" name="feeAmount">
+    <column id="298" parent="234" name="feeAmount">
       <Position>3</Position>
       <DataType>decimal(15,2 digit)|0s</DataType>
     </column>
-    <column id="300" parent="234" name="isPaid">
+    <column id="299" parent="234" name="isPaid">
       <Position>4</Position>
       <DataType>tinyint(1)|0s</DataType>
     </column>
-    <column id="301" parent="234" name="paidDate">
+    <column id="300" parent="234" name="paidDate">
       <Position>5</Position>
       <DataType>date|0s</DataType>
     </column>
-    <index id="302" parent="234" name="registrationId">
+    <index id="301" parent="234" name="registrationId">
       <ColNames>registrationId</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="303" parent="234" name="PRIMARY">
+    <key id="302" parent="234" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>feeId</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="304" parent="234" name="fee_ibfk_1">
+    <foreign-key id="303" parent="234" name="fee_ibfk_1">
       <ColNames>registrationId</ColNames>
       <RefTableName>registration</RefTableName>
       <RefColNames>registrationId</RefColNames>
     </foreign-key>
-    <column id="305" parent="235" name="id">
+    <column id="304" parent="235" name="id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="306" parent="235" name="parentId">
+    <column id="305" parent="235" name="parentId">
       <Position>2</Position>
       <DataType>int(11)|0s</DataType>
     </column>
-    <column id="307" parent="235" name="title">
+    <column id="306" parent="235" name="title">
       <Position>3</Position>
       <DataType>varchar(100)|0s</DataType>
     </column>
-    <column id="308" parent="235" name="link">
+    <column id="307" parent="235" name="link">
       <Position>4</Position>
       <DataType>varchar(255)|0s</DataType>
     </column>
-    <column id="309" parent="235" name="accessLevel">
+    <column id="308" parent="235" name="accessLevel">
       <Position>5</Position>
       <DataType>int(11)|0s</DataType>
     </column>
-    <key id="310" parent="235" name="PRIMARY">
+    <key id="309" parent="235" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="311" parent="236" name="phoneId">
+    <column id="310" parent="236" name="phoneId">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="312" parent="236" name="username">
+    <column id="311" parent="236" name="username">
       <Position>2</Position>
       <DataType>varchar(255)|0s</DataType>
     </column>
-    <column id="313" parent="236" name="phone">
+    <column id="312" parent="236" name="phone">
       <Position>3</Position>
       <DataType>varchar(100)|0s</DataType>
     </column>
-    <index id="314" parent="236" name="username">
+    <index id="313" parent="236" name="username">
       <ColNames>username</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="315" parent="236" name="PRIMARY">
+    <key id="314" parent="236" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>phoneId</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="316" parent="236" name="phone_ibfk_1">
+    <foreign-key id="315" parent="236" name="phone_ibfk_1">
       <ColNames>username</ColNames>
       <RefTableName>user</RefTableName>
       <RefColNames>username</RefColNames>
     </foreign-key>
-    <column id="317" parent="237" name="registrationId">
+    <column id="316" parent="237" name="registrationId">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="318" parent="237" name="categoryId">
+    <column id="317" parent="237" name="categoryId">
       <Position>2</Position>
       <DataType>int(11)|0s</DataType>
     </column>
-    <column id="319" parent="237" name="days">
+    <column id="318" parent="237" name="days">
       <Position>3</Position>
       <DataType>float|0s</DataType>
     </column>
-    <column id="320" parent="237" name="isActive">
+    <column id="319" parent="237" name="isActive">
       <Position>4</Position>
       <DataType>tinyint(1)|0s</DataType>
     </column>
-    <column id="321" parent="237" name="username">
+    <column id="320" parent="237" name="username">
       <Position>5</Position>
       <DataType>varchar(255)|0s</DataType>
     </column>
-    <index id="322" parent="237" name="categoryId">
+    <index id="321" parent="237" name="categoryId">
       <ColNames>categoryId</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="323" parent="237" name="parentEmail">
+    <index id="322" parent="237" name="parentEmail">
       <ColNames>username</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="324" parent="237" name="PRIMARY">
+    <key id="323" parent="237" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>registrationId</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="325" parent="237" name="registration_ibfk_1">
+    <foreign-key id="324" parent="237" name="registration_ibfk_1">
       <ColNames>categoryId</ColNames>
       <RefTableName>category</RefTableName>
       <RefColNames>categoryId</RefColNames>
     </foreign-key>
-    <foreign-key id="326" parent="237" name="registration_ibfk_2">
+    <foreign-key id="325" parent="237" name="registration_ibfk_2">
       <ColNames>username</ColNames>
       <RefTableName>user</RefTableName>
       <RefColNames>username</RefColNames>
     </foreign-key>
-    <column id="327" parent="238" name="serviceId">
+    <column id="326" parent="238" name="serviceId">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="328" parent="238" name="serviceTitle">
+    <column id="327" parent="238" name="serviceTitle">
       <Position>2</Position>
       <DataType>varchar(100)|0s</DataType>
     </column>
-    <column id="329" parent="238" name="serviceDetail">
+    <column id="328" parent="238" name="serviceDetail">
       <Position>3</Position>
       <DataType>varchar(1000)|0s</DataType>
     </column>
-    <column id="330" parent="238" name="imagePath">
+    <column id="329" parent="238" name="imagePath">
       <Position>4</Position>
       <DataType>varchar(1000)|0s</DataType>
     </column>
-    <key id="331" parent="238" name="PRIMARY">
+    <key id="330" parent="238" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>serviceId</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="332" parent="239" name="offerId">
+    <column id="331" parent="239" name="offerId">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="333" parent="239" name="offerTitle">
+    <column id="332" parent="239" name="offerTitle">
       <Position>2</Position>
       <DataType>varchar(100)|0s</DataType>
     </column>
-    <column id="334" parent="239" name="offerDetail">
+    <column id="333" parent="239" name="offerDetail">
       <Position>3</Position>
       <DataType>varchar(1000)|0s</DataType>
     </column>
-    <column id="335" parent="239" name="imagePath">
+    <column id="334" parent="239" name="imagePath">
       <Position>4</Position>
       <DataType>varchar(1000)|0s</DataType>
     </column>
-    <key id="336" parent="239" name="PRIMARY">
+    <key id="335" parent="239" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>offerId</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="337" parent="240" name="panel_id">
+    <column id="336" parent="240" name="testimonialId">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="338" parent="240" name="panel_comment">
-      <Position>2</Position>
-      <DataType>varchar(255)|0s</DataType>
-    </column>
-    <column id="339" parent="240" name="panel_date">
-      <Position>3</Position>
-      <DataType>datetime|0s</DataType>
-    </column>
-    <key id="340" parent="240" name="PRIMARY">
-      <NameSurrogate>1</NameSurrogate>
-      <ColNames>panel_id</ColNames>
-      <Primary>1</Primary>
-    </key>
-    <column id="341" parent="241" name="testimonialId">
-      <Position>1</Position>
-      <DataType>int(11)|0s</DataType>
-      <NotNull>1</NotNull>
-      <SequenceIdentity>null</SequenceIdentity>
-    </column>
-    <column id="342" parent="241" name="COMMENT">
+    <column id="337" parent="240" name="COMMENT">
       <Position>2</Position>
       <DataType>varchar(1000)|0s</DataType>
     </column>
-    <column id="343" parent="241" name="parentEmail">
+    <column id="338" parent="240" name="parentEmail">
       <Position>3</Position>
       <DataType>varchar(255)|0s</DataType>
     </column>
-    <column id="344" parent="241" name="serviceName">
+    <column id="339" parent="240" name="serviceName">
       <Position>4</Position>
       <DataType>varchar(100)|0s</DataType>
     </column>
-    <column id="345" parent="241" name="created">
+    <column id="340" parent="240" name="created">
       <Position>5</Position>
       <DataType>date|0s</DataType>
     </column>
-    <column id="346" parent="241" name="isDisplayed">
+    <column id="341" parent="240" name="isDisplayed">
       <Position>6</Position>
       <DataType>tinyint(1)|0s</DataType>
     </column>
-    <index id="347" parent="241" name="parentEmail">
+    <index id="342" parent="240" name="parentEmail">
       <ColNames>parentEmail</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="348" parent="241" name="PRIMARY">
+    <key id="343" parent="240" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>testimonialId</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="349" parent="241" name="testimonial_ibfk_1">
+    <foreign-key id="344" parent="240" name="testimonial_ibfk_1">
       <ColNames>parentEmail</ColNames>
       <RefTableName>user</RefTableName>
       <RefColNames>username</RefColNames>
     </foreign-key>
-    <column id="350" parent="242" name="panel_id">
+    <column id="345" parent="241" name="panel_id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="351" parent="242" name="first_name">
+    <column id="346" parent="241" name="first_name">
       <Position>2</Position>
       <DataType>varchar(255)|0s</DataType>
       <DefaultExpression>&apos;Empty&apos;</DefaultExpression>
     </column>
-    <column id="352" parent="242" name="last_name">
+    <column id="347" parent="241" name="last_name">
       <Position>3</Position>
       <DataType>varchar(255)|0s</DataType>
       <DefaultExpression>&apos;Empty&apos;</DefaultExpression>
     </column>
-    <column id="353" parent="242" name="testimonial">
+    <column id="348" parent="241" name="testimonial">
       <Position>4</Position>
       <DataType>varchar(255)|0s</DataType>
       <DefaultExpression>&apos;Empty&apos;</DefaultExpression>
     </column>
-    <column id="354" parent="242" name="activity">
+    <column id="349" parent="241" name="activity">
       <Position>5</Position>
       <DataType>varchar(255)|0s</DataType>
       <DefaultExpression>&apos;Empty&apos;</DefaultExpression>
     </column>
-    <column id="355" parent="242" name="date">
+    <column id="350" parent="241" name="date">
       <Position>6</Position>
       <DataType>varchar(255)|0s</DataType>
       <DefaultExpression>&apos;Empty&apos;</DefaultExpression>
     </column>
-    <column id="356" parent="242" name="county">
+    <column id="351" parent="241" name="county">
       <Position>7</Position>
       <DataType>varchar(255)|0s</DataType>
       <DefaultExpression>&apos;Empty&apos;</DefaultExpression>
     </column>
-    <column id="357" parent="242" name="country">
+    <column id="352" parent="241" name="country">
       <Position>8</Position>
       <DataType>varchar(255)|0s</DataType>
       <DefaultExpression>&apos;Empty&apos;</DefaultExpression>
     </column>
-    <key id="358" parent="242" name="PRIMARY">
+    <key id="353" parent="241" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>panel_id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="359" parent="243" name="username">
+    <column id="354" parent="242" name="username">
       <Position>1</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="360" parent="243" name="firstName">
+    <column id="355" parent="242" name="firstName">
       <Position>2</Position>
       <DataType>varchar(100)|0s</DataType>
     </column>
-    <column id="361" parent="243" name="lastName">
+    <column id="356" parent="242" name="lastName">
       <Position>3</Position>
       <DataType>varchar(100)|0s</DataType>
     </column>
-    <column id="362" parent="243" name="password">
+    <column id="357" parent="242" name="password">
       <Position>4</Position>
       <DataType>varchar(100)|0s</DataType>
     </column>
-    <column id="363" parent="243" name="userTypeId">
+    <column id="358" parent="242" name="userTypeId">
       <Position>5</Position>
       <DataType>int(11)|0s</DataType>
     </column>
-    <column id="364" parent="243" name="isActive">
+    <column id="359" parent="242" name="isActive">
       <Position>6</Position>
       <DataType>tinyint(1)|0s</DataType>
     </column>
-    <index id="365" parent="243" name="userTypeId">
+    <index id="360" parent="242" name="userTypeId">
       <ColNames>userTypeId</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="366" parent="243" name="PRIMARY">
+    <key id="361" parent="242" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>username</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="367" parent="243" name="user_ibfk_1">
+    <foreign-key id="362" parent="242" name="user_ibfk_1">
       <ColNames>userTypeId</ColNames>
       <RefTableName>user_type</RefTableName>
       <RefColNames>userTypeId</RefColNames>
     </foreign-key>
-    <column id="368" parent="244" name="userTypeId">
+    <column id="363" parent="243" name="userTypeId">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="369" parent="244" name="userType">
+    <column id="364" parent="243" name="userType">
       <Position>2</Position>
       <DataType>varchar(20)|0s</DataType>
     </column>
-    <column id="370" parent="244" name="userTypeDesc">
+    <column id="365" parent="243" name="userTypeDesc">
       <Position>3</Position>
       <DataType>varchar(1000)|0s</DataType>
     </column>
-    <key id="371" parent="244" name="PRIMARY">
+    <key id="366" parent="243" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>userTypeId</ColNames>
       <Primary>1</Primary>

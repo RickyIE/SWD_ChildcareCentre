@@ -28,11 +28,6 @@
     }
 
 
-
-
-    echo "<script>console.log('$userId');</script>";
-
-
     // create user session profile session here
 
     ?>
@@ -65,8 +60,8 @@ if (mysqli_num_rows($retrieveUserInfo) > 0) {
 } else {
 }
 
-$searchForm ="";
-$searchForm = $_POST['search-form'];
+//$searchForm ="";
+//$searchForm = $_POST['search-form'];
 
 $query2 = "SELECT * FROM testimonial_panels;";
 
@@ -104,15 +99,16 @@ if (mysqli_num_rows($retrieveFirstName) > 0) {
 
 } else {
 }
-$comment = "";
-$service = "";
-$comment = $_POST['testimonial-add-comment'];
-$commentDate = date("Y-m-d");
-$userFirstName = $dataArray4 [0]['firstName'];
-$service =$_POST['testimonial-add-service'];
-$userEmail = $userId;
+
+
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+    $comment = $_POST['testimonial-add-comment'];
+    $commentDate = date("Y-m-d");
+    $userFirstName = $dataArray4 [0]['firstName'];
+    $service =$_POST['testimonial-add-service'];
+    $userEmail = $userId;
 
     if (empty($comment) === false) {
 
