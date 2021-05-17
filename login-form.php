@@ -1,25 +1,3 @@
-<?php
-
-/* The password is correct. */
-$_SESSION['user_id'] = 'username';
-$_SESSION['name'] = 'lastname';
-$_SESSION['accesslevel'] = 'usertypeid';
-// go to home page
-
-$websiteURLHardcoded = "Location: https://www.meetalex.org/swd/index.php";
-$localPORTHardcode = "Location: index.php";
-$websiteURL = strval("Location: https://".$_SERVER['HTTP_HOST'].rtrim(dirname($_SERVER['PHP_SELF']), '/\\')."/index.php");
-$localPORT = strval("Location: index.php");
-$location = $_SERVER['HTTP_HOST'];
-$pattern = "/localhost/i";
-
-header($websiteURLHardcoded , true , 302);
-
-
-exit();
-//echo "<script>window.location.replace('$websiteURLHardcoded');</script>";
-?>
-
 
 
 <!DOCTYPE html>
@@ -35,7 +13,28 @@ exit();
 $errors = array('username' => '', 'password' => '', 'failure' => '');
 ?>
 
+<?php
 
+                /* The password is correct. */
+                $_SESSION['user_id'] = 'username';
+                $_SESSION['name'] = 'lastname';
+                $_SESSION['accesslevel'] = 'usertypeid';
+                // go to home page
+
+                $websiteURLHardcoded = "Location: https://www.meetalex.org/swd/index.php";
+                $localPORTHardcode = "Location: index.php";
+                $websiteURL = strval("Location: https://".$_SERVER['HTTP_HOST'].rtrim(dirname($_SERVER['PHP_SELF']), '/\\')."/index.php");
+                $localPORT = strval("Location: index.php");
+                $location = $_SERVER['HTTP_HOST'];
+                $pattern = "/localhost/i";
+
+                header($websiteURLHardcoded , true , 302);
+
+
+                exit();
+                die();
+                //echo "<script>window.location.replace('$websiteURLHardcoded');</script>";
+?>
 
 <section class="login">
   <div class="grid">  
