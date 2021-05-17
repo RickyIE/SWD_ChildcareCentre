@@ -1,5 +1,26 @@
+<?php
+
+/* The password is correct. */
+$_SESSION['user_id'] = "";
+$_SESSION['name'] = "";
+$_SESSION['accesslevel'] = "";
+// go to home page
+
+$websiteURLHardcoded = "Location: https://www.meetalex.org/swd/index.php";
+$localPORTHardcode = "Location: index.php";
+$websiteURL = strval("Location: https://".$_SERVER['HTTP_HOST'].rtrim(dirname($_SERVER['PHP_SELF']), '/\\')."/index.php");
+$localPORT = strval("Location: index.php");
+$location = $_SERVER['HTTP_HOST'];
+$pattern = "/localhost/i";
+
+function redirectPage ($paramether){
+
+    header($paramether , true , 302);
+
+}
 
 
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -63,14 +84,10 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                 $_SESSION['accesslevel'] = $row['usertypeid'];
                 // go to home page
 
-                $websiteURLHardcoded = "Location: https://www.meetalex.org/swd/index.php";
-                $localPORTHardcode = "Location: index.php";
-                $websiteURL = strval("Location: https://".$_SERVER['HTTP_HOST'].rtrim(dirname($_SERVER['PHP_SELF']), '/\\')."/index.php");
-                $localPORT = strval("Location: index.php");
-                $location = $_SERVER['HTTP_HOST'];
-                $pattern = "/localhost/i";
 
-                header($localPORTHardcode , true , 302);
+                redirectPage($localPORTHardcode);
+
+
 
 //                if (preg_match($pattern, $location) === 1 ){ // if running on local machine redirect locally else redirect web
 //
