@@ -17,7 +17,10 @@ $pattern = "/localhost/i";
 
 function redirectPage ($paramether){
 
-    header($paramether , true , 302);
+
+
+    echo '<script>window.location.href = "https://www.meetalex.org/swd/index.php";</script>;';
+//    header($paramether , true , 302);
     exit();
     die();
 
