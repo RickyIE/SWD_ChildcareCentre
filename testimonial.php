@@ -100,8 +100,16 @@ if (mysqli_num_rows($retrieveFirstName) > 0) {
 <section class="testimonial-top-text">
     <div class="container grid">
         <div class="feedback-text">
-            <div id="testimonials-wrapper">
-
+            <div class="feedback-text">
+                <h2 class="heading-2">Not Sure Yet?</h2>
+                <p>Parent feedback is so important to us at Kiddie Clubhouse and it’s always great for us to hear such
+                    wonderful words of praise for our teams which celebrate and recognise the love, care and attention that
+                    their
+                    children receive in our crèches.</p>
+                <br>
+                <p>We understand that as parents, it can be difficult to leave your child with someone else, so it’s
+                    reassuring to hear from other parents about the great experience that their children enjoy in Kiddie
+                    Clubhouse every day.</p>
             </div>
         </div>
         <figure><img src="img/parent-feedback-01.svg" alt=""></figure>
