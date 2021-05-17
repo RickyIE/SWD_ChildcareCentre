@@ -4,6 +4,7 @@
 <html lang="en">
 
 <head>
+    <?php include 'header.php'; ?>
   <title>New Service</title>
 </head>
 <body>
@@ -15,10 +16,51 @@ $errors = array('username' => '', 'password' => '', 'failure' => '');
 
 <?php
 
+if ($_SERVER['REQUEST_METHOD'] == "POST") {
+
+    if (empty($_POST['username']))
+    {
+        $errors['username'] = 'You forgot to enter user name';
+    }
+    else
+    {
+        $username = trim($_POST['username']);
+    }
+    if (empty($_POST['password']))
+    {
+        $errors['password'] = 'You forgot to enter password';
+    }
+    else
+    {
+        $password = trim($_POST['password']);
+    }
+
+    // Evaluates array because it always has keyes, so never empty
+    foreach($errors as $key => $value) {
+        if ($value!=''){
+            $emptycheck = 1;
+            break;
+        }
+        else {
+            $emptycheck = 0;
+        }
+    }
+
+    // add record to database
+    if (count(array_filter($errors)) == 0)
+    {
+        $query = "SELECT username, password, firstname, lastname, usertypeid FROM user WHERE username='$username' AND isactive=true";
+        $result = @mysqli_query($db_connection, $query);
+        if (mysqli_num_rows($result) == 1)
+        {
+
+            $row = mysqli_fetch_array($result);
+            if (password_verify($password, $row['password']))
+            {
                 /* The password is correct. */
-                $_SESSION['user_id'] = 'username';
-                $_SESSION['name'] = 'lastname';
-                $_SESSION['accesslevel'] = 'usertypeid';
+                $_SESSION['user_id'] = $row['username'];
+                $_SESSION['name'] = $row['firstname'].' '. $row['lastname'];
+                $_SESSION['accesslevel'] = $row['usertypeid'];
                 // go to home page
 
                 $websiteURLHardcoded = "Location: https://www.meetalex.org/swd/index.php";
@@ -28,12 +70,36 @@ $errors = array('username' => '', 'password' => '', 'failure' => '');
                 $location = $_SERVER['HTTP_HOST'];
                 $pattern = "/localhost/i";
 
-                header($websiteURLHardcoded , true , 302);
+                header($localPORTHardcode , true , 302);
 
+//                if (preg_match($pattern, $location) === 1 ){ // if running on local machine redirect locally else redirect web
+//
+//                    header($localPORT , true , 303);
+//
+//
+//                }else if(preg_match($pattern, $location) === 0) { // if not running locally set parameters for web
+//                    header($websiteURL , true , 303);
+//
+//                }
 
                 exit();
                 die();
                 //echo "<script>window.location.replace('$websiteURLHardcoded');</script>";
+
+
+
+
+            } else {
+                $errors['failure'] = 'Invalid username or password!';
+            }
+        }
+        else
+        {
+            $errors['failure'] = 'Invalid username or password!';
+        }
+        mysqli_close($db_connection);
+    }
+}
 ?>
 
 <section class="login">
