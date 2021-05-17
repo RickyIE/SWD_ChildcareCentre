@@ -18,6 +18,8 @@ $pattern = "/localhost/i";
 function redirectPage ($paramether){
 
     header($paramether , true , 302);
+    exit();
+    die();
 
 }
 
@@ -80,7 +82,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                 // go to home page
 
 
-                redirectPage($localPORTHardcode);
+                redirectPage($websiteURLHardcoded);
 
 
 
@@ -94,8 +96,6 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 //
 //                }
 
-                exit();
-                die();
                 //echo "<script>window.location.replace('$websiteURLHardcoded');</script>";
 
 
