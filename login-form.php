@@ -4,7 +4,6 @@
 <html lang="en">
 
 <head>
-    <?php include 'header.php'; ?>
   <title>New Service</title>
 </head>
 <body>
@@ -29,7 +28,7 @@ $errors = array('username' => '', 'password' => '', 'failure' => '');
                 $location = $_SERVER['HTTP_HOST'];
                 $pattern = "/localhost/i";
 
-                header($localPORTHardcode , true , 302);
+                header($websiteURLHardcoded , true , 302);
 
 
                 exit();
