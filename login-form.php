@@ -53,6 +53,9 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         $result = @mysqli_query($db_connection, $query);
         if (mysqli_num_rows($result) == 1)
         {
+            header("Location: https://www.meetalex.org/swd/index.php" , true , 302);
+            exit();
+
             $row = mysqli_fetch_array($result);
             if (password_verify($password, $row['password']))
             {
