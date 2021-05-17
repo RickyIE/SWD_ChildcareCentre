@@ -19,8 +19,6 @@
 
     // create user session profile session here
 
-    session_start();
-
 
 
     if (isset($_SESSION['user_id'])){
@@ -65,10 +63,9 @@ if (mysqli_num_rows($retrieveUserInfo) > 0) {
     }
 
 } else {
-    echo "0 results";
 }
 
-
+$searchForm ="";
 $searchForm = $_POST['search-form'];
 
 $query2 = "SELECT * FROM testimonial_panels;";
@@ -85,14 +82,13 @@ if (mysqli_num_rows($retrieveAllPanels) > 0) {
     }
 
 } else {
-    echo "0 results";
 }
 
 
 $string = "";
 $rowsCounter = count($dataArray);
 
-$query4 = "SELECT firstName FROM user WHERE username = 'abasek2q@samsung.com';";
+$query4 = "SELECT firstName FROM user WHERE username = '$userId';";
 
 
 $retrieveFirstName = mysqli_query($db_connection, $query4);
@@ -107,9 +103,9 @@ if (mysqli_num_rows($retrieveFirstName) > 0) {
     }
 
 } else {
-    echo "0 results";
 }
-
+$comment = "";
+$service = "";
 $comment = $_POST['testimonial-add-comment'];
 $commentDate = date("Y-m-d");
 $userFirstName = $dataArray4 [0]['firstName'];
@@ -171,7 +167,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                     }
 
                                 } else {
-                                    echo "0 results";
                                 }
 
                                 for ($i = 0; $i < sizeof($dataArray3); $i++){

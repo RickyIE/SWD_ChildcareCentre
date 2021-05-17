@@ -1,5 +1,4 @@
 
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,11 +9,13 @@
 <body>
 
 <?php
+
 // clear array and start validation again
 $errors = array('username' => '', 'password' => '', 'failure' => '');
 ?>
 
 <?php
+
 
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
@@ -35,6 +36,8 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         $password = trim($_POST['password']);
     }
 
+
+
     // Evaluates array because it always has keyes, so never empty
     foreach($errors as $key => $value) {
         if ($value!=''){
@@ -46,6 +49,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         }
     }
 
+
     // add record to database
     if (count(array_filter($errors)) == 0)
     {
@@ -56,6 +60,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             $row = mysqli_fetch_array($result);
             if (password_verify($password, $row['password']))
             {
+
                 /* The password is correct. */
                 $_SESSION['user_id'] = $row['username'];
                 $_SESSION['name'] = $row['firstname'].' '. $row['lastname'];
