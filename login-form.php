@@ -1,3 +1,5 @@
+<?php include 'header.php'; ?>
+
 <?php
 
 /* The password is correct. */
@@ -21,14 +23,7 @@ function redirectPage ($paramether){
 
 
 ?>
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <?php include 'header.php'; ?>
-  <title>New Service</title>
-</head>
-<body>
 
 <?php
 // clear array and start validation again
@@ -79,9 +74,9 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             if (password_verify($password, $row['password']))
             {
                 /* The password is correct. */
-                $_SESSION['user_id'] = $row['username'];
-                $_SESSION['name'] = $row['firstname'].' '. $row['lastname'];
-                $_SESSION['accesslevel'] = $row['usertypeid'];
+                $_SESSION['user_id'] = strval($row['username']);
+                $_SESSION['name'] = strval($row['firstname'].' '. $row['lastname']);
+                $_SESSION['accesslevel'] = strval($row['usertypeid']);
                 // go to home page
 
 
@@ -118,6 +113,14 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     }
 }
 ?>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <title>New Service</title>
+</head>
+<body>
 
 <section class="login">
   <div class="grid">  
