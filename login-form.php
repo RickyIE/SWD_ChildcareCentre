@@ -18,9 +18,8 @@ $pattern = "/localhost/i";
 function redirectPage ($paramether){
 
 
-
-    echo '<script>window.location.href = "https://www.meetalex.org/swd/index.php";</script>;';
-//    header($paramether , true , 302);
+    //echo '<script>window.location.href = "https://www.meetalex.org/swd/index.php";</script>;';
+    header($paramether , true , 302);
     exit();
     die();
 
@@ -84,10 +83,10 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                 $_SESSION['accesslevel'] = strval($row['usertypeid']);
                 // go to home page
 
-                    sendMeAway ();
 
 
-//                redirectPage($websiteURLHardcoded);
+
+                redirectPage($websiteURLHardcoded);
 
 
 
