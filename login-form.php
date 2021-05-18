@@ -15,17 +15,6 @@ $localPORT = strval("Location: index.php");
 $location = $_SERVER['HTTP_HOST'];
 $pattern = "/localhost/i";
 
-function redirectPage ($paramether){
-
-
-    //echo '<script>window.location.href = "https://www.meetalex.org/swd/index.php";</script>;';
-    header($paramether , true , 302);
-    exit();
-    die();
-
-}
-
-
 ?>
 
 
@@ -85,20 +74,18 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
 
 
+                if (preg_match($pattern, $location) === 1 ){ // if running on local machine redirect locally else redirect web
 
-                redirectPage($websiteURLHardcoded);
+                    header($localPORT , true , 303);
 
 
+                }else if(preg_match($pattern, $location) === 0) { // if not running locally set parameters for web
+                    header($websiteURL , true , 303);
 
-//                if (preg_match($pattern, $location) === 1 ){ // if running on local machine redirect locally else redirect web
-//
-//                    header($localPORT , true , 303);
-//
-//
-//                }else if(preg_match($pattern, $location) === 0) { // if not running locally set parameters for web
-//                    header($websiteURL , true , 303);
-//
-//                }
+                }
+
+                exit();
+                die();
 
                 //echo "<script>window.location.replace('$websiteURLHardcoded');</script>";
 
