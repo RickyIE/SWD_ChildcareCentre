@@ -1,5 +1,5 @@
 <?php
-
+ob_start();
 ?>
 
 <!doctype html>
@@ -44,3 +44,7 @@ exit();
 
 </body>
 </html>
+
+<?php
+ob_end_flush()
+?>
