@@ -26,6 +26,8 @@ session_start();
 
 $_SESSION['user'] = 'Alex';
 
+$_SESSION -> redirect("Location: https://www.meetalex.org/swd/Testing/session2.php");
+
 echo "Session user is = ".$_SESSION['user']."<br>";
 echo "\$host  = \$_SERVER['HTTP_HOST'] = ".$host  = $_SERVER['HTTP_HOST']."<br>";
 echo "\$uri   = dirname(\$_SERVER['PHP_SELF'] = ".$uri   = dirname($_SERVER['PHP_SELF'])."<br>";

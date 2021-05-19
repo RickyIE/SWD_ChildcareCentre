@@ -25,6 +25,7 @@
 session_start();
 
 echo "Session user is = ".$_SESSION['user']."<br>";
+
 ?>
 
 </body>
