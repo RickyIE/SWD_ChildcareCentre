@@ -1,8 +1,12 @@
 <?php
 ob_start();
 
+session_save_path ("/home4/meetalex/");
+
+
 if(!session_id()) {
-    session_id("1234");
+    echo session_save_path();
+    session_id("12345");
     session_start();
 }
 
