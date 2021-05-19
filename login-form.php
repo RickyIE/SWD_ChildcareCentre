@@ -2,7 +2,6 @@
 <?php
 ob_start();
 
-include 'header.php';
 session_save_path ("/home4/meetalex/");
 
 if(!session_id()) {
@@ -93,7 +92,8 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
                 }
 
-                exit();
+                exit;
+                die;
 
                 //echo "<script>window.location.replace('$websiteURLHardcoded');</script>";
 
@@ -118,20 +118,6 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 <head>
 
   <title>New Service</title>
-
-    <?php
-
-    function sendMeAway ()
-    {
-
-        echo "<meta http-equiv= 'refresh' content='3;url=https://www.meetalex.org/swd/index.php' />";
-        die();
-
-    }
-    ?>
-
-
-
 </head>
 <body>
 
@@ -161,8 +147,6 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     </div> 
   </div>
 </section>
-
-      <?php include 'footer.html' ?>
 
   <div class="overlay hidden"></div>
   <script src="js/app.js"></script>
