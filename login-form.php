@@ -84,8 +84,9 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
                 }
 
-                exit();
-                die();
+                $_SESSION -> redirect('/');
+
+                exit;
 
                 //echo "<script>window.location.replace('$websiteURLHardcoded');</script>";
 

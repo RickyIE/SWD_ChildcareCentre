@@ -25,9 +25,8 @@
 session_start();
 
 $_SESSION['user'] = 'Alex';
-//echo $_SESSION['user'];
-//
-//
+
+echo "Session user is = ".$_SESSION['user']."<br>";
 echo "\$host  = \$_SERVER['HTTP_HOST'] = ".$host  = $_SERVER['HTTP_HOST']."<br>";
 echo "\$uri   = dirname(\$_SERVER['PHP_SELF'] = ".$uri   = dirname($_SERVER['PHP_SELF'])."<br>";
 echo "\$uri   = rtrim(dirname(\$_SERVER['PHP_SELF']), '/\\') = ".$uri   = rtrim(dirname($_SERVER['PHP_SELF']), '/\\')."<br>";
