@@ -1,14 +1,25 @@
 <?php
 ob_start();
 
-session_save_path ("/home4/meetalex/");
+$location = $_SERVER['HTTP_HOST'];
 
+if (preg_match("/localhost/i", $location) === 1 ){ // if running on local machine redirect locally else redirect web
 
-if(!session_id()) {
-    echo session_save_path();
-    session_id("12345");
-    session_start();
+    header("Location: session2.php" , true , 303);
+
+}else if(preg_match("/localhost/i", $location) === 0) { // if not running locally set parameters for web
+    session_save_path ("/home4/meetalex/");
+    if(!session_id()) {
+        echo session_save_path();
+        session_id("12345");
+        session_start();
+    }
+
+    header("Location: session2.php" , true , 303);
+    exit();
+
 }
+
 
 ?>
 
