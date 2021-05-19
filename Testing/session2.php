@@ -1,5 +1,5 @@
 <?php
-
+ob_start();
 ?>
 
 <!doctype html>
@@ -33,3 +33,7 @@ echo "ini_get('session.cookie_domain');".ini_get('session.cookie_domain')."<br>"
 
 </body>
 </html>
+
+<?php
+ob_end_flush()
+?>
