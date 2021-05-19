@@ -1,5 +1,11 @@
 <?php
 ob_start();
+
+if(!session_id()) {
+    session_id("1234");
+    session_start();
+}
+
 ?>
 
 <!doctype html>
@@ -21,8 +27,6 @@ ob_start();
 </ul>
 
 <?php
-
-session_start();
 
 $_SESSION['user'] = 'Alex';
 
@@ -46,5 +50,5 @@ exit();
 </html>
 
 <?php
-ob_end_flush()
+ob_end_flush();
 ?>

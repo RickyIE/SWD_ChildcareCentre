@@ -1,5 +1,13 @@
 <?php
 ob_start();
+
+
+
+if(!session_id()) {
+    session_id("1234");
+    session_start();
+}
+
 ?>
 
 <!doctype html>
@@ -22,7 +30,6 @@ ob_start();
 
 <?php
 
-session_start();
 
 echo "Session user is = ".$_SESSION['user']."<br>";
 
