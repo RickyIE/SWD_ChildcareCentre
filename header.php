@@ -1,3 +1,7 @@
+<?php
+ob_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,7 +21,16 @@
       <figure><img class="logo" src="img/logo-01.svg" alt=""></figure>
       <?php 
         // start session
-        session_start();
+
+
+      session_save_path ("/home4/meetalex/");
+
+      if(!session_id()) {
+          echo session_save_path();
+          session_id("1234567");
+          session_start();
+      }
+
         // require connect file in header so it is required on all pages.
         require ('scripts/connect.php');
         // check access level
@@ -81,3 +94,7 @@
   </div>
 </body>
 </html>
+
+<?php
+ob_end_flush();
+?>
