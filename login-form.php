@@ -1,6 +1,15 @@
-<?php include 'header.php'; ?>
 
 <?php
+ob_start();
+
+include 'header.php';
+session_save_path ("/home4/meetalex/");
+
+if(!session_id()) {
+    echo session_save_path();
+    session_id("1234567");
+    session_start();
+}
 
 /* The password is correct. */
 $_SESSION['user_id'] = "";
@@ -84,9 +93,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
                 }
 
-                $_SESSION -> redirect('/');
-
-                exit;
+                exit();
 
                 //echo "<script>window.location.replace('$websiteURLHardcoded');</script>";
 
@@ -162,3 +169,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 </body>
 
 </html>
+
+<?php
+ob_end_flush();
+?>

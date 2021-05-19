@@ -29,9 +29,6 @@ if(!session_id()) {
 
 <?php
 
-
-echo "Session user is = ".$_SESSION['user']."<br>";
-
 echo "Session user is = ".$_SESSION['user']."<br>";
 echo "\$host  = \$_SERVER['HTTP_HOST'] = ".$host  = $_SERVER['HTTP_HOST']."<br>";
 echo "\$uri   = dirname(\$_SERVER['PHP_SELF'] = ".$uri   = dirname($_SERVER['PHP_SELF'])."<br>";
