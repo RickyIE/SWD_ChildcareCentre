@@ -26,6 +26,9 @@ session_start();
 
 echo "Session user is = ".$_SESSION['user']."<br>";
 
+echo "session_id()".session_id()."<br>";
+echo "ini_get('session.cookie_domain');".ini_get('session.cookie_domain')."<br>";
+
 ?>
 
 </body>
