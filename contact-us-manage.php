@@ -11,7 +11,6 @@
       crossorigin="anonymous" />
     <link rel="stylesheet" href="css/utilities.css">
     <link rel="stylesheet" href="css/style.css">
-      <link rel="stylesheet" href="css/alex_temp.css">
     <title>Contact US manage</title>
     <?php include 'header.php' ?>
   </head>
@@ -68,7 +67,7 @@
               <form method='post' id="contact-us-search-form">
                   <label for="search-form-contact-us-id">Search for Keyword</label>
                   <input type='search' class='dateFilter' name='search-form' id="search-form-contact-us-id"
-                         placeholder="Enter search criteria and click sort ...">
+                         placeholder="Enter search criteria and click sort ..." onkeydown="return event.key != 'Enter';">
                   <div>
                   <input type='button' class="btn btn-primary" name='btn_search' value='Show results' id="contact-us-search-button-id">
                       <input type='button' class="btn btn-primary" name='btn_reset' value='Reset values' id="contact-us-reset-button-id">
