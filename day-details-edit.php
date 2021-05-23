@@ -113,7 +113,7 @@
               ?>              
               <tr>
                 <form method='get' action='update-day-details-form.php' class="day-details-edit-form">
-                  <td><input type='number' name='recordid' value='<?php  echo $records[$row]['recordid']; ?>' readonly></td>
+                  <td><input class="day-details-edit-number" type='number' name='recordid' value='<?php  echo $records[$row]['recordid']; ?>' readonly></td>
                   <td> <?php echo $records[$row]['firstname'] . ' ' . $records[$row]['lastname']; ?> </td>
                   <td> <?php echo $records[$row]['temperature']; ?> </td>
                   <td> <?php echo $records[$row]['breakfast']; ?> </td>

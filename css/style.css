@@ -625,4 +625,12 @@ table th.last {
   width: 100%;
 }
 
+.events-number,
+.special-offers-number,
+.day-details-edit-number {
+  border: none;
+  outline: none;
+  background-color: transparent;
+  text-align: center;
+}
 /* ------------ Alex ------------ */

@@ -113,7 +113,7 @@
                      ?>              
                   <tr>
                      <form method='get' action='event-update-form.php'>
-                        <td><input type='number' name='eventid' value='<?php  echo $events[$row]['eventid']; ?>' readonly></td>
+                        <td><input class="events-number" type='number' name='eventid' value='<?php  echo $events[$row]['eventid']; ?>' readonly></td>
                         <td> <img src="<?php echo $events[$row]['imagepath']; ?>" alt="" class="event-image"></td>
                         <td> <?php echo $events[$row]['eventtitle']; ?> </td>
                         <td> <?php echo $events[$row]['eventdetail']; ?> </td>
@@ -153,7 +153,7 @@
                      ?>              
                   <tr>
                      <form method='get' action='offer-update-form.php'>
-                        <td><input type='number' name='offerid' value='<?php  echo $offers[$row]['offerid']; ?>' readonly></td>
+                        <td><input class="special-offers-number" type='number' name='offerid' value='<?php  echo $offers[$row]['offerid']; ?>' readonly></td>
                         <td> <img src="<?php echo $offers[$row]['imagepath']; ?>" alt="" class="offer-image"></td>
                         <td> <?php echo $offers[$row]['offertitle']; ?> </td>
                         <td> <?php echo $offers[$row]['offerdetail']; ?> </td>
