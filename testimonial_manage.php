@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css"/>
     <link rel="stylesheet" href="css/utilities.css">
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/alex_temp.css">
     <title>Testimonial Manager</title>
     <script type="text/javascript" src="lib/jquery-3.6.0.min.js"></script>
     <?php include 'header.php' ?>
@@ -71,7 +70,7 @@ $rowsCounter = count($dataArray);
         <form method='post' id="testimonials-search-form">
             <label for="search-form-id">Search for Keyword</label>
             <input type='search' class='dateFilter' name='search-form' id="search-form-id"
-                   placeholder="Enter search criteria and click sort ...">
+                   placeholder="Enter search criteria and click sort ..." onkeydown="return event.key != 'Enter';">
             <input type='button' class="btn btn-primary" name='btn_search' value='sort' id="testimonials-search">
             <input type='submit' class="btn btn-primary" name='btn_clear_panels' value='clear all panels' id="testimonials-clear-all-panels" onclick="deletePanels()" >
         </form>
@@ -191,7 +190,6 @@ $rowsCounter = count($dataArray);
 
 <div class="overlay hidden"></div>
 <script src="js/app.js"></script>
-<script src="js/testimonial_manager.js"></script>
 </body>
 
 <script type="text/javascript">
@@ -389,6 +387,8 @@ $rowsCounter = count($dataArray);
 
 
     }
+
+
 
     function populateEntriesRegex() {
 
